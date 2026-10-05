@@ -5,7 +5,12 @@ import Script from "next/script";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/button";
 import { captureAttribution } from "@/lib/analytics/attribution";
-import { CONSENT_EVENT, readConsent, writeConsent, type ConsentChoice } from "@/lib/analytics/consent";
+import {
+  CONSENT_EVENT,
+  readConsent,
+  writeConsent,
+  type ConsentChoice,
+} from "@/lib/analytics/consent";
 
 function subscribe(cb: () => void) {
   window.addEventListener(CONSENT_EVENT, cb);
@@ -20,8 +25,20 @@ function subscribe(cb: () => void) {
  * Cookie banner + consent-gated analytics. Plausible/PostHog scripts are
  * injected only after "Accept", and lazily (afterInteractive / lazyOnload).
  */
-export function ConsentManager({ plausibleDomain, posthogKey, posthogHost }: { plausibleDomain?: string; posthogKey?: string; posthogHost: string }) {
-  const consent = useSyncExternalStore<ConsentChoice | null | "unknown">(subscribe, readConsent, () => "unknown");
+export function ConsentManager({
+  plausibleDomain,
+  posthogKey,
+  posthogHost,
+}: {
+  plausibleDomain?: string;
+  posthogKey?: string;
+  posthogHost: string;
+}) {
+  const consent = useSyncExternalStore<ConsentChoice | null | "unknown">(
+    subscribe,
+    readConsent,
+    () => "unknown",
+  );
   const [forceOpen, setForceOpen] = useState(false);
 
   useEffect(() => {
@@ -32,7 +49,8 @@ export function ConsentManager({ plausibleDomain, posthogKey, posthogHost }: { p
   }, []);
 
   const analyticsConfigured = Boolean(plausibleDomain || posthogKey);
-  const showBanner = consent !== "unknown" && (consent === null || forceOpen) && analyticsConfigured;
+  const showBanner =
+    consent !== "unknown" && (consent === null || forceOpen) && analyticsConfigured;
 
   const choose = (c: ConsentChoice) => {
     writeConsent(c);
@@ -42,7 +60,11 @@ export function ConsentManager({ plausibleDomain, posthogKey, posthogHost }: { p
   return (
     <>
       {consent === "accepted" && plausibleDomain && (
-        <Script src="https://plausible.io/js/script.tagged-events.js" data-domain={plausibleDomain} strategy="lazyOnload" />
+        <Script
+          src="https://plausible.io/js/script.tagged-events.js"
+          data-domain={plausibleDomain}
+          strategy="lazyOnload"
+        />
       )}
       {consent === "accepted" && posthogKey && (
         <Script id="posthog-init" strategy="lazyOnload">
@@ -55,14 +77,17 @@ export function ConsentManager({ plausibleDomain, posthogKey, posthogHost }: { p
           role="dialog"
           aria-modal="false"
           aria-labelledby="consent-title"
-          className="fixed inset-x-3 bottom-20 z-50 mx-auto max-w-xl rounded-[12px] border border-line bg-surface p-5 shadow-2xl lg:bottom-6"
+          className="border-line bg-surface fixed inset-x-3 bottom-20 z-50 mx-auto max-w-xl rounded-[12px] border p-5 shadow-2xl lg:bottom-6"
         >
           <h2 id="consent-title" className="font-display text-lg font-bold">
             Cookies, briefly
           </h2>
-          <p className="mt-2 text-sm text-muted">
-            We use privacy-friendly analytics to learn which pages help people. No ads, no cross-site tracking, form fields always masked. Essential storage
-            works either way. <Link href="/legal/cookies" className="text-accent underline">Cookie policy</Link>
+          <p className="text-muted mt-2 text-sm">
+            We use privacy-friendly analytics to learn which pages help people. No ads, no
+            cross-site tracking, form fields always masked. Essential storage works either way.{" "}
+            <Link href="/legal/cookies" className="text-accent underline">
+              Cookie policy
+            </Link>
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Button onClick={() => choose("accepted")}>Accept analytics</Button>

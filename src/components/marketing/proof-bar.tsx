@@ -11,17 +11,34 @@ import { Stat } from "@/components/ui/stat";
 export function ProofBar() {
   const live = proofMetrics.filter((m) => m.value);
   return (
-    <section aria-label="Proof" className="border-y border-line bg-surface py-10">
+    <section aria-label="Proof" className="border-line bg-surface border-y py-10">
       <Container>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          <Stat value={`${site.promises.shortlistHours}h`} label="Shortlist promise" footnote="From confirmed brief to verified shortlist." />
-          <Stat value={`${site.promises.replacementDays} days`} label="Free replacement" footnote="Written into every agreement." />
+          <Stat
+            value={`${site.promises.shortlistHours}h`}
+            label="Shortlist promise"
+            footnote="From confirmed brief to verified shortlist."
+          />
+          <Stat
+            value={`${site.promises.replacementDays} days`}
+            label="Free replacement"
+            footnote="Written into every agreement."
+          />
           {(live.length ? live : proofMetrics.slice(0, 2)).map((m) => (
-            <Stat key={m.id} value={m.value} label={m.label} footnote={m.method} pending={m.pending} />
+            <Stat
+              key={m.id}
+              value={m.value}
+              label={m.label}
+              footnote={m.method}
+              pending={m.pending}
+            />
           ))}
         </div>
         {clientLogos.length > 0 && (
-          <ul className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-6 opacity-80" aria-label="Clients">
+          <ul
+            className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-6 opacity-80"
+            aria-label="Clients"
+          >
             {clientLogos.map((l) => (
               <li key={l.name}>
                 <Image src={l.src} alt={l.name} width={l.width} height={l.height} />

@@ -18,4 +18,8 @@ export interface IntegrationResult {
   detail?: string;
 }
 
-export const skipped = (integration: string): IntegrationResult => ({ integration, ok: true, skipped: true });
+export const skipped = (integration: string): IntegrationResult => ({
+  integration,
+  ok: true,
+  skipped: true,
+});

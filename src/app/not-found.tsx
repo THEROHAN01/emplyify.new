@@ -5,9 +5,9 @@ import { Container } from "@/components/ui/layout";
 export default function NotFound() {
   return (
     <Container className="py-24 text-center">
-      <p className="font-mono text-sm font-bold text-accent">404</p>
+      <p className="text-accent font-mono text-sm font-bold">404</p>
       <h1 className="mt-2 text-3xl font-extrabold sm:text-4xl">We couldn't find that page.</h1>
-      <p className="mx-auto mt-4 max-w-xl text-lg text-muted">
+      <p className="text-muted mx-auto mt-4 max-w-xl text-lg">
         The link may be old or the role may have closed. Here are the most useful places to go next.
       </p>
       <div className="mt-8 flex flex-wrap justify-center gap-3">
@@ -16,8 +16,12 @@ export default function NotFound() {
           Browse roles
         </ButtonLink>
       </div>
-      <p className="mt-8 text-sm text-muted">
-        Or see the full <Link href="/site-map" className="text-accent underline">sitemap</Link>.
+      <p className="text-muted mt-8 text-sm">
+        Or see the full{" "}
+        <Link href="/site-map" className="text-accent underline">
+          sitemap
+        </Link>
+        .
       </p>
     </Container>
   );

@@ -16,7 +16,8 @@ export interface Cta {
   href: string;
 }
 
-export type RoleFamilySlug = "ai-ml" | "data" | "cloud-devops" | "full-stack" | "embedded" | "product";
+export type RoleFamilySlug =
+  "ai-ml" | "data" | "cloud-devops" | "full-stack" | "embedded" | "product";
 
 export type Seniority = "junior" | "mid" | "senior" | "lead";
 

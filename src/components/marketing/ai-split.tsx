@@ -18,11 +18,14 @@ export const humanWork = [
 export function AiHumanSplit() {
   return (
     <div className="grid gap-6 md:grid-cols-2">
-      <div className="rounded-[12px] border border-line bg-surface p-6">
+      <div className="border-line bg-surface rounded-[12px] border p-6">
         <h3 className="flex items-center gap-2 text-lg font-bold">
-          <span aria-hidden className="text-accent">✦</span> What AI does
+          <span aria-hidden className="text-accent">
+            ✦
+          </span>{" "}
+          What AI does
         </h3>
-        <ul className="mt-4 space-y-3 text-muted">
+        <ul className="text-muted mt-4 space-y-3">
           {aiWork.map((w) => (
             <li key={w} className="flex gap-2">
               <span aria-hidden>–</span>
@@ -31,11 +34,14 @@ export function AiHumanSplit() {
           ))}
         </ul>
       </div>
-      <div className="rounded-[12px] border-2 border-signal bg-surface p-6">
+      <div className="border-signal bg-surface rounded-[12px] border-2 p-6">
         <h3 className="flex items-center gap-2 text-lg font-bold">
-          <span aria-hidden className="text-signal">✓</span> What our recruiters decide
+          <span aria-hidden className="text-signal">
+            ✓
+          </span>{" "}
+          What our recruiters decide
         </h3>
-        <ul className="mt-4 space-y-3 text-muted">
+        <ul className="text-muted mt-4 space-y-3">
           {humanWork.map((w) => (
             <li key={w} className="flex gap-2">
               <span aria-hidden>–</span>

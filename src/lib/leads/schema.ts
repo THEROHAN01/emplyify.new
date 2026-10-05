@@ -5,21 +5,42 @@
  */
 import { z } from "zod";
 
-export const ROLE_FAMILIES = ["ai-ml", "data", "cloud-devops", "full-stack", "embedded", "product"] as const;
+// Our CSP forbids eval; jitless mode stops zod probing `new Function`.
+z.config({ jitless: true });
+
+export const ROLE_FAMILIES = [
+  "ai-ml",
+  "data",
+  "cloud-devops",
+  "full-stack",
+  "embedded",
+  "product",
+] as const;
 export const SENIORITIES = ["junior", "mid", "senior", "lead"] as const;
 export const WORK_MODES = ["On-site", "Hybrid", "Remote"] as const;
-export const COMPANY_TYPES = ["GCC", "Product company", "Startup", "Services company", "Other"] as const;
+export const COMPANY_TYPES = [
+  "GCC",
+  "Product company",
+  "Startup",
+  "Services company",
+  "Other",
+] as const;
 export const CONTACT_PREFS = ["Email", "Phone", "WhatsApp"] as const;
 export const LOCATIONS = ["Pune", "Bengaluru", "Hyderabad", "Remote (India)", "Other"] as const;
 
-const trimmed = (max: number, message: string) => z.string().trim().min(1, message).max(max, `Keep this under ${max} characters.`);
+const trimmed = (max: number, message: string) =>
+  z.string().trim().min(1, message).max(max, `Keep this under ${max} characters.`);
 
 const phone = z
   .string()
   .trim()
   .regex(/^\+?[0-9 ()-]{8,18}$/, "Enter a phone number with country code, e.g. +91 98765 43210.");
 
-export const email = z.string().trim().toLowerCase().email("Enter a valid email address, e.g. name@company.com.");
+export const email = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .email("Enter a valid email address, e.g. name@company.com.");
 
 /** Attribution captured client-side and forwarded to the CRM. */
 export const attributionSchema = z
@@ -64,10 +85,24 @@ export const briefDetailsStep = z
       .array(z.string().trim().min(1).max(60))
       .min(1, "Add at least one must-have skill.")
       .max(12, "Keep it to 12 must-haves or fewer — the rest are nice-to-haves."),
-    budgetMinLpa: z.coerce.number({ message: "Enter the lower end of the budget." }).min(1, "Enter a budget in ₹ LPA, e.g. 25.").max(500),
-    budgetMaxLpa: z.coerce.number({ message: "Enter the upper end of the budget." }).min(1, "Enter a budget in ₹ LPA, e.g. 35.").max(500),
-    targetStart: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, "Choose a target start date.").optional().or(z.literal("")),
-    jobDescription: z.string().trim().max(20000, "Paste a shorter description (under 20,000 characters).").optional(),
+    budgetMinLpa: z.coerce
+      .number({ message: "Enter the lower end of the budget." })
+      .min(1, "Enter a budget in ₹ LPA, e.g. 25.")
+      .max(500),
+    budgetMaxLpa: z.coerce
+      .number({ message: "Enter the upper end of the budget." })
+      .min(1, "Enter a budget in ₹ LPA, e.g. 35.")
+      .max(500),
+    targetStart: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/, "Choose a target start date.")
+      .optional()
+      .or(z.literal("")),
+    jobDescription: z
+      .string()
+      .trim()
+      .max(20000, "Paste a shorter description (under 20,000 characters).")
+      .optional(),
   })
   .refine((d) => d.budgetMaxLpa >= d.budgetMinLpa, {
     path: ["budgetMaxLpa"],
@@ -102,8 +137,17 @@ export const talentNetworkSchema = z.object({
   roleFamily: z.enum(ROLE_FAMILIES, { message: "Choose the role family closest to your work." }),
   yearsExperience: z.coerce.number({ message: "Enter your years of experience." }).min(0).max(50),
   city: z.enum(LOCATIONS, { message: "Choose your preferred location." }),
-  noticeDays: z.coerce.number({ message: "Enter your notice period in days." }).int().min(0).max(180),
-  linkedin: z.string().trim().url("Paste the full LinkedIn URL, starting with https://").optional().or(z.literal("")),
+  noticeDays: z.coerce
+    .number({ message: "Enter your notice period in days." })
+    .int()
+    .min(0)
+    .max(180),
+  linkedin: z
+    .string()
+    .trim()
+    .url("Paste the full LinkedIn URL, starting with https://")
+    .optional()
+    .or(z.literal("")),
   whatsappUpdates: z.boolean().default(false),
   consent: z.literal(true, { message: "Tick the box to agree to how we use your data." }),
   attribution: attributionSchema,
@@ -113,19 +157,27 @@ export const talentNetworkSchema = z.object({
 export type TalentNetworkInput = z.infer<typeof talentNetworkSchema>;
 
 /** Application fields (sent as multipart with an optional CV file). */
-export const applicationSchema = z
-  .object({
-    jobSlug: z.string().trim().min(1).max(120),
-    name: trimmed(120, "Enter your name."),
-    email,
-    phone,
-    linkedin: z.string().trim().url("Paste the full LinkedIn URL, starting with https://").optional().or(z.literal("")),
-    noticeDays: z.coerce.number({ message: "Enter your notice period in days." }).int().min(0).max(180),
-    expectedCtcLpa: z.coerce.number({ message: "Enter your expected CTC in ₹ LPA." }).min(1).max(500),
-    consent: z.literal("true", { message: "Tick the box to agree to how we use your data." }),
-    attribution: z.string().max(4000).optional(),
-    ...security,
-  });
+export const applicationSchema = z.object({
+  jobSlug: z.string().trim().min(1).max(120),
+  name: trimmed(120, "Enter your name."),
+  email,
+  phone,
+  linkedin: z
+    .string()
+    .trim()
+    .url("Paste the full LinkedIn URL, starting with https://")
+    .optional()
+    .or(z.literal("")),
+  noticeDays: z.coerce
+    .number({ message: "Enter your notice period in days." })
+    .int()
+    .min(0)
+    .max(180),
+  expectedCtcLpa: z.coerce.number({ message: "Enter your expected CTC in ₹ LPA." }).min(1).max(500),
+  consent: z.literal("true", { message: "Tick the box to agree to how we use your data." }),
+  attribution: z.string().max(4000).optional(),
+  ...security,
+});
 
 export type ApplicationInput = z.infer<typeof applicationSchema>;
 
@@ -144,7 +196,9 @@ export type ReportInput = z.infer<typeof reportSchema>;
 export const contactSchema = z.object({
   name: trimmed(120, "Enter your name."),
   email,
-  topic: z.enum(["Hiring", "Candidate", "Partnership", "Press", "Data request", "Other"], { message: "Choose a topic." }),
+  topic: z.enum(["Hiring", "Candidate", "Partnership", "Press", "Data request", "Other"], {
+    message: "Choose a topic.",
+  }),
   message: z.string().trim().min(10, "Tell us a little more (at least 10 characters).").max(5000),
   consent: z.literal(true, { message: "Confirm we may reply to you by email." }),
   attribution: attributionSchema,

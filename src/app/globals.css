@@ -54,8 +54,9 @@
   --color-line: var(--line);
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, monospace;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
   /* Type scale: 14 / 16 / 18 / 22 / 28 / 36 / 48 / 64 */
   --text-sm: 0.875rem;
@@ -89,8 +90,8 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  line-height: 1.15;
-  letter-spacing: -0.015em;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
   text-wrap: balance;
 }
 

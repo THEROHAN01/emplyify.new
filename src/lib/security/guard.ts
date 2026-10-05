@@ -10,7 +10,13 @@ import { rateLimit } from "./rate-limit";
  */
 export async function guardFormRequest(
   req: Request,
-  opts: { name: string; limit?: number; windowMs?: number; turnstileToken?: string; honeypot?: string },
+  opts: {
+    name: string;
+    limit?: number;
+    windowMs?: number;
+    turnstileToken?: string;
+    honeypot?: string;
+  },
 ): Promise<NextResponse | null> {
   if (!isSameOrigin(req)) {
     return NextResponse.json({ ok: false, error: "Cross-site request blocked." }, { status: 403 });

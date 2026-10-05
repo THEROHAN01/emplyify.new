@@ -19,7 +19,14 @@ export function buildMetadata(opts: {
     title: opts.absoluteTitle ? { absolute: opts.title } : opts.title,
     description: opts.description,
     alternates: { canonical: url },
-    openGraph: { title: fullTitle, description: opts.description, url, siteName: site.name, type: "website", locale: "en_IN" },
+    openGraph: {
+      title: fullTitle,
+      description: opts.description,
+      url,
+      siteName: site.name,
+      type: "website",
+      locale: "en_IN",
+    },
     twitter: { card: "summary_large_image", title: fullTitle, description: opts.description },
     robots: opts.noindex ? { index: false, follow: true } : undefined,
   };

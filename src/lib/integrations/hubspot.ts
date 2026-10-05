@@ -31,14 +31,21 @@ export async function submitHubspotForm(
     context: {
       hutk: attribution.hutk,
       pageUri: attribution.pageUri,
-      pageName: attribution.pageUri ? new URL(attribution.pageUri, env.siteUrl).pathname : undefined,
+      pageName: attribution.pageUri
+        ? new URL(attribution.pageUri, env.siteUrl).pathname
+        : undefined,
     },
   };
 
   try {
     const res = await fetch(
       `https://api.hsforms.com/submissions/v3/integration/submit/${env.hubspotPortalId}/${formId}`,
-      { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body), signal: AbortSignal.timeout(8000) },
+      {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(body),
+        signal: AbortSignal.timeout(8000),
+      },
     );
     if (!res.ok) {
       const detail = (await res.text()).slice(0, 300);

@@ -41,7 +41,13 @@ export function ButtonLink({
   );
 }
 
-export function Button({ variant, size, className, children, ...rest }: CommonProps & Omit<ComponentProps<"button">, "className">) {
+export function Button({
+  variant,
+  size,
+  className,
+  children,
+  ...rest
+}: CommonProps & Omit<ComponentProps<"button">, "className">) {
   return (
     <button className={buttonClasses(variant, size, className)} {...rest}>
       {children}

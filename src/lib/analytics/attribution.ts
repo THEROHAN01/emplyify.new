@@ -9,7 +9,10 @@ export function captureAttribution() {
   try {
     if (sessionStorage.getItem(KEY)) return;
     const params = new URLSearchParams(window.location.search);
-    const data: Attribution = { landingPage: window.location.pathname + window.location.search, referrer: document.referrer || undefined };
+    const data: Attribution = {
+      landingPage: window.location.pathname + window.location.search,
+      referrer: document.referrer || undefined,
+    };
     for (const k of UTM_KEYS) {
       const v = params.get(k);
       if (v) data[k] = v.slice(0, 200);

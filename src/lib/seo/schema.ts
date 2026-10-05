@@ -16,7 +16,12 @@ export function organizationSchema() {
     logo: absoluteUrl("/icon.svg"),
     description: site.positioning,
     email: site.email.hello,
-    address: { "@type": "PostalAddress", addressLocality: site.office.city, addressRegion: site.office.region, addressCountry: site.office.country },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: site.office.city,
+      addressRegion: site.office.region,
+      addressCountry: site.office.country,
+    },
     sameAs: [site.social.linkedin],
   };
 }
@@ -38,7 +43,11 @@ export function faqSchema(faqs: Faq[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   };
 }
 
@@ -46,7 +55,12 @@ export function breadcrumbSchema(items: { name: string; path: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, i) => ({ "@type": "ListItem", position: i + 1, name: item.name, item: absoluteUrl(item.path) })),
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
   };
 }
 
@@ -62,16 +76,40 @@ export function jobPostingSchema(job: Job) {
     validThrough: `${job.validThrough}T23:59:59+05:30`,
     employmentType: job.employmentType,
     // Confidential searches list Emplyify as the hiring organisation.
-    hiringOrganization: { "@type": "Organization", name: job.company.disclosed ? job.company.descriptor : `${site.name} (on behalf of a client)`, sameAs: absoluteUrl("/") },
+    hiringOrganization: {
+      "@type": "Organization",
+      name: job.company.disclosed ? job.company.descriptor : `${site.name} (on behalf of a client)`,
+      sameAs: absoluteUrl("/"),
+    },
     ...(remote
-      ? { jobLocationType: "TELECOMMUTE", applicantLocationRequirements: { "@type": "Country", name: "India" } }
-      : { jobLocation: { "@type": "Place", address: { "@type": "PostalAddress", addressLocality: cityName(job.city), addressCountry: "IN" } } }),
+      ? {
+          jobLocationType: "TELECOMMUTE",
+          applicantLocationRequirements: { "@type": "Country", name: "India" },
+        }
+      : {
+          jobLocation: {
+            "@type": "Place",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: cityName(job.city),
+              addressCountry: "IN",
+            },
+          },
+        }),
     baseSalary: {
       "@type": "MonetaryAmount",
       currency: "INR",
-      value: { "@type": "QuantitativeValue", minValue: job.salary.minLpa * 100_000, maxValue: job.salary.maxLpa * 100_000, unitText: "YEAR" },
+      value: {
+        "@type": "QuantitativeValue",
+        minValue: job.salary.minLpa * 100_000,
+        maxValue: job.salary.maxLpa * 100_000,
+        unitText: "YEAR",
+      },
     },
-    experienceRequirements: { "@type": "OccupationalExperienceRequirements", monthsOfExperience: job.experienceYears.min * 12 },
+    experienceRequirements: {
+      "@type": "OccupationalExperienceRequirements",
+      monthsOfExperience: job.experienceYears.min * 12,
+    },
     directApply: true,
     url: absoluteUrl(`/jobs/${job.slug}`),
   };
@@ -86,7 +124,11 @@ export function articleSchema(insight: Insight) {
     datePublished: insight.publishedAt,
     dateModified: insight.publishedAt,
     author: { "@type": "Organization", name: site.name },
-    publisher: { "@type": "Organization", name: site.name, logo: { "@type": "ImageObject", url: absoluteUrl("/icon.svg") } },
+    publisher: {
+      "@type": "Organization",
+      name: site.name,
+      logo: { "@type": "ImageObject", url: absoluteUrl("/icon.svg") },
+    },
     mainEntityOfPage: absoluteUrl(`/insights/${insight.slug}`),
   };
 }

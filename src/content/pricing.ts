@@ -25,7 +25,12 @@ export const plans = [
     for: "1–4 roles",
     price: "8.33–16.67%",
     priceNote: "of annual fixed CTC, by seniority",
-    includes: ["Verified shortlist in 72 hours", "Interview scheduling and offer support", "90-day free replacement", "Pay only when the hire joins"],
+    includes: [
+      "Verified shortlist in 72 hours",
+      "Interview scheduling and offer support",
+      "90-day free replacement",
+      "Pay only when the hire joins",
+    ],
     cta: { label: "Submit a role", href: "/submit-a-role" },
     featured: false,
   },
@@ -35,7 +40,12 @@ export const plans = [
     for: "5+ roles a quarter",
     price: "Monthly fee",
     priceNote: "+ reduced per-hire fee",
-    includes: ["Named, embedded recruiter", "AI sourcing and screening agents", "Weekly pipeline report", "90-day free replacement on every hire"],
+    includes: [
+      "Named, embedded recruiter",
+      "AI sourcing and screening agents",
+      "Weekly pipeline report",
+      "90-day free replacement on every hire",
+    ],
     cta: { label: "Book a hiring call", href: "/book-a-call?plan=talent-pod" },
     featured: true,
   },
@@ -45,7 +55,12 @@ export const plans = [
     for: "GCC launch, 10–50 roles",
     price: "Fixed project fee",
     priceNote: "+ per-hire fee",
-    includes: ["Dedicated pod for 30–90 days", "City market map and salary benchmarks", "Leads-first hiring plan", "Weekly steering report"],
+    includes: [
+      "Dedicated pod for 30–90 days",
+      "City market map and salary benchmarks",
+      "Leads-first hiring plan",
+      "Weekly steering report",
+    ],
     cta: { label: "Talk to our GCC team", href: "/book-a-call?team=gcc" },
     featured: false,
   },
@@ -53,11 +68,36 @@ export const plans = [
 
 /** Comparison rows. "Typical" columns describe common market practice, not named competitors. */
 export const comparison = [
-  { row: "Fee", emplyify: "8.33–16.67% of CTC, published", agency: "Often 15–20%+, negotiated", inhouse: "Recruiter salary, tools and job ads" },
-  { row: "Time to first shortlist", emplyify: "72 hours", agency: "1–3 weeks", inhouse: "Depends on recruiter capacity" },
-  { row: "What you receive", emplyify: "3–5 candidates with evidence and sign-off", agency: "Often a batch of CVs", inhouse: "Applicants to screen yourself" },
-  { row: "Replacement", emplyify: "90 days, free, in writing", agency: "Often 30–60 days", inhouse: "Re-run the search yourself" },
-  { row: "Pipeline visibility", emplyify: "Shared status and weekly report", agency: "Email updates on request", inhouse: "Your ATS" },
+  {
+    row: "Fee",
+    emplyify: "8.33–16.67% of CTC, published",
+    agency: "Often 15–20%+, negotiated",
+    inhouse: "Recruiter salary, tools and job ads",
+  },
+  {
+    row: "Time to first shortlist",
+    emplyify: "72 hours",
+    agency: "1–3 weeks",
+    inhouse: "Depends on recruiter capacity",
+  },
+  {
+    row: "What you receive",
+    emplyify: "3–5 candidates with evidence and sign-off",
+    agency: "Often a batch of CVs",
+    inhouse: "Applicants to screen yourself",
+  },
+  {
+    row: "Replacement",
+    emplyify: "90 days, free, in writing",
+    agency: "Often 30–60 days",
+    inhouse: "Re-run the search yourself",
+  },
+  {
+    row: "Pipeline visibility",
+    emplyify: "Shared status and weekly report",
+    agency: "Email updates on request",
+    inhouse: "Your ATS",
+  },
 ];
 
 export const pricingFaqs: Faq[] = [

@@ -15,7 +15,8 @@ function useDismiss(open: boolean, close: () => void, ref: React.RefObject<HTMLE
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
-    const onClick = (e: MouseEvent) => ref.current && !ref.current.contains(e.target as Node) && close();
+    const onClick = (e: MouseEvent) =>
+      ref.current && !ref.current.contains(e.target as Node) && close();
     document.addEventListener("keydown", onKey);
     document.addEventListener("mousedown", onClick);
     return () => {
@@ -30,9 +31,13 @@ function MenuLinks({ links, onNavigate }: { links: NavLink[]; onNavigate: () => 
     <ul className="space-y-1">
       {links.map((l) => (
         <li key={l.href}>
-          <Link href={l.href} onClick={onNavigate} className="block rounded-lg px-3 py-2 hover:bg-accent-soft">
+          <Link
+            href={l.href}
+            onClick={onNavigate}
+            className="hover:bg-accent-soft block rounded-lg px-3 py-2"
+          >
             <span className="font-semibold">{l.label}</span>
-            {l.description && <span className="block text-sm text-muted">{l.description}</span>}
+            {l.description && <span className="text-muted block text-sm">{l.description}</span>}
           </Link>
         </li>
       ))}
@@ -40,7 +45,15 @@ function MenuLinks({ links, onNavigate }: { links: NavLink[]; onNavigate: () => 
   );
 }
 
-function Dropdown({ label, children, wide }: { label: string; children: (close: () => void) => React.ReactNode; wide?: boolean }) {
+function Dropdown({
+  label,
+  children,
+  wide,
+}: {
+  label: string;
+  children: (close: () => void) => React.ReactNode;
+  wide?: boolean;
+}) {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const id = useId();
@@ -53,10 +66,13 @@ function Dropdown({ label, children, wide }: { label: string; children: (close: 
         aria-expanded={open}
         aria-controls={id}
         onClick={() => setOpen((o) => !o)}
-        className="flex min-h-11 items-center gap-1 rounded-lg px-3 font-medium hover:text-accent"
+        className="hover:text-accent flex min-h-11 items-center gap-1 rounded-lg px-3 font-medium"
       >
         {label}
-        <span aria-hidden className={cn("text-xs transition-transform duration-200", open && "rotate-180")}>
+        <span
+          aria-hidden
+          className={cn("text-xs transition-transform duration-200", open && "rotate-180")}
+        >
           ▾
         </span>
       </button>
@@ -64,7 +80,7 @@ function Dropdown({ label, children, wide }: { label: string; children: (close: 
         id={id}
         hidden={!open}
         className={cn(
-          "absolute left-0 top-full z-50 mt-2 rounded-[12px] border border-line bg-surface p-4 shadow-xl",
+          "border-line bg-surface absolute top-full left-0 z-50 mt-2 rounded-[12px] border p-4 shadow-xl",
           wide ? "w-[min(760px,90vw)]" : "w-80",
         )}
       >
@@ -100,96 +116,150 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
   const cta = isCandidatePage ? ctas.joinNetwork : ctas.submitRole;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-bg/95 backdrop-blur supports-[backdrop-filter]:bg-bg/80">
-      <Container className="flex h-16 items-center justify-between gap-4">
-        <Logo />
+    <>
+      <header className="border-line bg-bg/95 supports-[backdrop-filter]:bg-bg/80 sticky top-0 z-40 border-b backdrop-blur">
+        <Container className="flex h-16 items-center justify-between gap-4">
+          <Logo />
 
-        <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
-          <Dropdown label="Hire talent" wide>
-            {(close) => (
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <p className="mb-2 px-3 text-sm font-semibold uppercase tracking-wider text-muted">Services</p>
-                  <MenuLinks links={hireMenu.services} onNavigate={close} />
+          <nav aria-label="Main" className="hidden items-center gap-1 lg:flex">
+            <Dropdown label="Hire talent" wide>
+              {(close) => (
+                <div className="grid grid-cols-2 gap-6">
+                  <div>
+                    <p className="text-muted mb-2 px-3 text-sm font-semibold tracking-wider uppercase">
+                      Services
+                    </p>
+                    <MenuLinks links={hireMenu.services} onNavigate={close} />
+                  </div>
+                  <div>
+                    <p className="text-muted mb-2 px-3 text-sm font-semibold tracking-wider uppercase">
+                      Role families
+                    </p>
+                    <MenuLinks
+                      links={hireMenu.roles.map(({ label, href }) => ({ label, href }))}
+                      onNavigate={close}
+                    />
+                    <Link
+                      href="/hire"
+                      onClick={close}
+                      className="text-accent mt-2 block px-3 text-sm font-semibold hover:underline"
+                    >
+                      All roles →
+                    </Link>
+                  </div>
                 </div>
-                <div>
-                  <p className="mb-2 px-3 text-sm font-semibold uppercase tracking-wider text-muted">Role families</p>
-                  <MenuLinks links={hireMenu.roles.map(({ label, href }) => ({ label, href }))} onNavigate={close} />
-                  <Link href="/hire" onClick={close} className="mt-2 block px-3 text-sm font-semibold text-accent hover:underline">
-                    All roles →
-                  </Link>
-                </div>
-              </div>
-            )}
-          </Dropdown>
-          {primaryNav.slice(0, 2).map((l) => (
-            <Link key={l.href} href={l.href} aria-current={pathname === l.href ? "page" : undefined} className="flex min-h-11 items-center rounded-lg px-3 font-medium hover:text-accent aria-[current=page]:text-accent">
-              {l.label}
-            </Link>
-          ))}
-          <Dropdown label="For GCCs">{(close) => <MenuLinks links={gccMenu} onNavigate={close} />}</Dropdown>
-          {primaryNav.slice(2).map((l) => (
-            <Link key={l.href} href={l.href} aria-current={pathname.startsWith(l.href) ? "page" : undefined} className="flex min-h-11 items-center rounded-lg px-3 font-medium hover:text-accent aria-[current=page]:text-accent">
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-2">
-          <Link
-            href={isCandidatePage ? "/" : "/jobs"}
-            className="hidden min-h-11 items-center px-2 text-sm font-semibold text-muted underline-offset-4 hover:text-accent hover:underline sm:flex"
-          >
-            {isCandidatePage ? "Hiring? For employers" : "Find jobs"}
-          </Link>
-          <ButtonLink
-            href={cta.href}
-            className="hidden sm:inline-flex"
-            onClick={() => track("cta_click", { cta_name: cta.label, page: pathname, position: "header" })}
-          >
-            {cta.label}
-          </ButtonLink>
-          <button
-            type="button"
-            className="flex size-11 items-center justify-center rounded-lg border border-line lg:hidden"
-            aria-expanded={drawerOpen}
-            aria-controls="mobile-menu"
-            onClick={() => setDrawerOpen((o) => !o)}
-          >
-            <span className="sr-only">{drawerOpen ? "Close menu" : "Open menu"}</span>
-            <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden>
-              {drawerOpen ? (
-                <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              ) : (
-                <path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
               )}
-            </svg>
-          </button>
-        </div>
-      </Container>
+            </Dropdown>
+            {primaryNav.slice(0, 2).map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={pathname === l.href ? "page" : undefined}
+                className="hover:text-accent aria-[current=page]:text-accent flex min-h-11 items-center rounded-lg px-3 font-medium"
+              >
+                {l.label}
+              </Link>
+            ))}
+            <Dropdown label="For GCCs">
+              {(close) => <MenuLinks links={gccMenu} onNavigate={close} />}
+            </Dropdown>
+            {primaryNav.slice(2).map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                aria-current={pathname.startsWith(l.href) ? "page" : undefined}
+                className="hover:text-accent aria-[current=page]:text-accent flex min-h-11 items-center rounded-lg px-3 font-medium"
+              >
+                {l.label}
+              </Link>
+            ))}
+          </nav>
 
+          <div className="flex items-center gap-2">
+            <Link
+              href={isCandidatePage ? "/" : "/jobs"}
+              className="text-muted hover:text-accent hidden min-h-11 items-center px-2 text-sm font-semibold underline-offset-4 hover:underline sm:flex"
+            >
+              {isCandidatePage ? "Hiring? For employers" : "Find jobs"}
+            </Link>
+            <ButtonLink
+              href={cta.href}
+              className="hidden sm:inline-flex"
+              onClick={() =>
+                track("cta_click", { cta_name: cta.label, page: pathname, position: "header" })
+              }
+            >
+              {cta.label}
+            </ButtonLink>
+            <button
+              type="button"
+              className="border-line flex size-11 items-center justify-center rounded-lg border lg:hidden"
+              aria-expanded={drawerOpen}
+              aria-controls="mobile-menu"
+              onClick={() => setDrawerOpen((o) => !o)}
+            >
+              <span className="sr-only">{drawerOpen ? "Close menu" : "Open menu"}</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden>
+                {drawerOpen ? (
+                  <path
+                    d="M4 4l12 12M16 4L4 16"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                ) : (
+                  <path
+                    d="M3 6h14M3 10h14M3 14h14"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
+        </Container>
+      </header>
+
+      {/* Rendered outside <header>: its backdrop-filter would trap a fixed child. */}
       {drawerOpen && (
-        <nav id="mobile-menu" aria-label="Mobile" className="fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto border-t border-line bg-bg lg:hidden">
+        <nav
+          id="mobile-menu"
+          aria-label="Mobile"
+          className="border-line bg-bg fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t lg:hidden"
+        >
           <Container className="space-y-6 py-6">
             <ButtonLink href={cta.href} className="w-full" size="lg">
               {cta.label}
             </ButtonLink>
             <div>
-              <p className="mb-2 px-3 text-sm font-semibold uppercase tracking-wider text-muted">Hire talent</p>
-              <MenuLinks links={[...hireMenu.services, { label: "All role families", href: "/hire" }]} onNavigate={() => setDrawerOpen(false)} />
+              <p className="text-muted mb-2 px-3 text-sm font-semibold tracking-wider uppercase">
+                Hire talent
+              </p>
+              <MenuLinks
+                links={[...hireMenu.services, { label: "All role families", href: "/hire" }]}
+                onNavigate={() => setDrawerOpen(false)}
+              />
             </div>
             <MenuLinks links={primaryNav.slice(0, 2)} onNavigate={() => setDrawerOpen(false)} />
             <div>
-              <p className="mb-2 px-3 text-sm font-semibold uppercase tracking-wider text-muted">For GCCs</p>
+              <p className="text-muted mb-2 px-3 text-sm font-semibold tracking-wider uppercase">
+                For GCCs
+              </p>
               <MenuLinks links={gccMenu} onNavigate={() => setDrawerOpen(false)} />
             </div>
             <MenuLinks
-              links={[...primaryNav.slice(2), { label: "Find jobs", href: "/jobs" }, { label: "For candidates", href: "/candidates" }, { label: "Contact", href: "/contact" }]}
+              links={[
+                ...primaryNav.slice(2),
+                { label: "Find jobs", href: "/jobs" },
+                { label: "For candidates", href: "/candidates" },
+                { label: "Contact", href: "/contact" },
+              ]}
               onNavigate={() => setDrawerOpen(false)}
             />
           </Container>
         </nav>
       )}
-    </header>
+    </>
   );
 }

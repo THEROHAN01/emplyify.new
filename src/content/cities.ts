@@ -7,10 +7,22 @@ export const cities: City[] = [
     state: "Maharashtra",
     salaryIndex: 0.95,
     gccClusters: [
-      { name: "Hinjewadi", note: "Rajiv Gandhi Infotech Park; the largest concentration of engineering centres and automotive software teams." },
-      { name: "Kharadi", note: "EON IT Park and World Trade Center; banking, financial services and product GCCs." },
-      { name: "Baner and Balewadi", note: "Growing base of product companies and mid-size GCCs close to Hinjewadi." },
-      { name: "Magarpatta and Hadapsar", note: "Established IT campuses with a deep mid-level talent pool." },
+      {
+        name: "Hinjewadi",
+        note: "Rajiv Gandhi Infotech Park; the largest concentration of engineering centres and automotive software teams.",
+      },
+      {
+        name: "Kharadi",
+        note: "EON IT Park and World Trade Center; banking, financial services and product GCCs.",
+      },
+      {
+        name: "Baner and Balewadi",
+        note: "Growing base of product companies and mid-size GCCs close to Hinjewadi.",
+      },
+      {
+        name: "Magarpatta and Hadapsar",
+        note: "Established IT campuses with a deep mid-level talent pool.",
+      },
     ],
     talentSupply:
       "Pune has a deep pool of automotive, embedded and enterprise software engineers, and a fast-growing data and AI community. Senior AI/ML talent is scarcer than in Bengaluru, so plan budgets and timelines accordingly.",
@@ -40,10 +52,22 @@ export const cities: City[] = [
     state: "Karnataka",
     salaryIndex: 1.08,
     gccClusters: [
-      { name: "Outer Ring Road", note: "The densest corridor of product companies and large GCCs." },
-      { name: "Whitefield", note: "ITPL and surrounding campuses; large enterprise and semiconductor teams." },
-      { name: "Electronic City", note: "Established IT campuses and hardware-adjacent engineering teams." },
-      { name: "Manyata and Hebbal", note: "Large tech parks hosting global GCCs in north Bengaluru." },
+      {
+        name: "Outer Ring Road",
+        note: "The densest corridor of product companies and large GCCs.",
+      },
+      {
+        name: "Whitefield",
+        note: "ITPL and surrounding campuses; large enterprise and semiconductor teams.",
+      },
+      {
+        name: "Electronic City",
+        note: "Established IT campuses and hardware-adjacent engineering teams.",
+      },
+      {
+        name: "Manyata and Hebbal",
+        note: "Large tech parks hosting global GCCs in north Bengaluru.",
+      },
     ],
     talentSupply:
       "Bengaluru has India's largest pool of product engineers, AI/ML specialists and engineering leaders — and the most competition for them. Expect higher salaries and more counter-offers.",
@@ -73,9 +97,15 @@ export const cities: City[] = [
     state: "Telangana",
     salaryIndex: 1.0,
     gccClusters: [
-      { name: "HITEC City and Madhapur", note: "The original tech hub with large GCC and product campuses." },
+      {
+        name: "HITEC City and Madhapur",
+        note: "The original tech hub with large GCC and product campuses.",
+      },
       { name: "Gachibowli", note: "Major GCC campuses and a strong data and cloud talent base." },
-      { name: "Financial District", note: "Newer large-format campuses favoured by expanding GCCs." },
+      {
+        name: "Financial District",
+        note: "Newer large-format campuses favoured by expanding GCCs.",
+      },
       { name: "Kokapet", note: "Emerging corridor attracting new GCC investments." },
     ],
     talentSupply:

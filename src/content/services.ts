@@ -50,17 +50,49 @@ export const services: Service[] = [
       "90-day free replacement",
     ],
     process: [
-      { step: "Brief", sla: "Day 0", detail: "Submit a role in two minutes or brief us on a call. We confirm must-haves and budget in writing." },
-      { step: "Search and screen", sla: "0–48 hours", detail: "AI agents search and rank; recruiters run structured screens with the top matches." },
-      { step: "Verified shortlist", sla: "By 72 hours", detail: "A senior recruiter signs off three to five candidates with a dossier for each." },
-      { step: "Interviews to offer", sla: "Typically 2–4 weeks", detail: "We schedule, chase feedback within 48 hours and support the offer and notice period." },
+      {
+        step: "Brief",
+        sla: "Day 0",
+        detail:
+          "Submit a role in two minutes or brief us on a call. We confirm must-haves and budget in writing.",
+      },
+      {
+        step: "Search and screen",
+        sla: "0–48 hours",
+        detail:
+          "AI agents search and rank; recruiters run structured screens with the top matches.",
+      },
+      {
+        step: "Verified shortlist",
+        sla: "By 72 hours",
+        detail: "A senior recruiter signs off three to five candidates with a dossier for each.",
+      },
+      {
+        step: "Interviews to offer",
+        sla: "Typically 2–4 weeks",
+        detail:
+          "We schedule, chase feedback within 48 hours and support the offer and notice period.",
+      },
     ],
     pricing: {
       headline: "8.33–16.67% of annual CTC",
-      detail: "Equal to one to two months of the hire's fixed CTC, set by seniority. Pay only when the candidate joins.",
-      bullets: ["No retainer", "No fee until the hire joins", "90-day free replacement", "GST extra at 18%"],
+      detail:
+        "Equal to one to two months of the hire's fixed CTC, set by seniority. Pay only when the candidate joins.",
+      bullets: [
+        "No retainer",
+        "No fee until the hire joins",
+        "90-day free replacement",
+        "GST extra at 18%",
+      ],
     },
-    faqs: [sharedFaqs.cvDumps, sharedFaqs.guarantee, sharedFaqs.exclusivity, sharedFaqs.notice, sharedFaqs.confidentiality, sharedFaqs.ai],
+    faqs: [
+      sharedFaqs.cvDumps,
+      sharedFaqs.guarantee,
+      sharedFaqs.exclusivity,
+      sharedFaqs.notice,
+      sharedFaqs.confidentiality,
+      sharedFaqs.ai,
+    ],
     primaryCta: ctas.submitRole,
   },
   {
@@ -84,15 +116,38 @@ export const services: Service[] = [
       "90-day free replacement on every hire",
     ],
     process: [
-      { step: "Hiring plan", sla: "Week 0", detail: "We map roles, priorities and interview loops with your TA and hiring managers." },
-      { step: "Pod set-up", sla: "Week 1", detail: "Your recruiter gets access to your ATS or uses ours; agents are calibrated on two sample roles." },
-      { step: "Rolling shortlists", sla: "72 hours per new role", detail: "Every new role gets a verified shortlist within 72 hours of its brief." },
-      { step: "Weekly review", sla: "Every week", detail: "A written report and a 30-minute review to re-prioritise roles." },
+      {
+        step: "Hiring plan",
+        sla: "Week 0",
+        detail: "We map roles, priorities and interview loops with your TA and hiring managers.",
+      },
+      {
+        step: "Pod set-up",
+        sla: "Week 1",
+        detail:
+          "Your recruiter gets access to your ATS or uses ours; agents are calibrated on two sample roles.",
+      },
+      {
+        step: "Rolling shortlists",
+        sla: "72 hours per new role",
+        detail: "Every new role gets a verified shortlist within 72 hours of its brief.",
+      },
+      {
+        step: "Weekly review",
+        sla: "Every week",
+        detail: "A written report and a 30-minute review to re-prioritise roles.",
+      },
     ],
     pricing: {
       headline: "Monthly fee + reduced per-hire fee",
-      detail: "The monthly fee depends on pod size and role mix. We quote it in writing after a 20-minute call — no surprises later.",
-      bullets: ["Minimum three-month term", "Per-hire fee lower than our standard rate", "Scale the pod up or down monthly", "GST extra at 18%"],
+      detail:
+        "The monthly fee depends on pod size and role mix. We quote it in writing after a 20-minute call — no surprises later.",
+      bullets: [
+        "Minimum three-month term",
+        "Per-hire fee lower than our standard rate",
+        "Scale the pod up or down monthly",
+        "GST extra at 18%",
+      ],
     },
     faqs: [
       {
@@ -134,15 +189,37 @@ export const services: Service[] = [
       "Compliance support: background checks and DPDP-aligned data handling",
     ],
     process: [
-      { step: "Launch workshop", sla: "Week 0", detail: "A half-day session to agree roles, levels, budget and success metrics." },
-      { step: "Market map", sla: "Week 1", detail: "City-level salary and supply data so you can set competitive bands." },
-      { step: "Leads first", sla: "Weeks 1–4", detail: "We hire engineering leads and managers first so they can shape their teams." },
-      { step: "Team build-out", sla: "Weeks 3–12", detail: "Rolling 72-hour shortlists for every role, with weekly steering reviews." },
+      {
+        step: "Launch workshop",
+        sla: "Week 0",
+        detail: "A half-day session to agree roles, levels, budget and success metrics.",
+      },
+      {
+        step: "Market map",
+        sla: "Week 1",
+        detail: "City-level salary and supply data so you can set competitive bands.",
+      },
+      {
+        step: "Leads first",
+        sla: "Weeks 1–4",
+        detail: "We hire engineering leads and managers first so they can shape their teams.",
+      },
+      {
+        step: "Team build-out",
+        sla: "Weeks 3–12",
+        detail: "Rolling 72-hour shortlists for every role, with weekly steering reviews.",
+      },
     ],
     pricing: {
       headline: "Fixed project fee + per-hire fee",
-      detail: "Quoted as a fixed fee for the sprint plus a per-hire fee below our standard rate. Typical sprints run 30–90 days for 10–50 roles.",
-      bullets: ["Fixed, written scope", "Weekly milestones", "Per-hire fee below standard rate", "GST extra at 18%"],
+      detail:
+        "Quoted as a fixed fee for the sprint plus a per-hire fee below our standard rate. Typical sprints run 30–90 days for 10–50 roles.",
+      bullets: [
+        "Fixed, written scope",
+        "Weekly milestones",
+        "Per-hire fee below standard rate",
+        "GST extra at 18%",
+      ],
     },
     faqs: [
       {
@@ -185,15 +262,38 @@ export const services: Service[] = [
       "90-day free replacement",
     ],
     process: [
-      { step: "Search brief", sla: "Week 0", detail: "A working session with the hiring executive to define the mandate and the scorecard." },
-      { step: "Market map", sla: "Week 1", detail: "A named target list and an honest read on availability and pay." },
-      { step: "Finalists", sla: "Weeks 2–4", detail: "Two to four finalists, each with a written assessment and references." },
-      { step: "Close", sla: "Weeks 4–8", detail: "Offer strategy, counter-offer handling and notice-period support." },
+      {
+        step: "Search brief",
+        sla: "Week 0",
+        detail:
+          "A working session with the hiring executive to define the mandate and the scorecard.",
+      },
+      {
+        step: "Market map",
+        sla: "Week 1",
+        detail: "A named target list and an honest read on availability and pay.",
+      },
+      {
+        step: "Finalists",
+        sla: "Weeks 2–4",
+        detail: "Two to four finalists, each with a written assessment and references.",
+      },
+      {
+        step: "Close",
+        sla: "Weeks 4–8",
+        detail: "Offer strategy, counter-offer handling and notice-period support.",
+      },
     ],
     pricing: {
       headline: "16.67% of annual CTC",
-      detail: "Equal to two months of fixed CTC. Leadership searches can be retained in stages on request; otherwise you pay on hire.",
-      bullets: ["Pay on hire by default", "Optional staged retainer", "90-day free replacement", "GST extra at 18%"],
+      detail:
+        "Equal to two months of fixed CTC. Leadership searches can be retained in stages on request; otherwise you pay on hire.",
+      bullets: [
+        "Pay on hire by default",
+        "Optional staged retainer",
+        "90-day free replacement",
+        "GST extra at 18%",
+      ],
     },
     faqs: [
       {

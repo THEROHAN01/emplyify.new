@@ -25,7 +25,9 @@ export interface BriefOutcome {
 
 function settle(results: PromiseSettledResult<IntegrationResult>[]): IntegrationResult[] {
   return results.map((r) =>
-    r.status === "fulfilled" ? r.value : { integration: "unknown", ok: false, detail: String(r.reason) },
+    r.status === "fulfilled"
+      ? r.value
+      : { integration: "unknown", ok: false, detail: String(r.reason) },
   );
 }
 
@@ -34,7 +36,10 @@ function settle(results: PromiseSettledResult<IntegrationResult>[]): Integration
  * 1 CRM record with UTM → 2 enrichment (queued for the backend agent) →
  * 3 score/track → 4 recruiter alert + SLA timer → 5 auto-email → 6 nurture (HubSpot sequence).
  */
-export async function processBrief(input: BriefInput, meta: { ipHash: string; now?: Date }): Promise<BriefOutcome> {
+export async function processBrief(
+  input: BriefInput,
+  meta: { ipHash: string; now?: Date },
+): Promise<BriefOutcome> {
   const now = meta.now ?? new Date();
   const ref = referenceId("EM");
   const score = scoreBrief(input);
@@ -124,7 +129,12 @@ export async function processBrief(input: BriefInput, meta: { ipHash: string; no
       ),
       sendEmail({ to: input.workEmail, subject: confirmation.subject, text: confirmation.text }),
       env.internalAlertEmail
-        ? sendEmail({ to: env.internalAlertEmail, subject: alert.subject, text: alert.text, replyTo: input.workEmail })
+        ? sendEmail({
+            to: env.internalAlertEmail,
+            subject: alert.subject,
+            text: alert.text,
+            replyTo: input.workEmail,
+          })
         : Promise.resolve({ integration: "alert-email", ok: true, skipped: true }),
       alertSlack(alert.text),
     ]),
@@ -135,10 +145,14 @@ export async function processBrief(input: BriefInput, meta: { ipHash: string; no
     ref,
     track: score.track,
     score: score.score,
-    integrations: results.map((r) => `${r.integration}:${r.skipped ? "skipped" : r.ok ? "ok" : "failed"}`),
+    integrations: results.map(
+      (r) => `${r.integration}:${r.skipped ? "skipped" : r.ok ? "ok" : "failed"}`,
+    ),
   });
   // If every system of record failed, the lead would be lost: surface loudly.
-  const recorded = results.some((r) => (r.integration === "supabase" || r.integration === "hubspot") && r.ok && !r.skipped);
+  const recorded = results.some(
+    (r) => (r.integration === "supabase" || r.integration === "hubspot") && r.ok && !r.skipped,
+  );
   if (!recorded && env.isProduction) log("error", "brief.not_recorded", { ref });
   await audit("brief.submitted", ref, { track: score.track });
 
@@ -166,7 +180,11 @@ export async function processContact(input: ContactInput, meta: { ipHash: string
         attribution: input.attribution,
         ip_hash: meta.ipHash,
       }),
-      submitHubspotForm(env.hubspotContactFormId, { email: input.email, firstname: input.name, message: `[${input.topic}] ${input.message}` }, input.attribution),
+      submitHubspotForm(
+        env.hubspotContactFormId,
+        { email: input.email, firstname: input.name, message: `[${input.topic}] ${input.message}` },
+        input.attribution,
+      ),
       env.internalAlertEmail
         ? sendEmail({
             to: env.internalAlertEmail,
@@ -177,6 +195,10 @@ export async function processContact(input: ContactInput, meta: { ipHash: string
         : Promise.resolve({ integration: "alert-email", ok: true, skipped: true }),
     ]),
   );
-  log("info", "contact.processed", { ref, topic: input.topic, failed: results.filter((r) => !r.ok).length });
+  log("info", "contact.processed", {
+    ref,
+    topic: input.topic,
+    failed: results.filter((r) => !r.ok).length,
+  });
   return { ref };
 }

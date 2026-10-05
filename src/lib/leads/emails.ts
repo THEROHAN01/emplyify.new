@@ -11,7 +11,9 @@ export function briefConfirmationEmail(p: {
   shortlistBy: Date;
   calLink?: string;
 }) {
-  const owner = p.recruiterName ? `${p.recruiterName} from our ${p.desk}` : `A senior recruiter from our ${p.desk}`;
+  const owner = p.recruiterName
+    ? `${p.recruiterName} from our ${p.desk}`
+    : `A senior recruiter from our ${p.desk}`;
   const lines = [
     `Hi ${p.name.split(" ")[0]},`,
     `Thanks for your ${p.roleTitle} brief. Your reference is ${p.ref}.`,
@@ -48,7 +50,10 @@ export function internalBriefAlert(p: {
   ]
     .filter(Boolean)
     .join("\n");
-  return { subject: `[${p.temperature.toUpperCase()}] Brief ${p.ref}: ${p.roleTitle} — ${p.company}`, text };
+  return {
+    subject: `[${p.temperature.toUpperCase()}] Brief ${p.ref}: ${p.roleTitle} — ${p.company}`,
+    text,
+  };
 }
 
 export function talentNetworkWelcomeEmail(name: string) {
@@ -77,7 +82,12 @@ export function applicationReceivedEmail(p: { name: string; jobTitle: string; re
   };
 }
 
-export function reportEmail(p: { name: string; title: string; available: boolean; releaseLabel?: string }) {
+export function reportEmail(p: {
+  name: string;
+  title: string;
+  available: boolean;
+  releaseLabel?: string;
+}) {
   return {
     subject: p.available ? `Your copy: ${p.title}` : `You're on the list: ${p.title}`,
     text: [

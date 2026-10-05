@@ -18,14 +18,14 @@ export function PageHeader({
   aside?: ReactNode;
 }) {
   return (
-    <header className="border-b border-line bg-surface pb-12 pt-8 lg:pb-16 lg:pt-10">
+    <header className="border-line bg-surface border-b pt-8 pb-12 lg:pt-10 lg:pb-16">
       <Container>
         {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
         <div className={aside ? "grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center" : undefined}>
           <div className="max-w-3xl">
             {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
             <h1 className="text-3xl font-extrabold sm:text-4xl">{title}</h1>
-            {intro && <div className="mt-4 text-lg text-muted">{intro}</div>}
+            {intro && <div className="text-muted mt-4 text-lg">{intro}</div>}
             {actions && <div className="mt-8 flex flex-wrap gap-3">{actions}</div>}
           </div>
           {aside}

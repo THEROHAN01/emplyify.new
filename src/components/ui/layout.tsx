@@ -2,7 +2,11 @@ import type { ElementType, ReactNode } from "react";
 import { cn } from "@/lib/utils/cn";
 
 export function Container({ className, children }: { className?: string; children: ReactNode }) {
-  return <div className={cn("mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8", className)}>{children}</div>;
+  return (
+    <div className={cn("mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8", className)}>
+      {children}
+    </div>
+  );
 }
 
 /** Section rhythm: 64px mobile, 96px desktop vertical padding. */
@@ -27,7 +31,7 @@ export function Section({
       aria-labelledby={labelledBy}
       className={cn(
         "py-16 lg:py-24",
-        tone === "surface" && "border-y border-line bg-surface",
+        tone === "surface" && "border-line bg-surface border-y",
         tone === "accent" && "bg-accent-soft",
         className,
       )}
@@ -38,7 +42,11 @@ export function Section({
 }
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
-  return <p className={cn("mb-3 text-sm font-semibold uppercase tracking-wider text-accent", className)}>{children}</p>;
+  return (
+    <p className={cn("text-accent mb-3 text-sm font-semibold tracking-wider uppercase", className)}>
+      {children}
+    </p>
+  );
 }
 
 export function SectionHeading({
@@ -62,7 +70,7 @@ export function SectionHeading({
       <h2 id={id} className="text-2xl font-bold sm:text-3xl">
         {title}
       </h2>
-      {intro && <p className="mt-4 text-lg text-muted">{intro}</p>}
+      {intro && <p className="text-muted mt-4 text-lg">{intro}</p>}
     </div>
   );
 }

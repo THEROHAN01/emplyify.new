@@ -37,7 +37,10 @@ export const ctas = {
   submitRole: { label: "Submit a role", href: "/submit-a-role" },
   bookCall: { label: "Book a hiring call", href: "/book-a-call" },
   gccTeam: { label: "Talk to our GCC team", href: "/book-a-call?team=gcc" },
-  talentIndex: { label: "Download the Talent Index", href: "/insights/india-gcc-tech-talent-index" },
+  talentIndex: {
+    label: "Download the Talent Index",
+    href: "/insights/india-gcc-tech-talent-index",
+  },
   joinNetwork: { label: "Join the talent network", href: "/candidates/join" },
   browseRoles: { label: "Browse roles", href: "/jobs" },
 } satisfies Record<string, Cta>;

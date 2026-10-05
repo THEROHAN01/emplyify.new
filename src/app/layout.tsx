@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono, Manrope } from "next/font/google";
+import { Inter } from "next/font/google";
 import { ConsentManager } from "@/components/analytics/consent-manager";
 import { ExitIntent } from "@/components/analytics/exit-intent";
 import { Footer } from "@/components/layout/footer";
@@ -11,9 +11,17 @@ import { env } from "@/lib/env";
 import { organizationSchema } from "@/lib/seo/schema";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap", weight: ["700", "800"] });
-const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains", display: "swap", weight: ["500", "700"] });
+/**
+ * One self-hosted variable font (Inter, latin subset) for body and headings.
+ * Numbers use tabular figures; metrics use the system monospace stack. Keeping
+ * to a single font file is the biggest single lever on mobile LCP.
+ */
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+  adjustFontFallback: true,
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(env.siteUrl),
@@ -32,9 +40,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN" className={`${inter.variable} ${manrope.variable} ${mono.variable}`}>
+    <html lang="en-IN" className={inter.variable}>
       <body className="min-h-dvh antialiased">
-        <a href="#main" className="sr-only z-50 rounded-lg bg-accent px-4 py-2 text-accent-ink focus:not-sr-only focus:fixed focus:left-4 focus:top-4">
+        <a
+          href="#main"
+          className="bg-accent text-accent-ink sr-only z-50 rounded-lg px-4 py-2 focus:not-sr-only focus:fixed focus:top-4 focus:left-4"
+        >
           Skip to content
         </a>
         <SiteHeader />
@@ -42,7 +53,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Footer />
         <MobileCtaBar />
         <ExitIntent />
-        <ConsentManager plausibleDomain={env.plausibleDomain} posthogKey={env.posthogKey} posthogHost={env.posthogHost} />
+        <ConsentManager
+          plausibleDomain={env.plausibleDomain}
+          posthogKey={env.posthogKey}
+          posthogHost={env.posthogHost}
+        />
         <JsonLd data={organizationSchema()} />
       </body>
     </html>

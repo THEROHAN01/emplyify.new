@@ -31,14 +31,16 @@ export function HiringSteps() {
   return (
     <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
       {hiringSteps.map((s, i) => (
-        <li key={s.title} className="relative rounded-[12px] border border-line bg-surface p-6">
-          <span className="tabular font-mono text-sm font-bold text-accent">0{i + 1}</span>
+        <li key={s.title} className="border-line bg-surface relative rounded-[12px] border p-6">
+          <span className="tabular text-accent font-mono text-sm font-bold">0{i + 1}</span>
           <h3 className="mt-2 text-lg font-bold">{s.title}</h3>
           <div className="mt-2 flex flex-wrap gap-2">
             <Badge tone="sla">{s.sla}</Badge>
-            <Badge tone={s.who === "Human" ? "verified" : s.who.includes("AI") ? "ai" : "neutral"}>{s.who}</Badge>
+            <Badge tone={s.who === "Human" ? "verified" : s.who.includes("AI") ? "ai" : "neutral"}>
+              {s.who}
+            </Badge>
           </div>
-          <p className="mt-3 text-muted">{s.body}</p>
+          <p className="text-muted mt-3">{s.body}</p>
         </li>
       ))}
     </ol>

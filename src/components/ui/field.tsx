@@ -16,26 +16,39 @@ interface FieldShellProps {
 }
 
 /** Label + control + hint/error wiring with aria-describedby. */
-export function FieldShell({ id, label, hint, error, warning, optional, children, className }: FieldShellProps) {
+export function FieldShell({
+  id,
+  label,
+  hint,
+  error,
+  warning,
+  optional,
+  children,
+  className,
+}: FieldShellProps) {
   return (
     <div className={className}>
       <label htmlFor={id} className="block font-semibold">
         {label}
-        {optional && <span className="ml-1 font-normal text-muted">(optional)</span>}
+        {optional && <span className="text-muted ml-1 font-normal">(optional)</span>}
       </label>
       {children}
       {hint && !error && (
-        <p id={`${id}-hint`} className="mt-1 text-sm text-muted">
+        <p id={`${id}-hint`} className="text-muted mt-1 text-sm">
           {hint}
         </p>
       )}
       {warning && !error && (
-        <p id={`${id}-warning`} className="mt-1 text-sm text-warn">
+        <p id={`${id}-warning`} className="text-warn mt-1 text-sm">
           {warning}
         </p>
       )}
       {error && (
-        <p id={`${id}-error`} className="mt-1 text-sm font-semibold text-red-700 dark:text-red-400" role="alert">
+        <p
+          id={`${id}-error`}
+          className="mt-1 text-sm font-semibold text-red-700 dark:text-red-400"
+          role="alert"
+        >
           {error}
         </p>
       )}
@@ -43,9 +56,16 @@ export function FieldShell({ id, label, hint, error, warning, optional, children
   );
 }
 
-export function describedBy(id: string, opts: { hint?: unknown; error?: unknown; warning?: unknown }) {
+export function describedBy(
+  id: string,
+  opts: { hint?: unknown; error?: unknown; warning?: unknown },
+) {
   return (
-    [opts.error ? `${id}-error` : null, !opts.error && opts.hint ? `${id}-hint` : null, !opts.error && opts.warning ? `${id}-warning` : null]
+    [
+      opts.error ? `${id}-error` : null,
+      !opts.error && opts.hint ? `${id}-hint` : null,
+      !opts.error && opts.warning ? `${id}-warning` : null,
+    ]
       .filter(Boolean)
       .join(" ") || undefined
   );
@@ -53,9 +73,26 @@ export function describedBy(id: string, opts: { hint?: unknown; error?: unknown;
 
 type InputProps = Omit<FieldShellProps, "children"> & ComponentProps<"input">;
 
-export function TextField({ id, label, hint, error, warning, optional, className, ...input }: InputProps) {
+export function TextField({
+  id,
+  label,
+  hint,
+  error,
+  warning,
+  optional,
+  className,
+  ...input
+}: InputProps) {
   return (
-    <FieldShell id={id} label={label} hint={hint} error={error} warning={warning} optional={optional} className={className}>
+    <FieldShell
+      id={id}
+      label={label}
+      hint={hint}
+      error={error}
+      warning={warning}
+      optional={optional}
+      className={className}
+    >
       <input
         id={id}
         name={input.name ?? id}
@@ -70,11 +107,31 @@ export function TextField({ id, label, hint, error, warning, optional, className
 }
 
 type SelectProps = Omit<FieldShellProps, "children"> &
-  ComponentProps<"select"> & { options: readonly (string | { value: string; label: string })[]; placeholder?: string };
+  ComponentProps<"select"> & {
+    options: readonly (string | { value: string; label: string })[];
+    placeholder?: string;
+  };
 
-export function SelectField({ id, label, hint, error, optional, className, options, placeholder = "Choose…", ...select }: SelectProps) {
+export function SelectField({
+  id,
+  label,
+  hint,
+  error,
+  optional,
+  className,
+  options,
+  placeholder = "Choose…",
+  ...select
+}: SelectProps) {
   return (
-    <FieldShell id={id} label={label} hint={hint} error={error} optional={optional} className={className}>
+    <FieldShell
+      id={id}
+      label={label}
+      hint={hint}
+      error={error}
+      optional={optional}
+      className={className}
+    >
       <select
         id={id}
         name={select.name ?? id}
@@ -100,9 +157,24 @@ export function SelectField({ id, label, hint, error, optional, className, optio
 
 type TextareaProps = Omit<FieldShellProps, "children"> & ComponentProps<"textarea">;
 
-export function TextareaField({ id, label, hint, error, optional, className, ...textarea }: TextareaProps) {
+export function TextareaField({
+  id,
+  label,
+  hint,
+  error,
+  optional,
+  className,
+  ...textarea
+}: TextareaProps) {
   return (
-    <FieldShell id={id} label={label} hint={hint} error={error} optional={optional} className={className}>
+    <FieldShell
+      id={id}
+      label={label}
+      hint={hint}
+      error={error}
+      optional={optional}
+      className={className}
+    >
       <textarea
         id={id}
         name={textarea.name ?? id}
@@ -122,7 +194,10 @@ export function CheckboxField({
   error,
   className,
   ...input
-}: { id: string; label: ReactNode; error?: string; className?: string } & Omit<ComponentProps<"input">, "type">) {
+}: { id: string; label: ReactNode; error?: string; className?: string } & Omit<
+  ComponentProps<"input">,
+  "type"
+>) {
   return (
     <div className={className}>
       <div className="flex items-start gap-3">
@@ -140,7 +215,11 @@ export function CheckboxField({
         </label>
       </div>
       {error && (
-        <p id={`${id}-error`} role="alert" className="mt-1 text-sm font-semibold text-red-700 dark:text-red-400">
+        <p
+          id={`${id}-error`}
+          role="alert"
+          className="mt-1 text-sm font-semibold text-red-700 dark:text-red-400"
+        >
           {error}
         </p>
       )}
@@ -153,18 +232,33 @@ export function Honeypot({ value, onChange }: { value: string; onChange: (v: str
   return (
     <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
       <label htmlFor="website">Leave this field empty</label>
-      <input id="website" name="website" tabIndex={-1} autoComplete="off" value={value} onChange={(e) => onChange(e.target.value)} />
+      <input
+        id="website"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
     </div>
   );
 }
 
-export function FormAlert({ tone = "error", children }: { tone?: "error" | "info"; children: ReactNode }) {
+export function FormAlert({
+  tone = "error",
+  children,
+}: {
+  tone?: "error" | "info";
+  children: ReactNode;
+}) {
   return (
     <div
       role={tone === "error" ? "alert" : "status"}
       className={cn(
         "rounded-lg border px-4 py-3 text-sm",
-        tone === "error" ? "border-red-300 bg-red-50 text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-200" : "border-line bg-accent-soft text-ink",
+        tone === "error"
+          ? "border-red-300 bg-red-50 text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-200"
+          : "border-line bg-accent-soft text-ink",
       )}
     >
       {children}

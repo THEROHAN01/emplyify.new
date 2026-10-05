@@ -20,11 +20,17 @@ export type CvCheck = { ok: true; kind: CvKind; mime: string } | { ok: false; er
 
 export function validateCv(name: string, size: number, head: Uint8Array): CvCheck {
   if (size === 0) return { ok: false, error: "The file is empty. Choose your CV again." };
-  if (size > MAX_CV_BYTES) return { ok: false, error: "Your CV must be under 5 MB. Try exporting it as a PDF." };
+  if (size > MAX_CV_BYTES)
+    return { ok: false, error: "Your CV must be under 5 MB. Try exporting it as a PDF." };
   const ext = name.toLowerCase().split(".").pop() as CvKind | undefined;
-  if (!ext || !(ext in ALLOWED)) return { ok: false, error: "Upload a PDF or Word document (.pdf, .doc or .docx)." };
+  if (!ext || !(ext in ALLOWED))
+    return { ok: false, error: "Upload a PDF or Word document (.pdf, .doc or .docx)." };
   const { magic, mime } = ALLOWED[ext];
   const matches = magic.every((byte, i) => head[i] === byte);
-  if (!matches) return { ok: false, error: "This file doesn't look like a real PDF or Word document. Export it again and retry." };
+  if (!matches)
+    return {
+      ok: false,
+      error: "This file doesn't look like a real PDF or Word document. Export it again and retry.",
+    };
   return { ok: true, kind: ext, mime };
 }

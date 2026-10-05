@@ -6,19 +6,106 @@ import { roles } from "@/content/roles";
 import type { RoleFamilySlug, Seniority } from "@/content/types";
 
 const SKILL_LEXICON = [
-  "Python", "Java", "Go", "Rust", "TypeScript", "JavaScript", "React", "Next.js", "Node.js", "Angular", "Vue",
-  "Spring Boot", "Django", "FastAPI", "SQL", "PostgreSQL", "MySQL", "MongoDB", "Redis", "Kafka", "Spark",
-  "Airflow", "dbt", "Databricks", "Snowflake", "BigQuery", "AWS", "Azure", "GCP", "Kubernetes", "Docker",
-  "Terraform", "Ansible", "Jenkins", "GitHub Actions", "Prometheus", "Grafana", "PyTorch", "TensorFlow",
-  "scikit-learn", "LLM", "RAG", "NLP", "Computer Vision", "MLOps", "Embedded C", "C++", "AUTOSAR", "RTOS",
-  "Embedded Linux", "CAN", "ISO 26262", "Microservices", "GraphQL", "REST", "System design",
+  "Python",
+  "Java",
+  "Go",
+  "Rust",
+  "TypeScript",
+  "JavaScript",
+  "React",
+  "Next.js",
+  "Node.js",
+  "Angular",
+  "Vue",
+  "Spring Boot",
+  "Django",
+  "FastAPI",
+  "SQL",
+  "PostgreSQL",
+  "MySQL",
+  "MongoDB",
+  "Redis",
+  "Kafka",
+  "Spark",
+  "Airflow",
+  "dbt",
+  "Databricks",
+  "Snowflake",
+  "BigQuery",
+  "AWS",
+  "Azure",
+  "GCP",
+  "Kubernetes",
+  "Docker",
+  "Terraform",
+  "Ansible",
+  "Jenkins",
+  "GitHub Actions",
+  "Prometheus",
+  "Grafana",
+  "PyTorch",
+  "TensorFlow",
+  "scikit-learn",
+  "LLM",
+  "RAG",
+  "NLP",
+  "Computer Vision",
+  "MLOps",
+  "Embedded C",
+  "C++",
+  "AUTOSAR",
+  "RTOS",
+  "Embedded Linux",
+  "CAN",
+  "ISO 26262",
+  "Microservices",
+  "GraphQL",
+  "REST",
+  "System design",
 ];
 
 const FAMILY_SIGNALS: Record<RoleFamilySlug, string[]> = {
-  "ai-ml": ["machine learning", "ml engineer", "llm", "deep learning", "pytorch", "tensorflow", "data scientist", "nlp", "computer vision"],
-  data: ["data engineer", "spark", "airflow", "etl", "warehouse", "lakehouse", "databricks", "snowflake", "dbt"],
-  "cloud-devops": ["devops", "sre", "site reliability", "kubernetes", "terraform", "platform engineer", "infrastructure"],
-  "full-stack": ["full stack", "full-stack", "frontend", "backend", "react", "node", "web developer", "software engineer"],
+  "ai-ml": [
+    "machine learning",
+    "ml engineer",
+    "llm",
+    "deep learning",
+    "pytorch",
+    "tensorflow",
+    "data scientist",
+    "nlp",
+    "computer vision",
+  ],
+  data: [
+    "data engineer",
+    "spark",
+    "airflow",
+    "etl",
+    "warehouse",
+    "lakehouse",
+    "databricks",
+    "snowflake",
+    "dbt",
+  ],
+  "cloud-devops": [
+    "devops",
+    "sre",
+    "site reliability",
+    "kubernetes",
+    "terraform",
+    "platform engineer",
+    "infrastructure",
+  ],
+  "full-stack": [
+    "full stack",
+    "full-stack",
+    "frontend",
+    "backend",
+    "react",
+    "node",
+    "web developer",
+    "software engineer",
+  ],
   embedded: ["embedded", "firmware", "autosar", "rtos", "microcontroller", "automotive", "can bus"],
   product: ["product manager", "product owner", "roadmap", "product management"],
 };
@@ -50,9 +137,15 @@ export function detectFamily(text: string): RoleFamilySlug {
 
 export function detectSeniority(text: string): Seniority {
   const t = text.toLowerCase();
-  const years = [...t.matchAll(/(\d{1,2})\s*\+?\s*(?:-|to|–)?\s*\d{0,2}\s*(?:years|yrs)/g)].map((m) => Number(m[1]));
+  const years = [...t.matchAll(/(\d{1,2})\s*\+?\s*(?:-|to|–)?\s*\d{0,2}\s*(?:years|yrs)/g)].map(
+    (m) => Number(m[1]),
+  );
   const minYears = years.length ? Math.min(...years) : undefined;
-  if (/\b(head of|director|principal|staff|engineering manager|lead)\b/.test(t) || (minYears ?? 0) >= 10) return "lead";
+  if (
+    /\b(head of|director|principal|staff|engineering manager|lead)\b/.test(t) ||
+    (minYears ?? 0) >= 10
+  )
+    return "lead";
   if (/\bsenior\b|\bsr\.?\b/.test(t) || (minYears ?? 0) >= 6) return "senior";
   if ((minYears ?? 3) >= 3) return "mid";
   return "junior";
@@ -68,8 +161,14 @@ function detectLocation(text: string): string {
 }
 
 function detectTitle(text: string): string {
-  const firstLine = text.split("\n").map((l) => l.trim()).find((l) => l.length > 3 && l.length < 90);
-  return firstLine?.replace(/^(job title|title|role|position)\s*[:\-–]\s*/i, "") ?? "Role from job description";
+  const firstLine = text
+    .split("\n")
+    .map((l) => l.trim())
+    .find((l) => l.length > 3 && l.length < 90);
+  return (
+    firstLine?.replace(/^(job title|title|role|position)\s*[:\-–]\s*/i, "") ??
+    "Role from job description"
+  );
 }
 
 export function heuristicBrief(text: string) {
@@ -90,7 +189,11 @@ export function heuristicBrief(text: string) {
     suggestedBudgetMinLpa: Math.round(band.minLpa * mult),
     suggestedBudgetMaxLpa: Math.round(band.maxLpa * mult),
     summary: `A ${seniority}-level ${role.singular.toLowerCase()} role${location !== "Not specified" ? ` based in ${location}` : ""}. A recruiter will confirm must-haves and budget on your call.`,
-    openQuestions: ["Which skills are true must-haves?", "What notice period can you accept?", "What does the interview loop look like?"],
+    openQuestions: [
+      "Which skills are true must-haves?",
+      "What notice period can you accept?",
+      "What does the interview loop look like?",
+    ],
     source: "heuristic" as const,
   };
 }

@@ -15,7 +15,9 @@ export interface LeadScore {
  * Playbook routing rule: GCC or 5+ roles = hot (Talent Pod track);
  * 1–4 roles = per-hire track. The numeric score orders the recruiter queue.
  */
-export function scoreBrief(brief: Pick<BriefInput, "companyType" | "openings" | "seniority" | "workEmail" | "budgetMaxLpa">): LeadScore {
+export function scoreBrief(
+  brief: Pick<BriefInput, "companyType" | "openings" | "seniority" | "workEmail" | "budgetMaxLpa">,
+): LeadScore {
   const reasons: string[] = [];
   let score = 40;
 

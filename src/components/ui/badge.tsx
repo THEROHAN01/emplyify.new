@@ -15,9 +15,23 @@ const tones: Record<Tone, string> = {
 
 const icons: Partial<Record<Tone, string>> = { verified: "✓", ai: "✦", sla: "⏱" };
 
-export function Badge({ tone = "neutral", children, className }: { tone?: Tone; children: ReactNode; className?: string }) {
+export function Badge({
+  tone = "neutral",
+  children,
+  className,
+}: {
+  tone?: Tone;
+  children: ReactNode;
+  className?: string;
+}) {
   return (
-    <span className={cn("inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-sm font-semibold", tones[tone], className)}>
+    <span
+      className={cn(
+        "inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-sm font-semibold",
+        tones[tone],
+        className,
+      )}
+    >
       {icons[tone] && <span aria-hidden>{icons[tone]}</span>}
       {children}
     </span>

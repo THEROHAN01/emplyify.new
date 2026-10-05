@@ -20,6 +20,7 @@ export const env = {
 
   // Public (exposed to the browser — must be NEXT_PUBLIC_ and inlined at build).
   calLink: process.env.NEXT_PUBLIC_CAL_LINK || undefined,
+  calLinkGcc: process.env.NEXT_PUBLIC_CAL_LINK_GCC || process.env.NEXT_PUBLIC_CAL_LINK || undefined,
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || undefined,
   turnstileSiteKey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || undefined,
   plausibleDomain: process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN || undefined,

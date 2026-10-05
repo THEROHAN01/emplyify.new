@@ -12,12 +12,7 @@ import { jobs } from "@/content/jobs";
 import { legalDocs } from "@/content/legal";
 import { roleFamilies, roles } from "@/content/roles";
 import { services } from "@/content/services";
-import type {
-  CitySlug,
-  PublishStatus,
-  RoleFamilySlug,
-  SalaryBand,
-} from "@/content/types";
+import type { CitySlug, PublishStatus, RoleFamilySlug, SalaryBand } from "@/content/types";
 
 export function isVisible(item: { status: PublishStatus }, preview = env.contentPreview): boolean {
   return item.status === "published" || preview;

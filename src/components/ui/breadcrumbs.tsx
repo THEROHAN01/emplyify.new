@@ -6,7 +6,7 @@ export function Breadcrumbs({ items }: { items: { name: string; path: string }[]
   const all = [{ name: "Home", path: "/" }, ...items];
   return (
     <>
-      <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted">
+      <nav aria-label="Breadcrumb" className="text-muted mb-6 text-sm">
         <ol className="flex flex-wrap items-center gap-1">
           {all.map((item, i) => (
             <li key={item.path} className="flex items-center gap-1">

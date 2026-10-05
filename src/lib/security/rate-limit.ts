@@ -10,7 +10,12 @@ export interface RateLimitResult {
   retryAfterSeconds: number;
 }
 
-export function rateLimit(key: string, limit: number, windowMs: number, now = Date.now()): RateLimitResult {
+export function rateLimit(
+  key: string,
+  limit: number,
+  windowMs: number,
+  now = Date.now(),
+): RateLimitResult {
   const bucket = buckets.get(key);
   if (!bucket || bucket.resetAt <= now) {
     buckets.set(key, { count: 1, resetAt: now + windowMs });

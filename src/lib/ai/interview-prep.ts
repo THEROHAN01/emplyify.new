@@ -36,7 +36,11 @@ function roleContext(input: { jobSlug?: string; family: RoleFamilySlug; seniorit
   return { job, role, context };
 }
 
-export async function prepQuestions(input: { jobSlug?: string; family: RoleFamilySlug; seniority: Seniority }): Promise<PrepQuestions> {
+export async function prepQuestions(input: {
+  jobSlug?: string;
+  family: RoleFamilySlug;
+  seniority: Seniority;
+}): Promise<PrepQuestions> {
   const { role, context } = roleContext(input);
   try {
     const out = await generateStructured({
@@ -53,7 +57,8 @@ export async function prepQuestions(input: { jobSlug?: string; family: RoleFamil
       questions: [
         ...role.screeningQuestions.map((q) => ({
           question: q,
-          whatGoodLooksLike: "A specific example from your own work: the context, what you did, the trade-offs you weighed and the measurable result.",
+          whatGoodLooksLike:
+            "A specific example from your own work: the context, what you did, the trade-offs you weighed and the measurable result.",
           category: "Technical depth" as const,
         })),
         ...role.skillsWeVet.slice(0, 2).map((s) => ({
@@ -66,7 +71,13 @@ export async function prepQuestions(input: { jobSlug?: string; family: RoleFamil
   }
 }
 
-export async function answerFeedback(input: { question: string; answer: string; family: RoleFamilySlug; seniority: Seniority; jobSlug?: string }): Promise<AnswerFeedback> {
+export async function answerFeedback(input: {
+  question: string;
+  answer: string;
+  family: RoleFamilySlug;
+  seniority: Seniority;
+  jobSlug?: string;
+}): Promise<AnswerFeedback> {
   const { context } = roleContext(input);
   try {
     const out = await generateStructured({
@@ -88,7 +99,8 @@ export async function answerFeedback(input: { question: string; answer: string; 
         ...(hasNumber ? [] : ["Quantify the result — latency, cost, users, time saved."]),
         "Name the trade-off you considered and why you chose your approach.",
       ],
-      rewriteTip: "Structure it as Situation (one line), Action (what you did, not the team), Result (a number) and what you'd do differently.",
+      rewriteTip:
+        "Structure it as Situation (one line), Action (what you did, not the team), Result (a number) and what you'd do differently.",
     };
   }
 }

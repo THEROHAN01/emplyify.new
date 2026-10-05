@@ -1,18 +1,54 @@
 import type { RoleFamilySlug, RolePage } from "./types";
 
 export const roleFamilies: { slug: RoleFamilySlug; name: string; blurb: string }[] = [
-  { slug: "ai-ml", name: "AI / ML", blurb: "ML, LLM and applied-AI engineers who ship models to production." },
-  { slug: "data", name: "Data", blurb: "Data engineers, analytics engineers and platform builders." },
-  { slug: "cloud-devops", name: "Cloud / DevOps", blurb: "Platform, SRE and DevOps engineers for AWS, Azure and GCP." },
-  { slug: "full-stack", name: "Full-stack", blurb: "Product engineers across React, Node, Java and Python." },
-  { slug: "embedded", name: "Embedded / Automotive", blurb: "Firmware, AUTOSAR and embedded Linux engineers." },
-  { slug: "product", name: "Product", blurb: "Product managers for technical and platform products." },
+  {
+    slug: "ai-ml",
+    name: "AI / ML",
+    blurb: "ML, LLM and applied-AI engineers who ship models to production.",
+  },
+  {
+    slug: "data",
+    name: "Data",
+    blurb: "Data engineers, analytics engineers and platform builders.",
+  },
+  {
+    slug: "cloud-devops",
+    name: "Cloud / DevOps",
+    blurb: "Platform, SRE and DevOps engineers for AWS, Azure and GCP.",
+  },
+  {
+    slug: "full-stack",
+    name: "Full-stack",
+    blurb: "Product engineers across React, Node, Java and Python.",
+  },
+  {
+    slug: "embedded",
+    name: "Embedded / Automotive",
+    blurb: "Firmware, AUTOSAR and embedded Linux engineers.",
+  },
+  {
+    slug: "product",
+    name: "Product",
+    blurb: "Product managers for technical and platform products.",
+  },
 ];
 
 const interviewLoopEngineering = [
-  { stage: "Recruiter screen", duration: "30 min", focus: "Motivation, notice period, CTC, must-have skills" },
-  { stage: "Technical deep-dive", duration: "60 min", focus: "Past systems, trade-offs, depth on core skills" },
-  { stage: "Practical exercise", duration: "60–90 min", focus: "Live problem or take-home review, never unpaid multi-day work" },
+  {
+    stage: "Recruiter screen",
+    duration: "30 min",
+    focus: "Motivation, notice period, CTC, must-have skills",
+  },
+  {
+    stage: "Technical deep-dive",
+    duration: "60 min",
+    focus: "Past systems, trade-offs, depth on core skills",
+  },
+  {
+    stage: "Practical exercise",
+    duration: "60–90 min",
+    focus: "Live problem or take-home review, never unpaid multi-day work",
+  },
   { stage: "Hiring manager", duration: "45 min", focus: "Team fit, ownership, communication" },
 ];
 
@@ -26,10 +62,19 @@ export const roles: RolePage[] = [
     intro:
       "Good ML engineers are rare because the job is two jobs: modelling and production engineering. We screen for both — evidence of shipped models, not just Kaggle ranks.",
     skillsWeVet: [
-      { name: "Python and ML frameworks", how: "Walk-through of a model they trained and deployed, including data and evaluation choices" },
-      { name: "LLM application engineering", how: "Retrieval, evaluation and cost trade-offs on a real project" },
+      {
+        name: "Python and ML frameworks",
+        how: "Walk-through of a model they trained and deployed, including data and evaluation choices",
+      },
+      {
+        name: "LLM application engineering",
+        how: "Retrieval, evaluation and cost trade-offs on a real project",
+      },
       { name: "MLOps", how: "How they versioned data and models, monitored drift and rolled back" },
-      { name: "Evaluation discipline", how: "Offline vs online metrics, and a time a metric misled them" },
+      {
+        name: "Evaluation discipline",
+        how: "Offline vs online metrics, and a time a metric misled them",
+      },
       { name: "Software engineering", how: "Code review of a past PR or a short live exercise" },
     ],
     typicalTimeToHireDays: { min: 21, max: 40 },
@@ -57,7 +102,11 @@ export const roles: RolePage[] = [
         a: "Only as far as the role needs it. Our screen focuses on production decisions; your team can go deeper on theory in the technical round.",
       },
     ],
-    keywords: ["hire machine learning engineers", "ML engineer recruitment India", "hire LLM engineers"],
+    keywords: [
+      "hire machine learning engineers",
+      "ML engineer recruitment India",
+      "hire LLM engineers",
+    ],
   },
   {
     slug: "data-engineers",
@@ -69,9 +118,18 @@ export const roles: RolePage[] = [
       "Data engineering hires fail when pipelines look fine in a demo and fall over at scale. We screen for ownership of production pipelines, data quality and cost.",
     skillsWeVet: [
       { name: "SQL and data modelling", how: "A modelling exercise on a realistic schema" },
-      { name: "Spark / distributed processing", how: "Discussion of partitioning, skew and job tuning they have done" },
-      { name: "Orchestration", how: "Airflow, Dagster or similar: how they handled retries and backfills" },
-      { name: "Cloud data platforms", how: "Hands-on depth in Databricks, Snowflake, BigQuery or Redshift" },
+      {
+        name: "Spark / distributed processing",
+        how: "Discussion of partitioning, skew and job tuning they have done",
+      },
+      {
+        name: "Orchestration",
+        how: "Airflow, Dagster or similar: how they handled retries and backfills",
+      },
+      {
+        name: "Cloud data platforms",
+        how: "Hands-on depth in Databricks, Snowflake, BigQuery or Redshift",
+      },
       { name: "Data quality", how: "Tests, contracts and incident handling for bad data" },
     ],
     typicalTimeToHireDays: { min: 18, max: 35 },
@@ -99,7 +157,11 @@ export const roles: RolePage[] = [
         a: "Yes. We mark platform depth as a must-have and evidence it on every dossier.",
       },
     ],
-    keywords: ["hire data engineers", "data engineer recruitment agency", "hire Spark developers India"],
+    keywords: [
+      "hire data engineers",
+      "data engineer recruitment agency",
+      "hire Spark developers India",
+    ],
   },
   {
     slug: "devops-engineers",
@@ -110,8 +172,14 @@ export const roles: RolePage[] = [
     intro:
       "We look for engineers who have been on call for what they built. Infrastructure as code, observability and incident ownership matter more than a list of tools.",
     skillsWeVet: [
-      { name: "Kubernetes", how: "Production cluster operations: upgrades, scaling and a real incident" },
-      { name: "Infrastructure as code", how: "Terraform or Pulumi module design and state management" },
+      {
+        name: "Kubernetes",
+        how: "Production cluster operations: upgrades, scaling and a real incident",
+      },
+      {
+        name: "Infrastructure as code",
+        how: "Terraform or Pulumi module design and state management",
+      },
       { name: "CI/CD", how: "Pipelines they built and how they cut build or deploy times" },
       { name: "Observability", how: "Metrics, logs, traces and how alerts were tuned" },
       { name: "Cloud cost and security", how: "Concrete savings or hardening they delivered" },
@@ -152,8 +220,14 @@ export const roles: RolePage[] = [
     intro:
       "Full-stack is a broad label. We pin down the real stack and the product stage in your brief, then screen for engineers who have shipped features end to end.",
     skillsWeVet: [
-      { name: "Frontend (React / Next.js)", how: "Component design, state and performance on a real feature" },
-      { name: "Backend (Node, Java, Go or Python)", how: "API design, data modelling and error handling" },
+      {
+        name: "Frontend (React / Next.js)",
+        how: "Component design, state and performance on a real feature",
+      },
+      {
+        name: "Backend (Node, Java, Go or Python)",
+        how: "API design, data modelling and error handling",
+      },
       { name: "Databases", how: "Schema choices, indexing and a slow-query story" },
       { name: "Testing and delivery", how: "How they test, review and release" },
       { name: "Product sense", how: "A feature they shaped, not just built" },
@@ -183,7 +257,11 @@ export const roles: RolePage[] = [
         a: "Yes. Use the same brief form and choose the closest role title; the screen adapts.",
       },
     ],
-    keywords: ["hire full stack developers", "hire React developers", "hire Node.js developers India"],
+    keywords: [
+      "hire full stack developers",
+      "hire React developers",
+      "hire Node.js developers India",
+    ],
   },
   {
     slug: "embedded-engineers",
@@ -194,8 +272,14 @@ export const roles: RolePage[] = [
     intro:
       "Pune is one of India's largest automotive software hubs. We screen embedded engineers on hardware-close debugging, safety processes and domain depth.",
     skillsWeVet: [
-      { name: "Embedded C / C++", how: "Memory, concurrency and real-time constraints in past projects" },
-      { name: "AUTOSAR / automotive stacks", how: "Classic or Adaptive AUTOSAR depth, toolchains used" },
+      {
+        name: "Embedded C / C++",
+        how: "Memory, concurrency and real-time constraints in past projects",
+      },
+      {
+        name: "AUTOSAR / automotive stacks",
+        how: "Classic or Adaptive AUTOSAR depth, toolchains used",
+      },
       { name: "Embedded Linux / RTOS", how: "Drivers, BSPs and boot-time or footprint work" },
       { name: "Protocols", how: "CAN, LIN, Ethernet, SPI, I2C debugging experience" },
       { name: "Functional safety", how: "ISO 26262 or ASPICE exposure and artefacts produced" },
@@ -238,17 +322,36 @@ export const roles: RolePage[] = [
     skillsWeVet: [
       { name: "Discovery", how: "How they validated a problem before building" },
       { name: "Prioritisation", how: "A roadmap trade-off and how they defended it" },
-      { name: "Technical fluency", how: "Depth appropriate to the product: APIs, data or platform" },
+      {
+        name: "Technical fluency",
+        how: "Depth appropriate to the product: APIs, data or platform",
+      },
       { name: "Metrics", how: "A metric they moved and how they knew it was causal" },
       { name: "Communication", how: "Written spec sample or a live walk-through" },
     ],
     typicalTimeToHireDays: { min: 21, max: 40 },
     availability: "moderate",
     interviewLoop: [
-      { stage: "Recruiter screen", duration: "30 min", focus: "Motivation, notice period, CTC, product domain" },
-      { stage: "Product sense", duration: "60 min", focus: "A product they shipped, discovery and trade-offs" },
-      { stage: "Case or spec review", duration: "60 min", focus: "Structured problem or review of a written spec" },
-      { stage: "Engineering + leadership", duration: "45 min each", focus: "Collaboration with engineers and stakeholders" },
+      {
+        stage: "Recruiter screen",
+        duration: "30 min",
+        focus: "Motivation, notice period, CTC, product domain",
+      },
+      {
+        stage: "Product sense",
+        duration: "60 min",
+        focus: "A product they shipped, discovery and trade-offs",
+      },
+      {
+        stage: "Case or spec review",
+        duration: "60 min",
+        focus: "Structured problem or review of a written spec",
+      },
+      {
+        stage: "Engineering + leadership",
+        duration: "45 min each",
+        focus: "Collaboration with engineers and stakeholders",
+      },
     ],
     screeningQuestions: [
       "Tell us about a feature you killed. How did you decide?",

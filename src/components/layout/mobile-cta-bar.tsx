@@ -15,19 +15,32 @@ export function MobileCtaBar() {
 
   const candidate = pathname.startsWith("/jobs") || pathname.startsWith("/candidates");
   const cta = candidate ? ctas.joinNetwork : ctas.submitRole;
-  const wa = whatsappUrl(candidate ? "Hi Emplyify, I'm looking for a new role." : "Hi Emplyify, I'd like to hire.");
+  const wa = whatsappUrl(
+    candidate ? "Hi Emplyify, I'm looking for a new role." : "Hi Emplyify, I'd like to hire.",
+  );
 
   return (
-    <div data-print-hide className="fixed inset-x-0 bottom-0 z-30 flex gap-2 border-t border-line bg-bg/95 p-3 backdrop-blur lg:hidden">
+    <div
+      data-print-hide
+      className="border-line bg-bg/95 fixed inset-x-0 bottom-0 z-30 flex gap-2 border-t p-3 backdrop-blur lg:hidden"
+    >
       <Link
         href={cta.href}
         className={buttonClasses("primary", "md", "flex-1")}
-        onClick={() => track("cta_click", { cta_name: cta.label, page: pathname, position: "mobile_bar" })}
+        onClick={() =>
+          track("cta_click", { cta_name: cta.label, page: pathname, position: "mobile_bar" })
+        }
       >
         {cta.label}
       </Link>
       {wa && (
-        <a href={wa} target="_blank" rel="noopener noreferrer" className={buttonClasses("secondary", "md")} aria-label="Chat on WhatsApp (opens in a new tab)">
+        <a
+          href={wa}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonClasses("secondary", "md")}
+          aria-label="Chat on WhatsApp (opens in a new tab)"
+        >
           WhatsApp
         </a>
       )}

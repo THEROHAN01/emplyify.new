@@ -42,15 +42,25 @@ export const sampleShortlists: SampleShortlist[] = [
         noticeDays: 60,
         expectedCtcLpa: "48–52",
         fitScore: 92,
-        summary: "Led the retrieval and evaluation stack behind a customer-support assistant serving enterprise accounts; cut answer-escalation rate by building an offline eval set from support tickets.",
+        summary:
+          "Led the retrieval and evaluation stack behind a customer-support assistant serving enterprise accounts; cut answer-escalation rate by building an offline eval set from support tickets.",
         evidence: [
-          { skill: "Production LLM / retrieval", proof: "Owned hybrid search + reranking in production for 18 months", verified: true },
-          { skill: "Evaluation pipelines", proof: "Built regression eval run on every prompt change", verified: true },
+          {
+            skill: "Production LLM / retrieval",
+            proof: "Owned hybrid search + reranking in production for 18 months",
+            verified: true,
+          },
+          {
+            skill: "Evaluation pipelines",
+            proof: "Built regression eval run on every prompt change",
+            verified: true,
+          },
           { skill: "Python", proof: "Live code review of a past PR", verified: true },
           { skill: "AWS", proof: "SageMaker and Lambda deployments", verified: false },
         ],
         risks: ["Has a pending counter-offer conversation", "Prefers 2 office days a week"],
-        recruiterNote: "Strongest on evaluation discipline of anyone we screened. Ask about cost controls in round two.",
+        recruiterNote:
+          "Strongest on evaluation discipline of anyone we screened. Ask about cost controls in round two.",
       },
       {
         alias: "Candidate B",
@@ -60,15 +70,29 @@ export const sampleShortlists: SampleShortlist[] = [
         noticeDays: 30,
         expectedCtcLpa: "38–42",
         fitScore: 86,
-        summary: "Built fraud-detection models and a feature store; for the past year has run an internal document-extraction service on hosted LLMs.",
+        summary:
+          "Built fraud-detection models and a feature store; for the past year has run an internal document-extraction service on hosted LLMs.",
         evidence: [
-          { skill: "Python", proof: "Maintainer of internal feature-store library", verified: true },
-          { skill: "Production LLM / retrieval", proof: "Document extraction service, ~40k docs/day", verified: true },
-          { skill: "Evaluation pipelines", proof: "Precision/recall dashboards; lighter on LLM evals", verified: false },
+          {
+            skill: "Python",
+            proof: "Maintainer of internal feature-store library",
+            verified: true,
+          },
+          {
+            skill: "Production LLM / retrieval",
+            proof: "Document extraction service, ~40k docs/day",
+            verified: true,
+          },
+          {
+            skill: "Evaluation pipelines",
+            proof: "Precision/recall dashboards; lighter on LLM evals",
+            verified: false,
+          },
           { skill: "AWS", proof: "EKS and S3; certified Solutions Architect", verified: true },
         ],
         risks: ["Relocation from Bengaluru needed", "Less depth in retrieval than A"],
-        recruiterNote: "Fast to join (30 days) and below budget. Good fit if the role leans to platform over research.",
+        recruiterNote:
+          "Fast to join (30 days) and below budget. Good fit if the role leans to platform over research.",
       },
       {
         alias: "Candidate C",
@@ -78,15 +102,25 @@ export const sampleShortlists: SampleShortlist[] = [
         noticeDays: 90,
         expectedCtcLpa: "55–60",
         fitScore: 81,
-        summary: "Ranking and recommendation background moving into LLM work; published internal evaluation methodology adopted across three teams.",
+        summary:
+          "Ranking and recommendation background moving into LLM work; published internal evaluation methodology adopted across three teams.",
         evidence: [
-          { skill: "Evaluation pipelines", proof: "Authored team-wide offline/online metric playbook", verified: true },
+          {
+            skill: "Evaluation pipelines",
+            proof: "Authored team-wide offline/online metric playbook",
+            verified: true,
+          },
           { skill: "Python", proof: "Take-home review", verified: true },
-          { skill: "Production LLM / retrieval", proof: "Six months of RAG prototyping, one launch", verified: false },
+          {
+            skill: "Production LLM / retrieval",
+            proof: "Six months of RAG prototyping, one launch",
+            verified: false,
+          },
           { skill: "AWS", proof: "Mostly GCP; some AWS", verified: false },
         ],
         risks: ["90-day notice", "Above top of budget"],
-        recruiterNote: "Senior thinker — consider if you want someone to set evaluation standards for the team.",
+        recruiterNote:
+          "Senior thinker — consider if you want someone to set evaluation standards for the team.",
       },
     ],
   },
@@ -104,7 +138,8 @@ export const sampleShortlists: SampleShortlist[] = [
         noticeDays: 90,
         expectedCtcLpa: "36–40",
         fitScore: 90,
-        summary: "Migrated a 40-pipeline Hadoop estate to Databricks; owns data-quality contracts for finance reporting.",
+        summary:
+          "Migrated a 40-pipeline Hadoop estate to Databricks; owns data-quality contracts for finance reporting.",
         evidence: [
           { skill: "Databricks", proof: "Led migration, Unity Catalog roll-out", verified: true },
           { skill: "Spark", proof: "Tuned skewed joins; walked through job plans", verified: true },
@@ -122,7 +157,8 @@ export const sampleShortlists: SampleShortlist[] = [
         noticeDays: 45,
         expectedCtcLpa: "28–32",
         fitScore: 84,
-        summary: "Built streaming ingestion on Kafka and Delta Lake for clinical data; strong on testing and data contracts.",
+        summary:
+          "Built streaming ingestion on Kafka and Delta Lake for clinical data; strong on testing and data contracts.",
         evidence: [
           { skill: "Spark", proof: "Structured Streaming in production", verified: true },
           { skill: "Databricks", proof: "Two years on the platform", verified: true },
@@ -140,9 +176,14 @@ export const sampleShortlists: SampleShortlist[] = [
         noticeDays: 60,
         expectedCtcLpa: "30–34",
         fitScore: 78,
-        summary: "dbt and warehouse modelling expert growing into Spark; led a cost-reduction project on the warehouse.",
+        summary:
+          "dbt and warehouse modelling expert growing into Spark; led a cost-reduction project on the warehouse.",
         evidence: [
-          { skill: "SQL modelling", proof: "Exceptional; best modelling exercise of the batch", verified: true },
+          {
+            skill: "SQL modelling",
+            proof: "Exceptional; best modelling exercise of the batch",
+            verified: true,
+          },
           { skill: "Spark", proof: "One year, mostly PySpark", verified: false },
           { skill: "Databricks", proof: "Recent, one project", verified: false },
           { skill: "Airflow", proof: "Three years of DAG ownership", verified: true },
@@ -166,7 +207,8 @@ export const sampleShortlists: SampleShortlist[] = [
         noticeDays: 60,
         expectedCtcLpa: "40–44",
         fitScore: 91,
-        summary: "Runs multi-cluster EKS for a high-traffic consumer app; led incident-review practice and halved paging volume by re-tuning alerts.",
+        summary:
+          "Runs multi-cluster EKS for a high-traffic consumer app; led incident-review practice and halved paging volume by re-tuning alerts.",
         evidence: [
           { skill: "Kubernetes", proof: "Cluster upgrades and capacity planning", verified: true },
           { skill: "Terraform", proof: "Module library across 30+ services", verified: true },
@@ -184,7 +226,8 @@ export const sampleShortlists: SampleShortlist[] = [
         noticeDays: 30,
         expectedCtcLpa: "24–27",
         fitScore: 82,
-        summary: "Built CI/CD and GitOps workflows with Argo CD; cut deploy time from 40 to 8 minutes.",
+        summary:
+          "Built CI/CD and GitOps workflows with Argo CD; cut deploy time from 40 to 8 minutes.",
         evidence: [
           { skill: "Kubernetes", proof: "Argo CD, Helm", verified: true },
           { skill: "Terraform", proof: "Good, smaller estate", verified: true },
@@ -210,7 +253,8 @@ export const sampleShortlists: SampleShortlist[] = [
         noticeDays: 30,
         expectedCtcLpa: "32–36",
         fitScore: 89,
-        summary: "Second engineer at a startup acquired last year; owned billing and onboarding flows end to end.",
+        summary:
+          "Second engineer at a startup acquired last year; owned billing and onboarding flows end to end.",
         evidence: [
           { skill: "React / Next.js", proof: "Shipped app router migration", verified: true },
           { skill: "Node.js", proof: "Billing service design walk-through", verified: true },
@@ -228,7 +272,8 @@ export const sampleShortlists: SampleShortlist[] = [
         noticeDays: 60,
         expectedCtcLpa: "30–34",
         fitScore: 83,
-        summary: "Strong frontend performance specialist; improved checkout conversion through Core Web Vitals work.",
+        summary:
+          "Strong frontend performance specialist; improved checkout conversion through Core Web Vitals work.",
         evidence: [
           { skill: "React / Next.js", proof: "Performance case study", verified: true },
           { skill: "Node.js", proof: "BFF layer, less backend depth", verified: false },
@@ -254,9 +299,14 @@ export const sampleShortlists: SampleShortlist[] = [
         noticeDays: 90,
         expectedCtcLpa: "30–34",
         fitScore: 90,
-        summary: "BSW configuration and integration on Classic AUTOSAR for powertrain ECUs; led two ASPICE assessments.",
+        summary:
+          "BSW configuration and integration on Classic AUTOSAR for powertrain ECUs; led two ASPICE assessments.",
         evidence: [
-          { skill: "Classic AUTOSAR", proof: "BSW/MCAL configuration with Vector tools", verified: true },
+          {
+            skill: "Classic AUTOSAR",
+            proof: "BSW/MCAL configuration with Vector tools",
+            verified: true,
+          },
           { skill: "Embedded C", proof: "Debugging walk-through", verified: true },
           { skill: "CAN", proof: "CANoe, diagnostics (UDS)", verified: true },
           { skill: "ISO 26262 exposure", proof: "ASIL-B project artefacts", verified: true },
@@ -288,7 +338,12 @@ export const sampleShortlists: SampleShortlist[] = [
     family: "product",
     role: "Senior Product Manager (developer platform)",
     company: "Global SaaS GCC, Bengaluru",
-    mustHaves: ["Technical product experience", "Discovery", "Metrics ownership", "Stakeholder management"],
+    mustHaves: [
+      "Technical product experience",
+      "Discovery",
+      "Metrics ownership",
+      "Stakeholder management",
+    ],
     candidates: [
       {
         alias: "Candidate A",
@@ -298,9 +353,14 @@ export const sampleShortlists: SampleShortlist[] = [
         noticeDays: 60,
         expectedCtcLpa: "55–60",
         fitScore: 88,
-        summary: "Ex-engineer who owned a public API platform; led a pricing and rate-limit redesign with clear adoption metrics.",
+        summary:
+          "Ex-engineer who owned a public API platform; led a pricing and rate-limit redesign with clear adoption metrics.",
         evidence: [
-          { skill: "Technical product experience", proof: "Former backend engineer, 3 yrs", verified: true },
+          {
+            skill: "Technical product experience",
+            proof: "Former backend engineer, 3 yrs",
+            verified: true,
+          },
           { skill: "Discovery", proof: "Customer interview programme", verified: true },
           { skill: "Metrics ownership", proof: "Owned API adoption and churn", verified: true },
           { skill: "Stakeholder management", proof: "Cross-region launch", verified: true },

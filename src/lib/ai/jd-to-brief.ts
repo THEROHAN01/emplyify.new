@@ -21,7 +21,10 @@ export const extractedBriefSchema = z.object({
 export type ExtractedBrief = z.infer<typeof extractedBriefSchema> & { source: "ai" | "heuristic" };
 
 const salaryContext = roles
-  .map((r) => `${r.family}: ${r.salaryBands.map((b) => `${b.seniority} ${b.minLpa}-${b.maxLpa}`).join(", ")}`)
+  .map(
+    (r) =>
+      `${r.family}: ${r.salaryBands.map((b) => `${b.seniority} ${b.minLpa}-${b.maxLpa}`).join(", ")}`,
+  )
   .join("\n");
 
 const SYSTEM = `You turn a job description pasted by an employer into a structured hiring brief for Emplyify, a recruitment firm in India.

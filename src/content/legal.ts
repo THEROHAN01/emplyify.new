@@ -14,7 +14,8 @@ export const legalDocs: LegalDoc[] = [
   {
     slug: "privacy",
     title: "Privacy notice",
-    description: "What personal data Emplyify collects, why, how long we keep it and your rights under the DPDP Act.",
+    description:
+      "What personal data Emplyify collects, why, how long we keep it and your rights under the DPDP Act.",
     updatedAt,
     sections: [
       {
@@ -77,7 +78,8 @@ export const legalDocs: LegalDoc[] = [
   {
     slug: "terms",
     title: "Terms of service",
-    description: "Terms for employers using Emplyify, including fees, the 90-day replacement guarantee and non-solicitation.",
+    description:
+      "Terms for employers using Emplyify, including fees, the 90-day replacement guarantee and non-solicitation.",
     updatedAt,
     sections: [
       {
@@ -127,7 +129,8 @@ export const legalDocs: LegalDoc[] = [
   {
     slug: "candidate-consent",
     title: "Candidate consent",
-    description: "Exactly what you agree to when you apply or join the Emplyify talent network, and how to withdraw.",
+    description:
+      "Exactly what you agree to when you apply or join the Emplyify talent network, and how to withdraw.",
     updatedAt,
     sections: [
       {
@@ -159,7 +162,8 @@ export const legalDocs: LegalDoc[] = [
   {
     slug: "cookies",
     title: "Cookie policy",
-    description: "Which cookies and similar technologies emplyify.com uses and how to control them.",
+    description:
+      "Which cookies and similar technologies emplyify.com uses and how to control them.",
     updatedAt,
     sections: [
       {
@@ -176,7 +180,9 @@ export const legalDocs: LegalDoc[] = [
       },
       {
         heading: "Bot protection",
-        body: ["Forms use Cloudflare Turnstile to stop spam. It may set a functional cookie when you submit a form."],
+        body: [
+          "Forms use Cloudflare Turnstile to stop spam. It may set a functional cookie when you submit a form.",
+        ],
       },
       {
         heading: "Changing your choice",

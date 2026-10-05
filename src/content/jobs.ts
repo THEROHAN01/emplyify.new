@@ -61,7 +61,11 @@ export const jobs: Job[] = [
     city: "hyderabad",
     workMode: "Hybrid",
     employmentType: "FULL_TIME",
-    company: { descriptor: "Global insurance GCC", size: "1,200 people in India", disclosed: false },
+    company: {
+      descriptor: "Global insurance GCC",
+      size: "1,200 people in India",
+      disclosed: false,
+    },
     salary: { minLpa: 22, maxLpa: 32 },
     experienceYears: { min: 3, max: 6 },
     team: "Data platform squad of 6 building the group-wide lakehouse.",
@@ -72,7 +76,11 @@ export const jobs: Job[] = [
       "Implement data-quality checks and contracts",
       "Tune Spark jobs for cost and reliability",
     ],
-    requirements: ["3+ years of data engineering", "Spark and SQL in production", "An orchestration tool such as Airflow"],
+    requirements: [
+      "3+ years of data engineering",
+      "Spark and SQL in production",
+      "An orchestration tool such as Airflow",
+    ],
     niceToHave: ["Insurance or banking domain", "Unity Catalog"],
     interviewStages: [
       { stage: "Emplyify recruiter screen", duration: "30 min" },
@@ -100,9 +108,18 @@ export const jobs: Job[] = [
     experienceYears: { min: 6, max: 10 },
     team: "Platform team of 5 serving 60 engineers.",
     stack: ["Kubernetes (EKS)", "Terraform", "Argo CD", "Prometheus", "AWS"],
-    summary: "Run and evolve the Kubernetes platform and developer tooling for the whole engineering org.",
-    responsibilities: ["Operate multi-cluster EKS", "Own Terraform modules and CI/CD", "Lead incident reviews"],
-    requirements: ["6+ years in infrastructure", "Production Kubernetes ownership", "Terraform at scale"],
+    summary:
+      "Run and evolve the Kubernetes platform and developer tooling for the whole engineering org.",
+    responsibilities: [
+      "Operate multi-cluster EKS",
+      "Own Terraform modules and CI/CD",
+      "Lead incident reviews",
+    ],
+    requirements: [
+      "6+ years in infrastructure",
+      "Production Kubernetes ownership",
+      "Terraform at scale",
+    ],
     niceToHave: ["Service mesh", "FinOps experience"],
     interviewStages: [
       { stage: "Emplyify recruiter screen", duration: "30 min" },
@@ -131,8 +148,16 @@ export const jobs: Job[] = [
     team: "Founding team of 4 engineers working directly with the CTO.",
     stack: ["TypeScript", "Next.js", "Node.js", "PostgreSQL", "AWS"],
     summary: "Build the core product with the founders, from customer calls to production.",
-    responsibilities: ["Ship features end to end", "Shape the architecture", "Talk to customers weekly"],
-    requirements: ["5+ years building web products", "React and Node.js in production", "Comfort with ambiguity"],
+    responsibilities: [
+      "Ship features end to end",
+      "Shape the architecture",
+      "Talk to customers weekly",
+    ],
+    requirements: [
+      "5+ years building web products",
+      "React and Node.js in production",
+      "Comfort with ambiguity",
+    ],
     niceToHave: ["Startup experience", "B2B SaaS billing or onboarding"],
     interviewStages: [
       { stage: "Emplyify recruiter screen", duration: "30 min" },
@@ -154,13 +179,21 @@ export const jobs: Job[] = [
     city: "pune",
     workMode: "On-site",
     employmentType: "FULL_TIME",
-    company: { descriptor: "European automotive GCC", size: "2,000 people in India", disclosed: false },
+    company: {
+      descriptor: "European automotive GCC",
+      size: "2,000 people in India",
+      disclosed: false,
+    },
     salary: { minLpa: 24, maxLpa: 34 },
     experienceYears: { min: 6, max: 10 },
     team: "Powertrain software team of 14 across Pune and Germany.",
     stack: ["Embedded C", "Classic AUTOSAR", "Vector toolchain", "CANoe", "UDS"],
     summary: "Configure and integrate Classic AUTOSAR BSW for next-generation powertrain ECUs.",
-    responsibilities: ["BSW and MCAL configuration", "Integration and testing on target", "Support ASPICE assessments"],
+    responsibilities: [
+      "BSW and MCAL configuration",
+      "Integration and testing on target",
+      "Support ASPICE assessments",
+    ],
     requirements: ["6+ years embedded C", "3+ years Classic AUTOSAR", "CAN diagnostics"],
     niceToHave: ["ISO 26262 projects", "German language basics"],
     interviewStages: [

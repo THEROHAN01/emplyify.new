@@ -14,7 +14,10 @@ export function getSupabase(): SupabaseClient | null {
   return client;
 }
 
-export async function insertRow(table: string, row: Record<string, unknown>): Promise<IntegrationResult & { id?: string }> {
+export async function insertRow(
+  table: string,
+  row: Record<string, unknown>,
+): Promise<IntegrationResult & { id?: string }> {
   const db = getSupabase();
   if (!db) return skipped("supabase");
   const { data, error } = await db.from(table).insert(row).select("id").single();
@@ -33,10 +36,16 @@ export async function audit(action: string, subject: string, meta: Record<string
 }
 
 /** Upload a CV into the private bucket. Returns the storage path (never a public URL). */
-export async function uploadCv(path: string, file: ArrayBuffer, contentType: string): Promise<IntegrationResult & { path?: string }> {
+export async function uploadCv(
+  path: string,
+  file: ArrayBuffer,
+  contentType: string,
+): Promise<IntegrationResult & { path?: string }> {
   const db = getSupabase();
   if (!db) return skipped("storage");
-  const { error } = await db.storage.from(env.cvBucket).upload(path, file, { contentType, upsert: false });
+  const { error } = await db.storage
+    .from(env.cvBucket)
+    .upload(path, file, { contentType, upsert: false });
   if (error) {
     log("error", "supabase.cv_upload_failed", { message: error.message });
     return { integration: "storage", ok: false, detail: "upload" };
@@ -48,6 +57,8 @@ export async function uploadCv(path: string, file: ArrayBuffer, contentType: str
 export async function signedCvUrl(path: string, expiresInSeconds = 600): Promise<string | null> {
   const db = getSupabase();
   if (!db) return null;
-  const { data, error } = await db.storage.from(env.cvBucket).createSignedUrl(path, expiresInSeconds);
+  const { data, error } = await db.storage
+    .from(env.cvBucket)
+    .createSignedUrl(path, expiresInSeconds);
   return error ? null : data.signedUrl;
 }

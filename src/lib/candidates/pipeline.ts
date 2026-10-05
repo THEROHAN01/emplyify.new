@@ -4,8 +4,17 @@ import { sendEmail } from "@/lib/integrations/email";
 import { submitHubspotForm } from "@/lib/integrations/hubspot";
 import { log } from "@/lib/integrations/logger";
 import { audit, insertRow, uploadCv } from "@/lib/integrations/supabase";
-import { applicationReceivedEmail, reportEmail, talentNetworkWelcomeEmail } from "@/lib/leads/emails";
-import type { ApplicationInput, Attribution, ReportInput, TalentNetworkInput } from "@/lib/leads/schema";
+import {
+  applicationReceivedEmail,
+  reportEmail,
+  talentNetworkWelcomeEmail,
+} from "@/lib/leads/emails";
+import type {
+  ApplicationInput,
+  Attribution,
+  ReportInput,
+  TalentNetworkInput,
+} from "@/lib/leads/schema";
 import type { CvKind } from "@/lib/security/upload";
 import { referenceId } from "@/lib/utils/ids";
 
@@ -16,7 +25,13 @@ export const CONSENT_VERSIONS = {
   report: "report/2026-10-05",
 } as const;
 
-async function recordConsent(p: { email: string; purpose: string; version: string; ipHash: string; subjectRef: string }) {
+async function recordConsent(p: {
+  email: string;
+  purpose: string;
+  version: string;
+  ipHash: string;
+  subjectRef: string;
+}) {
   // Consent ledger (DPDP): who, what purpose, which wording, when.
   const res = await insertRow("consents", {
     email: p.email,
@@ -25,7 +40,8 @@ async function recordConsent(p: { email: string; purpose: string; version: strin
     subject_ref: p.subjectRef,
     ip_hash: p.ipHash,
   });
-  if (!res.ok) log("error", "consent.not_recorded", { subjectRef: p.subjectRef, purpose: p.purpose });
+  if (!res.ok)
+    log("error", "consent.not_recorded", { subjectRef: p.subjectRef, purpose: p.purpose });
   return res;
 }
 
@@ -47,7 +63,13 @@ export async function processTalentNetwork(input: TalentNetworkInput, meta: { ip
       source: input.attribution.utm_source ?? "website",
       attribution: input.attribution,
     }),
-    recordConsent({ email: input.email, purpose: "talent_network", version: CONSENT_VERSIONS.talentNetwork, ipHash: meta.ipHash, subjectRef: ref }),
+    recordConsent({
+      email: input.email,
+      purpose: "talent_network",
+      version: CONSENT_VERSIONS.talentNetwork,
+      ipHash: meta.ipHash,
+      subjectRef: ref,
+    }),
     sendEmail({ to: input.email, ...welcome }),
   ]);
   await audit("candidate.joined_network", ref, { roleFamily: input.roleFamily });
@@ -87,10 +109,20 @@ export async function processApplication(
       cv_scan_status: cvPath ? "pending" : "none",
       attribution: meta.attribution,
     }),
-    recordConsent({ email: input.email, purpose: `application:${job.slug}`, version: CONSENT_VERSIONS.application, ipHash: meta.ipHash, subjectRef: ref }),
+    recordConsent({
+      email: input.email,
+      purpose: `application:${job.slug}`,
+      version: CONSENT_VERSIONS.application,
+      ipHash: meta.ipHash,
+      subjectRef: ref,
+    }),
     sendEmail({ to: input.email, ...received }),
     env.internalAlertEmail
-      ? sendEmail({ to: env.internalAlertEmail, subject: `[Application ${ref}] ${job.title}`, text: `New application for ${job.title}. Reference ${ref}. Open the ATS to review.` })
+      ? sendEmail({
+          to: env.internalAlertEmail,
+          subject: `[Application ${ref}] ${job.title}`,
+          text: `New application for ${job.title}. Reference ${ref}. Open the ATS to review.`,
+        })
       : Promise.resolve(),
   ]);
   await audit("application.submitted", ref, { job: job.slug, hasCv: Boolean(cvPath) });
@@ -104,7 +136,12 @@ export async function processReportRequest(
   meta: { ipHash: string },
 ) {
   const ref = referenceId("RP");
-  const mail = reportEmail({ name: input.name, title: report.title, available: report.available, releaseLabel: report.releaseLabel });
+  const mail = reportEmail({
+    name: input.name,
+    title: report.title,
+    available: report.available,
+    releaseLabel: report.releaseLabel,
+  });
   await Promise.allSettled([
     insertRow("leads", {
       ref,
@@ -116,10 +153,21 @@ export async function processReportRequest(
       attribution: input.attribution,
       ip_hash: meta.ipHash,
     }),
-    recordConsent({ email: input.workEmail, purpose: `report:${report.slug}`, version: CONSENT_VERSIONS.report, ipHash: meta.ipHash, subjectRef: ref }),
+    recordConsent({
+      email: input.workEmail,
+      purpose: `report:${report.slug}`,
+      version: CONSENT_VERSIONS.report,
+      ipHash: meta.ipHash,
+      subjectRef: ref,
+    }),
     submitHubspotForm(
       env.hubspotReportFormId,
-      { email: input.workEmail, firstname: input.name, company: input.company, emplyify_report: report.slug },
+      {
+        email: input.workEmail,
+        firstname: input.name,
+        company: input.company,
+        emplyify_report: report.slug,
+      },
       input.attribution,
     ),
     sendEmail({ to: input.workEmail, ...mail }),

@@ -9,7 +9,11 @@ export interface NavLink {
 }
 
 export const hireMenu = {
-  services: services.map((s) => ({ label: s.name, href: `/services/${s.slug}`, description: s.outcome })),
+  services: services.map((s) => ({
+    label: s.name,
+    href: `/services/${s.slug}`,
+    description: s.outcome,
+  })),
   roles: roleFamilies.map((f) => {
     const role = roles.find((r) => r.family === f.slug)!;
     return { label: f.name, href: `/hire/${role.slug}`, description: f.blurb };
@@ -17,7 +21,11 @@ export const hireMenu = {
 };
 
 export const gccMenu: NavLink[] = [
-  { label: "GCC hiring overview", href: "/gcc", description: "Pods, sprints and leadership for GCCs" },
+  {
+    label: "GCC hiring overview",
+    href: "/gcc",
+    description: "Pods, sprints and leadership for GCCs",
+  },
   ...cities.map((c) => ({ label: `GCC hiring in ${c.name}`, href: `/gcc/${c.slug}` })),
   { label: "Hiring Sprints", href: "/services/gcc-hiring-sprints" },
 ];
@@ -41,7 +49,10 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
   },
   {
     heading: "GCCs",
-    links: [{ label: "For GCCs", href: "/gcc" }, ...cities.map((c) => ({ label: `GCC hiring in ${c.name}`, href: `/gcc/${c.slug}` }))],
+    links: [
+      { label: "For GCCs", href: "/gcc" },
+      ...cities.map((c) => ({ label: `GCC hiring in ${c.name}`, href: `/gcc/${c.slug}` })),
+    ],
   },
   {
     heading: "Candidates",

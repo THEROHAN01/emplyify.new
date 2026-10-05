@@ -1,0 +1,21 @@
+/** Shared test fixtures. */
+export const validBrief = {
+  roleTitle: "Senior Data Engineer",
+  roleFamily: "data",
+  seniority: "senior",
+  location: "Pune",
+  workMode: "Hybrid",
+  openings: "2",
+  mustHaveSkills: ["Spark", "SQL"],
+  budgetMinLpa: "30",
+  budgetMaxLpa: "40",
+  targetStart: "",
+  name: "Asha Rao",
+  workEmail: "asha@acme.io",
+  company: "Acme",
+  companyType: "Product company",
+  phone: "+91 98765 43210",
+  contactPreference: "Email",
+  consent: true,
+  attribution: { utm_source: "linkedin" },
+};
