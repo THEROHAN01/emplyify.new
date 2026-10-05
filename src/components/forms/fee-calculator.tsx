@@ -75,16 +75,32 @@ export function FeeCalculator({
         />
       </div>
 
-      <div aria-live="polite" className="bg-bg flex flex-col rounded-lg p-6">
+      <div aria-live="polite" className="bg-bg flex flex-col rounded-2xl p-6 sm:p-8">
         {estimate ? (
           <>
             <p className="text-muted text-sm">
               Fee at {formatPercent(estimate.percent)} ({estimate.months}{" "}
               {estimate.months === 1 ? "month" : "months"} of CTC)
             </p>
-            <p className="tabular text-accent mt-1 text-4xl font-bold">
+            <p className="tabular text-ink mt-1 text-4xl font-bold tracking-tight">
               {formatInr(estimate.feeInr)}
             </p>
+            {/* Invoice breakdown: fee vs GST, 2px surface gap between segments */}
+            <div className="mt-4 flex h-3 gap-0.5" aria-hidden>
+              <span
+                className="bg-accent rounded-l-[4px] transition-[width] duration-300"
+                style={{ width: `${(estimate.feeInr / estimate.totalInr) * 100}%` }}
+              />
+              <span className="bg-navy flex-1 rounded-r-[4px]" />
+            </div>
+            <div className="text-muted mt-2 flex gap-4 text-xs" aria-hidden>
+              <span className="flex items-center gap-1.5">
+                <span className="bg-accent size-2.5 rounded-sm" /> Fee
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="bg-navy size-2.5 rounded-sm" /> GST 18%
+              </span>
+            </div>
             <dl className="mt-4 space-y-2 text-sm">
               <div className="flex justify-between">
                 <dt className="text-muted">GST (18%)</dt>

@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import { FinalCta } from "@/components/marketing/cta-band";
+import { IconTile, icons, type IconName } from "@/components/ui/icons";
+import { PipelineTracker } from "@/components/visuals/pipeline-tracker";
+import { Tick } from "@/components/visuals/mock-ui";
+import { ServiceVisual } from "@/components/visuals/service-visuals";
 import { JsonLd } from "@/components/seo/json-ld";
-import { Badge } from "@/components/ui/badge";
 import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { FaqList } from "@/components/ui/faq";
@@ -47,6 +50,7 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
         eyebrow={service.name}
         title={service.outcome}
         intro={service.summary}
+        aside={<ServiceVisual slug={service.slug} />}
         actions={
           <>
             <ButtonLink href={service.primaryCta.href} size="lg">
@@ -60,28 +64,30 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
       />
 
       <Section labelledBy="who">
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <SectionHeading id="who" title="Who it's for" className="mb-6" />
-            <ul className="space-y-3">
+        <div className="grid gap-4 lg:grid-cols-2">
+          <div className="border-line rounded-2xl border p-8">
+            <IconTile name={service.slug as IconName} />
+            <h2 id="who" className="mt-5 text-2xl font-bold">
+              Who it's for
+            </h2>
+            <ul className="mt-5 space-y-3.5">
               {service.whoFor.map((w) => (
                 <li key={w} className="flex gap-3">
-                  <span aria-hidden className="text-accent">
-                    →
-                  </span>
-                  {w}
+                  <Tick />
+                  <span>{w}</span>
                 </li>
               ))}
             </ul>
           </div>
-          <div>
-            <h2 className="mb-6 text-2xl font-bold sm:text-3xl">What's included</h2>
-            <ul className="space-y-3">
+          <div className="bg-navy rounded-2xl p-8 text-white">
+            <span className="flex size-11 items-center justify-center rounded-xl bg-white/10">
+              {icons.dossier}
+            </span>
+            <h2 className="mt-5 text-2xl font-bold">What's included</h2>
+            <ul className="mt-5 space-y-3.5">
               {service.included.map((w) => (
-                <li key={w} className="flex gap-3">
-                  <span aria-hidden className="text-signal">
-                    ✓
-                  </span>
+                <li key={w} className="flex gap-3 text-white/85">
+                  <span aria-hidden className="mt-2.5 size-1.5 shrink-0 rounded-full bg-white/60" />
                   {w}
                 </li>
               ))}
@@ -92,18 +98,13 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
 
       <Section tone="surface" labelledBy="process">
         <SectionHeading id="process" eyebrow="Process" title="How it runs, with timelines" />
-        <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {service.process.map((p, i) => (
-            <li key={p.step} className="border-line bg-bg rounded-2xl border p-6">
-              <span className="tabular text-accent text-sm font-bold">0{i + 1}</span>
-              <h3 className="mt-2 text-lg font-bold">{p.step}</h3>
-              <Badge tone="sla" className="mt-2">
-                {p.sla}
-              </Badge>
-              <p className="text-muted mt-3">{p.detail}</p>
-            </li>
-          ))}
-        </ol>
+        <div className="border-line bg-surface rounded-2xl border p-6 sm:p-10">
+          <PipelineTracker
+            mode="plan"
+            label={`${service.name} process`}
+            steps={service.process.map((p) => ({ label: p.step, detail: p.sla, body: p.detail }))}
+          />
+        </div>
       </Section>
 
       <Section labelledBy="price">
@@ -119,9 +120,7 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
             <ul className="grid gap-3 sm:grid-cols-2">
               {service.pricing.bullets.map((b) => (
                 <li key={b} className="flex gap-2">
-                  <span aria-hidden className="text-signal">
-                    ✓
-                  </span>
+                  <Tick />
                   {b}
                 </li>
               ))}

@@ -6,7 +6,9 @@ import { Card, LinkCard } from "@/components/ui/card";
 import { Section, SectionHeading } from "@/components/ui/layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { ctas } from "@/content/site";
-import { getCities, getService } from "@/lib/content";
+import { getCities, getRole, getService } from "@/lib/content";
+import { CityCompare } from "@/components/visuals/city-compare";
+import { GccSprintMock } from "@/components/visuals/service-visuals";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildMetadata({
@@ -27,6 +29,13 @@ export default function GccHub() {
         eyebrow="For Global Capability Centres"
         title="Your GCC hiring partner in India"
         intro="Capacity for a build-out, predictable pricing and DPDP-aligned data handling. From your first ten hires to your next hundred."
+        aside={
+          <figure role="img" aria-label="Illustration of a 12-week GCC hiring sprint plan.">
+            <div aria-hidden className="mx-auto w-full max-w-md">
+              <GccSprintMock />
+            </div>
+          </figure>
+        }
         actions={
           <>
             <ButtonLink href={ctas.gccTeam.href} size="lg">
@@ -58,15 +67,12 @@ export default function GccHub() {
           id="cities"
           eyebrow="Cities"
           title="Choose your city with data"
-          intro="Salary benchmarks, talent supply, clusters and notice-period norms for each GCC hub."
+          intro="Clusters and senior salary bands side by side. Each city page has full benchmarks, supply and notice-period norms."
         />
-        <div className="grid gap-6 md:grid-cols-3">
-          {getCities().map((c) => (
-            <LinkCard key={c.slug} href={`/gcc/${c.slug}`} title={`GCC hiring in ${c.name}`}>
-              {c.gccIntro}
-            </LinkCard>
-          ))}
-        </div>
+        <CityCompare cities={getCities()} role={getRole("data-engineers")!} />
+        <p className="text-muted mt-4 text-sm">
+          Bands are indicative and use one shared scale, so the cities are directly comparable.
+        </p>
       </Section>
       <Section labelledBy="fears">
         <SectionHeading
@@ -75,19 +81,22 @@ export default function GccHub() {
         />
         <div className="grid gap-6 md:grid-cols-3">
           <Card>
-            <h3 className="font-bold">Agency spam</h3>
+            <IconTile name="chat" tone="ink" />
+            <h3 className="mt-5 font-bold">Agency spam</h3>
             <p className="text-muted mt-2">
               One named recruiter per pod, one weekly report, no cold CV forwards.
             </p>
           </Card>
           <Card>
-            <h3 className="font-bold">CV dumps</h3>
+            <IconTile name="dossier" tone="ink" />
+            <h3 className="mt-5 font-bold">CV dumps</h3>
             <p className="text-muted mt-2">
               Three to five evidenced candidates per role, signed off by a senior recruiter.
             </p>
           </Card>
           <Card>
-            <h3 className="font-bold">Data leaks</h3>
+            <IconTile name="lock" tone="ink" />
+            <h3 className="mt-5 font-bold">Data leaks</h3>
             <p className="text-muted mt-2">
               Private CV storage, signed links that expire, consent per role and MFA on every staff
               account.
