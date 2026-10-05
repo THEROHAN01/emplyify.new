@@ -1,5 +1,6 @@
 import { AiHumanSplit } from "@/components/marketing/ai-split";
 import { FinalCta } from "@/components/marketing/cta-band";
+import { IconTile, type IconName } from "@/components/ui/icons";
 import { ButtonLink } from "@/components/ui/button";
 import { Card, LinkCard } from "@/components/ui/card";
 import { Section, SectionHeading } from "@/components/ui/layout";
@@ -41,7 +42,12 @@ export default function GccHub() {
         <SectionHeading id="offer" title="Three ways we work with GCCs" />
         <div className="grid gap-6 md:grid-cols-3">
           {offerings.map((s) => (
-            <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.name}>
+            <LinkCard
+              key={s.slug}
+              href={`/services/${s.slug}`}
+              title={s.name}
+              icon={<IconTile name={s.slug as IconName} />}
+            >
               {s.outcome}
             </LinkCard>
           ))}

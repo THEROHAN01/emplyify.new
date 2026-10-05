@@ -6,7 +6,8 @@ import {
   RoleLinks,
   SkillsWeVet,
 } from "@/components/marketing/role-sections";
-import { SALARY_FOOTNOTE, SalaryTable } from "@/components/marketing/salary-table";
+import { SALARY_FOOTNOTE, bandsToRows } from "@/components/marketing/salary-table";
+import { RangeChart } from "@/components/visuals/range-chart";
 import { ButtonLink } from "@/components/ui/button";
 import { FaqList } from "@/components/ui/faq";
 import { Section, SectionHeading } from "@/components/ui/layout";
@@ -72,18 +73,15 @@ export default async function RolePageView(props: PageProps<"/hire/[role]">) {
           title={`${role.title} salaries by city`}
           intro="Fixed annual CTC by experience. Use these to sanity-check your budget before you brief us."
         />
-        <div className="grid gap-6 lg:grid-cols-3">
-          {cities.map((c) => (
-            <div key={c.slug}>
-              <h3 className="mb-3 text-lg font-bold">{c.name}</h3>
-              <SalaryTable
-                bands={citySalaryBands(role.salaryBands, c)}
-                caption={`${role.title}, ${c.name}`}
-              />
-            </div>
-          ))}
-        </div>
-        <p className="text-muted mt-4 text-sm">{SALARY_FOOTNOTE}</p>
+        <RangeChart
+          title={`${role.title}: fixed annual CTC`}
+          groups={cities.map((c) => ({
+            id: c.slug,
+            label: c.name,
+            rows: bandsToRows(citySalaryBands(role.salaryBands, c)),
+          }))}
+          caption={SALARY_FOOTNOTE}
+        />
       </Section>
       <InterviewLoop role={role} />
       <Section labelledBy="faq">

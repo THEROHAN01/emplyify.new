@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { PipelineTracker } from "@/components/visuals/pipeline-tracker";
 import { ConversionEvent } from "@/components/analytics/conversion-event";
 import { Badge } from "@/components/ui/badge";
 import { ButtonLink } from "@/components/ui/button";
@@ -45,18 +46,13 @@ export default async function AppliedPage(props: PageProps<"/jobs/[slug]/applied
             its way.
           </p>
         )}
-        <ol className="mt-8 space-y-2" aria-label="Application status">
-          {stages.map((s, i) => (
-            <li
-              key={s}
-              className={`flex items-center gap-3 rounded-lg border px-4 py-3 ${i === 0 ? "border-signal bg-signal-bg" : "border-line bg-surface text-muted"}`}
-            >
-              <span className="tabular font-bold">{i + 1}</span>
-              {s}
-              {i === 0 && <span className="text-signal ml-auto text-sm font-semibold">Now</span>}
-            </li>
-          ))}
-        </ol>
+        <div className="border-line bg-surface mt-8 rounded-2xl border p-6">
+          <PipelineTracker
+            label="Application status"
+            current={0}
+            steps={stages.map((label) => ({ label }))}
+          />
+        </div>
         <p className="text-muted mt-6">
           You'll hear from us within {site.promises.candidateUpdateBusinessDays} business days,
           whatever the answer.

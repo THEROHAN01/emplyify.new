@@ -15,20 +15,20 @@ From then on, every push to `main` deploys to production, and every PR gets a pr
 
 The site builds and runs with **none** of these set: forms complete and integrations log "skipped". Add them as each account is ready (Project → Settings → Environment Variables).
 
-| Variable | Environments | Notes |
-| --- | --- | --- |
-| `NEXT_PUBLIC_SITE_URL` | Production | `https://emplyify.com` once the domain is attached. Before that it falls back to the Vercel production URL. |
-| `IP_HASH_SALT` | Production, Preview | Any long random string. **Set before launch.** |
-| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` | Production, Preview | Cloudflare → Turnstile. Add the Vercel domains to the widget. |
-| `HUBSPOT_PORTAL_ID`, `HUBSPOT_BRIEF_FORM_ID`, `HUBSPOT_CONTACT_FORM_ID`, `HUBSPOT_REPORT_FORM_ID` | Production | Create the forms and the `emplyify_*` contact properties first. |
-| `RESEND_API_KEY`, `EMAIL_FROM`, `INTERNAL_ALERT_EMAIL` | Production | Verify the sending domain in Resend (SPF/DKIM). |
-| `SLACK_LEADS_WEBHOOK_URL` | Production | Incoming webhook for the leads channel. |
-| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_CV_BUCKET` | Production (+ Preview with a separate project) | Apply `supabase/migrations/0001_init.sql` first. Use a Supabase project in the Mumbai region. |
-| `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL` | Production, Preview | Optional; AI features fall back to heuristics without it. |
-| `NEXT_PUBLIC_CAL_LINK`, `NEXT_PUBLIC_CAL_LINK_GCC` | Production, Preview | Cal.com event URLs. |
-| `NEXT_PUBLIC_WHATSAPP_NUMBER` | Production, Preview | International format, digits only, e.g. `919800000000`. |
-| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` or `NEXT_PUBLIC_POSTHOG_KEY` (+ `_HOST`) | Production | Enables the cookie banner and consent-gated analytics. |
-| `CONTENT_PREVIEW` | — | Not needed on Vercel: previews (`VERCEL_ENV=preview`) show drafts automatically and send `robots: disallow`. Set to `false` to turn that off. |
+| Variable                                                                                          | Environments                                   | Notes                                                                                                                                         |
+| ------------------------------------------------------------------------------------------------- | ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SITE_URL`                                                                            | Production                                     | `https://emplyify.com` once the domain is attached. Before that it falls back to the Vercel production URL.                                   |
+| `IP_HASH_SALT`                                                                                    | Production, Preview                            | Any long random string. **Set before launch.**                                                                                                |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`                                          | Production, Preview                            | Cloudflare → Turnstile. Add the Vercel domains to the widget.                                                                                 |
+| `HUBSPOT_PORTAL_ID`, `HUBSPOT_BRIEF_FORM_ID`, `HUBSPOT_CONTACT_FORM_ID`, `HUBSPOT_REPORT_FORM_ID` | Production                                     | Create the forms and the `emplyify_*` contact properties first.                                                                               |
+| `RESEND_API_KEY`, `EMAIL_FROM`, `INTERNAL_ALERT_EMAIL`                                            | Production                                     | Verify the sending domain in Resend (SPF/DKIM).                                                                                               |
+| `SLACK_LEADS_WEBHOOK_URL`                                                                         | Production                                     | Incoming webhook for the leads channel.                                                                                                       |
+| `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_CV_BUCKET`                                 | Production (+ Preview with a separate project) | Apply `supabase/migrations/0001_init.sql` first. Use a Supabase project in the Mumbai region.                                                 |
+| `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL`                                                            | Production, Preview                            | Optional; AI features fall back to heuristics without it.                                                                                     |
+| `NEXT_PUBLIC_CAL_LINK`, `NEXT_PUBLIC_CAL_LINK_GCC`                                                | Production, Preview                            | Cal.com event URLs.                                                                                                                           |
+| `NEXT_PUBLIC_WHATSAPP_NUMBER`                                                                     | Production, Preview                            | International format, digits only, e.g. `919800000000`.                                                                                       |
+| `NEXT_PUBLIC_PLAUSIBLE_DOMAIN` or `NEXT_PUBLIC_POSTHOG_KEY` (+ `_HOST`)                           | Production                                     | Enables the cookie banner and consent-gated analytics.                                                                                        |
+| `CONTENT_PREVIEW`                                                                                 | —                                              | Not needed on Vercel: previews (`VERCEL_ENV=preview`) show drafts automatically and send `robots: disallow`. Set to `false` to turn that off. |
 
 `NEXT_PUBLIC_*` values are inlined at build time, so **redeploy** after changing them.
 

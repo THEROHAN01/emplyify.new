@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { FinalCta } from "@/components/marketing/cta-band";
 import { SALARY_FOOTNOTE } from "@/components/marketing/salary-table";
+import { RangeChart } from "@/components/visuals/range-chart";
 import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { FaqList } from "@/components/ui/faq";
@@ -10,7 +11,6 @@ import { PageHeader } from "@/components/ui/page-header";
 import { ctas } from "@/content/site";
 import { citySalaryBands, getCaseStudies, getCities, getCity, getRoles } from "@/lib/content";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { formatLpaRange } from "@/lib/utils/format";
 
 export const dynamicParams = false;
 
@@ -92,47 +92,34 @@ export default async function GccCityPage(props: PageProps<"/gcc/[city]">) {
           title={`Salary benchmarks in ${city.name}`}
           intro="Fixed annual CTC for mid and senior engineers. Each role page has the full range."
         />
-        <div className="border-line bg-bg overflow-x-auto rounded-2xl border">
-          <table className="w-full text-left">
-            <thead>
-              <tr className="border-line border-b">
-                <th scope="col" className="px-6 py-3">
-                  Role
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Mid (3–6 yrs)
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Senior (6–10 yrs)
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {getRoles().map((r) => {
-                const bands = citySalaryBands(r.salaryBands, city);
-                const mid = bands.find((b) => b.seniority === "mid")!;
-                const senior = bands.find((b) => b.seniority === "senior")!;
-                return (
-                  <tr key={r.slug} className="border-line border-b last:border-0">
-                    <th scope="row" className="px-6 py-3 font-semibold">
-                      <Link
-                        href={`/hire/${r.slug}/${city.slug}`}
-                        className="text-accent hover:underline"
-                      >
-                        {r.title}
-                      </Link>
-                    </th>
-                    <td className="tabular px-6 py-3">{formatLpaRange(mid.minLpa, mid.maxLpa)}</td>
-                    <td className="tabular px-6 py-3">
-                      {formatLpaRange(senior.minLpa, senior.maxLpa)}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-        <p className="text-muted mt-3 text-sm">{SALARY_FOOTNOTE}</p>
+        <RangeChart
+          title={`${city.name} salary benchmarks by role`}
+          toggleLabel="Choose a seniority level"
+          groups={(["mid", "senior"] as const).map((level) => ({
+            id: level,
+            label: level === "mid" ? "Mid (3–6 yrs)" : "Senior (6–10 yrs)",
+            rows: getRoles().map((r) => {
+              const b = citySalaryBands(r.salaryBands, city).find((x) => x.seniority === level)!;
+              return {
+                label: r.title.replace(/ engineers$| developers$| managers$/i, ""),
+                min: b.minLpa,
+                max: b.maxLpa,
+              };
+            }),
+          }))}
+          caption={SALARY_FOOTNOTE}
+        />
+        <p className="text-muted mt-6 text-sm">
+          Full bands by role:{" "}
+          {getRoles().map((r, i) => (
+            <span key={r.slug}>
+              {i > 0 && " · "}
+              <Link href={`/hire/${r.slug}/${city.slug}`} className="text-accent hover:underline">
+                {r.title}
+              </Link>
+            </span>
+          ))}
+        </p>
       </Section>
 
       <Section labelledBy="notes">

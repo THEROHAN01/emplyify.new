@@ -1,6 +1,7 @@
 import { AiHumanSplit } from "@/components/marketing/ai-split";
 import { FinalCta } from "@/components/marketing/cta-band";
-import { HiringSteps } from "@/components/marketing/steps";
+import { ProcessShowcase } from "@/components/visuals/process-showcase";
+import { PipelineTracker } from "@/components/visuals/pipeline-tracker";
 import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Section, SectionHeading } from "@/components/ui/layout";
@@ -74,11 +75,32 @@ export default function HowItWorksPage() {
 
       <Section labelledBy="steps">
         <SectionHeading id="steps" title="The four steps" />
-        <HiringSteps />
+        <ProcessShowcase />
       </Section>
 
       <Section tone="surface" labelledBy="slas">
-        <SectionHeading id="slas" eyebrow="Service levels" title="Promises we put in writing" />
+        <SectionHeading
+          id="slas"
+          eyebrow="Service levels"
+          title="Promises we put in writing"
+          intro="Every role moves through the same visible pipeline. This is what a search looks like on day three."
+        />
+        <div className="border-line bg-surface mb-10 rounded-2xl border p-6 sm:p-8">
+          <p className="text-muted mb-6 text-sm font-medium">
+            Example pipeline · Senior Data Engineer
+          </p>
+          <PipelineTracker
+            label="Example hiring pipeline"
+            current={2}
+            steps={[
+              { label: "Brief confirmed", detail: "Within 4 business hours" },
+              { label: "Search and screen", detail: "0–48 hours" },
+              { label: "Shortlist sent", detail: "By 72 hours" },
+              { label: "Interviews", detail: "Feedback chased in 48h" },
+              { label: "Offer and joining", detail: "90-day cover starts" },
+            ]}
+          />
+        </div>
         <div className="border-line bg-surface overflow-x-auto rounded-2xl border">
           <table className="w-full text-left">
             <thead>

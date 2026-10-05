@@ -46,3 +46,20 @@ export function SalaryTable({ bands, caption }: { bands: SalaryBand[]; caption: 
 
 export const SALARY_FOOTNOTE =
   "Indicative ranges compiled by Emplyify from market data, Q4 2026. They are a starting point for budgeting, not an offer benchmark; our Talent Index will replace them with pipeline data.";
+
+const levelLabel: Record<SalaryBand["seniority"], string> = {
+  junior: "Junior",
+  mid: "Mid",
+  senior: "Senior",
+  lead: "Lead",
+};
+
+/** SalaryBand[] → RangeChart rows. */
+export function bandsToRows(bands: SalaryBand[]) {
+  return bands.map((b) => ({
+    label: levelLabel[b.seniority],
+    sub: b.years,
+    min: b.minLpa,
+    max: b.maxLpa,
+  }));
+}

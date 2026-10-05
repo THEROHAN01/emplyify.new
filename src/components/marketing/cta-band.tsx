@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/layout";
 import { ctas, site } from "@/content/site";
+import { IconTile, type IconName } from "@/components/ui/icons";
 
 export function CheckIcon({ className = "" }: { className?: string }) {
   return (
@@ -66,14 +67,15 @@ export function FinalCta({
   );
 }
 
-const candidatePromises = [
-  ["Salary band on every role", "Decide before the first conversation."],
-  ["No spam calls", "First contact is email or WhatsApp. Calls only in slots you book."],
+const candidatePromises: [IconName, string, string][] = [
+  ["rupee", "Salary band on every role", "Decide before the first conversation."],
+  ["noCall", "No spam calls", "First contact is email or WhatsApp. Calls only in slots you book."],
   [
+    "clock",
     `An update within ${site.promises.candidateUpdateBusinessDays} business days`,
     "At every stage, with a reason for every outcome.",
   ],
-  ["Prep for the real interview", "Practice questions tied to the role you applied for."],
+  ["target", "Prep for the real interview", "Practice questions tied to the role you applied for."],
 ];
 
 export function CandidateBand() {
@@ -97,9 +99,9 @@ export function CandidateBand() {
             </div>
           </div>
           <ul className="grid gap-x-8 gap-y-8 sm:grid-cols-2">
-            {candidatePromises.map(([t, d]) => (
+            {candidatePromises.map(([icon, t, d]) => (
               <li key={t}>
-                <CheckIcon className="text-signal" />
+                <IconTile name={icon} tone="ink" />
                 <p className="mt-3 font-semibold">{t}</p>
                 <p className="text-muted mt-1">{d}</p>
               </li>

@@ -1,3 +1,4 @@
+import { IconTile, type IconName } from "@/components/ui/icons";
 import { FinalCta } from "@/components/marketing/cta-band";
 import { LinkCard } from "@/components/ui/card";
 import { Section, SectionHeading } from "@/components/ui/layout";
@@ -29,7 +30,12 @@ export default function HireIndex() {
           {getRoleFamilies().map((f) => {
             const r = getRoleByFamily(f.slug)!;
             return (
-              <LinkCard key={f.slug} href={`/hire/${r.slug}`} title={r.title}>
+              <LinkCard
+                key={f.slug}
+                href={`/hire/${r.slug}`}
+                title={r.title}
+                icon={<IconTile name={f.slug} tone="ink" />}
+              >
                 {r.shortDescription}
               </LinkCard>
             );
@@ -40,7 +46,12 @@ export default function HireIndex() {
         <SectionHeading id="services" title="Ways to work with us" />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {getServices().map((s) => (
-            <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.name}>
+            <LinkCard
+              key={s.slug}
+              href={`/services/${s.slug}`}
+              title={s.name}
+              icon={<IconTile name={s.slug as IconName} />}
+            >
               {s.outcome}
             </LinkCard>
           ))}

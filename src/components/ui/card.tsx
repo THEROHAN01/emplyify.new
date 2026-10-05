@@ -14,12 +14,15 @@ export function LinkCard({
   title,
   children,
   meta,
+  icon,
   className,
 }: {
   href: string;
   title: string;
   children?: ReactNode;
   meta?: ReactNode;
+  /** Optional visual anchor (e.g. <IconTile />) shown above the title. */
+  icon?: ReactNode;
   className?: string;
 }) {
   return (
@@ -29,6 +32,7 @@ export function LinkCard({
         className,
       )}
     >
+      {icon && <div className="mb-5">{icon}</div>}
       {meta && <div className="mb-3">{meta}</div>}
       <h3 className="text-lg font-bold">
         <Link

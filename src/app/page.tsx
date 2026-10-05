@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { CandidateBand, CheckIcon, FinalCta } from "@/components/marketing/cta-band";
 import { ProofBar } from "@/components/marketing/proof-bar";
-import { ShortlistPreview } from "@/components/marketing/shortlist-card";
-import { HiringSteps } from "@/components/marketing/steps";
+import { HeroShortlist } from "@/components/visuals/hero-shortlist";
+import { ProcessShowcase } from "@/components/visuals/process-showcase";
 import { Badge } from "@/components/ui/badge";
+import { IconTile, type IconName } from "@/components/ui/icons";
 import { ButtonLink } from "@/components/ui/button";
 import { Card, LinkCard } from "@/components/ui/card";
 import { Container, Section, SectionHeading } from "@/components/ui/layout";
 import { REPLACEMENT_DAYS, podFromMonthlyInr } from "@/content/pricing";
-import { getSampleShortlist } from "@/content/sample-shortlists";
+import { sampleShortlists } from "@/content/sample-shortlists";
 import { ctas, site } from "@/content/site";
 import {
   getCaseStudies,
@@ -52,7 +53,6 @@ const problems = [
 const heroPoints = ["Shortlist in 72 hours", "Pay only on hire", "90-day free replacement"];
 
 export default function HomePage() {
-  const sample = getSampleShortlist("ai-ml");
   const caseStudy = getCaseStudies()[0];
   const talentIndex = getInsights().find((i) => i.kind === "Talent Index");
   const families = getRoleFamilies();
@@ -110,39 +110,10 @@ export default function HomePage() {
               aria-hidden
               className="bg-bg absolute -inset-x-4 -inset-y-6 -z-10 rounded-[32px] sm:-inset-x-8 sm:-inset-y-10"
             />
-            <ShortlistPreview shortlist={sample} />
-            <p className="text-muted mt-4 text-center text-sm">
-              <Link
-                href="/sample-shortlist"
-                className="hover:text-ink underline underline-offset-4"
-              >
-                Open the full sample dossier
-              </Link>
-            </p>
-          </div>
-        </Container>
-      </section>
-
-      {/* Specialisms strip (instead of a logo wall until clients approve logos) */}
-      <section aria-label="Role families we hire for" className="pb-12">
-        <Container>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-            <p className="text-muted shrink-0 text-sm font-medium">We hire for</p>
-            <ul className="flex flex-wrap gap-2">
-              {families.map((f) => {
-                const role = getRoleByFamily(f.slug)!;
-                return (
-                  <li key={f.slug}>
-                    <Link
-                      href={`/hire/${role.slug}`}
-                      className="border-line hover:border-ink flex min-h-10 items-center rounded-full border px-4 text-sm font-medium transition-colors"
-                    >
-                      {f.name}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+            <HeroShortlist
+              shortlists={sampleShortlists}
+              families={families.map(({ slug, name }) => ({ slug, name }))}
+            />
           </div>
         </Container>
       </section>
@@ -169,7 +140,7 @@ export default function HomePage() {
       </Section>
 
       {/* 4 · How it works */}
-      <Section tone="surface" labelledBy="how">
+      <Section labelledBy="how" className="border-line border-t">
         <div className="mb-12 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeading
             id="how"
@@ -182,7 +153,7 @@ export default function HomePage() {
             See how it works
           </ButtonLink>
         </div>
-        <HiringSteps />
+        <ProcessShowcase />
       </Section>
 
       {/* 5 · Services */}
@@ -190,7 +161,12 @@ export default function HomePage() {
         <SectionHeading id="services" eyebrow="Services" title="One role or a whole GCC." />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {getServices().map((s) => (
-            <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.name}>
+            <LinkCard
+              key={s.slug}
+              href={`/services/${s.slug}`}
+              title={s.name}
+              icon={<IconTile name={s.slug as IconName} />}
+            >
               {s.outcome}
             </LinkCard>
           ))}
@@ -209,7 +185,12 @@ export default function HomePage() {
           {families.map((f) => {
             const role = getRoleByFamily(f.slug)!;
             return (
-              <LinkCard key={f.slug} href={`/hire/${role.slug}`} title={f.name}>
+              <LinkCard
+                key={f.slug}
+                href={`/hire/${role.slug}`}
+                title={f.name}
+                icon={<IconTile name={f.slug} tone="ink" />}
+              >
                 {f.blurb}
               </LinkCard>
             );

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PipelineTracker } from "@/components/visuals/pipeline-tracker";
 import { JobCard } from "@/components/marketing/job-card";
 import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -16,6 +17,13 @@ export const metadata = buildMetadata({
 });
 
 const stages = ["Received", "Screened", "Shared (with your OK)", "Interview", "Outcome + feedback"];
+const stageDetails = [
+  "Confirmation email",
+  "Recruiter call you book",
+  "Only after you agree",
+  "Prep for this exact loop",
+  "A reason, whatever the result",
+];
 
 export default function CandidatesHub() {
   const jobs = getJobs().slice(0, 3);
@@ -67,14 +75,16 @@ export default function CandidatesHub() {
           eyebrow="Always know where you stand"
           title="Every application moves through five visible stages"
         />
-        <ol className="grid gap-3 sm:grid-cols-5">
-          {stages.map((s, i) => (
-            <li key={s} className="border-line bg-bg rounded-lg border p-4">
-              <span className="tabular text-accent text-sm font-bold">{i + 1}</span>
-              <p className="font-semibold">{s}</p>
-            </li>
-          ))}
-        </ol>
+        <div className="border-line bg-surface rounded-2xl border p-6 sm:p-8">
+          <p className="text-muted mb-6 text-sm font-medium">
+            Example application · Senior ML Engineer
+          </p>
+          <PipelineTracker
+            label="Example application status"
+            current={2}
+            steps={stages.map((label, i) => ({ label, detail: stageDetails[i] }))}
+          />
+        </div>
         <p className="text-muted mt-4">
           Updates arrive by email today; a live status portal and WhatsApp updates are coming next.
         </p>

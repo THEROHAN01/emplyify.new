@@ -7,7 +7,8 @@ import {
   RoleLinks,
   SkillsWeVet,
 } from "@/components/marketing/role-sections";
-import { SALARY_FOOTNOTE, SalaryTable } from "@/components/marketing/salary-table";
+import { SALARY_FOOTNOTE, bandsToRows } from "@/components/marketing/salary-table";
+import { RangeChart } from "@/components/visuals/range-chart";
 import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { FaqList } from "@/components/ui/faq";
@@ -78,11 +79,17 @@ export default async function RoleCityPage(props: PageProps<"/hire/[role]/[city]
               title={`${role.title} salaries in ${city.name}`}
               className="mb-6"
             />
-            <SalaryTable
-              bands={citySalaryBands(role.salaryBands, city)}
-              caption={`${role.title}, ${city.name} — fixed annual CTC`}
+            <RangeChart
+              title={`${role.title} in ${city.name}`}
+              groups={[
+                {
+                  id: city.slug,
+                  label: city.name,
+                  rows: bandsToRows(citySalaryBands(role.salaryBands, city)),
+                },
+              ]}
+              caption={SALARY_FOOTNOTE}
             />
-            <p className="text-muted mt-3 text-sm">{SALARY_FOOTNOTE}</p>
           </div>
           <div className="space-y-4">
             <Card>

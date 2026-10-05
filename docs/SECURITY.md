@@ -2,20 +2,20 @@
 
 ## In the code
 
-| Control | Where |
-| --- | --- |
-| HSTS (2 years, preload), `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy`, COOP | `next.config.ts` |
-| Content-Security-Policy: `default-src 'self'`, pinned origins for Plausible, PostHog, Turnstile and Cal.com, `frame-ancestors 'none'`, `object-src 'none'`, `form-action 'self'` | `next.config.ts` |
-| Same-origin check on all form APIs (CSRF) | `lib/security/request.ts` |
-| Rate limits per IP and endpoint (5–30 per window) | `lib/security/rate-limit.ts`, `guard.ts` |
-| Cloudflare Turnstile verified server-side; honeypot field | `integrations/turnstile.ts`, `ui/field.tsx` |
-| JSON body cap of 64 KB; upload cap of 5 MB | `lib/security/api.ts`, `api/apply` |
-| CV type checked by magic bytes, not just extension; private bucket; unguessable paths; 10-minute signed URLs | `lib/security/upload.ts`, `integrations/supabase.ts` |
-| No raw IPs stored (salted SHA-256) | `lib/security/request.ts` |
-| Logs carry ids and counts, never personal data or prompt text | `integrations/logger.ts`, `ai/client.ts` |
-| Supabase RLS on every table (deny by default); service role used server-side only | `supabase/migrations/0001_init.sql` |
-| Prompt-injection hygiene: untrusted text wrapped in tags and labelled as data | `lib/ai/*` |
-| JSON-LD escapes `<` | `components/seo/json-ld.tsx` |
+| Control                                                                                                                                                                          | Where                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| HSTS (2 years, preload), `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy`, `Permissions-Policy`, COOP                                                        | `next.config.ts`                                     |
+| Content-Security-Policy: `default-src 'self'`, pinned origins for Plausible, PostHog, Turnstile and Cal.com, `frame-ancestors 'none'`, `object-src 'none'`, `form-action 'self'` | `next.config.ts`                                     |
+| Same-origin check on all form APIs (CSRF)                                                                                                                                        | `lib/security/request.ts`                            |
+| Rate limits per IP and endpoint (5–30 per window)                                                                                                                                | `lib/security/rate-limit.ts`, `guard.ts`             |
+| Cloudflare Turnstile verified server-side; honeypot field                                                                                                                        | `integrations/turnstile.ts`, `ui/field.tsx`          |
+| JSON body cap of 64 KB; upload cap of 5 MB                                                                                                                                       | `lib/security/api.ts`, `api/apply`                   |
+| CV type checked by magic bytes, not just extension; private bucket; unguessable paths; 10-minute signed URLs                                                                     | `lib/security/upload.ts`, `integrations/supabase.ts` |
+| No raw IPs stored (salted SHA-256)                                                                                                                                               | `lib/security/request.ts`                            |
+| Logs carry ids and counts, never personal data or prompt text                                                                                                                    | `integrations/logger.ts`, `ai/client.ts`             |
+| Supabase RLS on every table (deny by default); service role used server-side only                                                                                                | `supabase/migrations/0001_init.sql`                  |
+| Prompt-injection hygiene: untrusted text wrapped in tags and labelled as data                                                                                                    | `lib/ai/*`                                           |
+| JSON-LD escapes `<`                                                                                                                                                              | `components/seo/json-ld.tsx`                         |
 
 ## Known trade-offs
 
