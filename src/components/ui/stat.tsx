@@ -17,11 +17,13 @@ export function Stat({
   return (
     <div className={cn("flex flex-col", className)}>
       {value ? (
-        <span className="tabular text-accent font-mono text-3xl font-bold">{value}</span>
+        <span className="tabular text-ink text-[2rem] leading-tight font-bold tracking-tight">
+          {value}
+        </span>
       ) : (
-        <span className="text-warn text-base font-semibold">{pending}</span>
+        <span className="text-muted text-lg leading-tight font-semibold">{pending}</span>
       )}
-      <span className="mt-1 font-semibold">{label}</span>
+      <span className="mt-2 font-semibold">{label}</span>
       <span className="text-muted mt-1 text-sm">{footnote}</span>
     </div>
   );

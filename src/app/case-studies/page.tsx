@@ -29,10 +29,8 @@ export default async function CaseStudiesPage(props: PageProps<"/case-studies">)
 
   const chip = (active: boolean) =>
     cn(
-      "min-h-11 rounded-full border px-4 py-2 text-sm font-semibold",
-      active
-        ? "border-accent bg-accent text-accent-ink"
-        : "border-line bg-surface hover:border-accent",
+      "inline-flex min-h-10 items-center rounded-full border px-4 text-sm font-medium",
+      active ? "border-ink bg-ink text-white" : "border-line bg-surface hover:border-ink",
     );
   const href = (next: { role?: string; type?: string }) => {
     const q = new URLSearchParams(Object.entries(next).filter(([, v]) => v) as [string, string][]);
@@ -90,7 +88,7 @@ export default async function CaseStudiesPage(props: PageProps<"/case-studies">)
                 <div className="mt-4 grid grid-cols-2 gap-3">
                   {c.results.slice(0, 2).map((r) => (
                     <div key={r.label}>
-                      <p className="tabular text-accent font-mono text-2xl font-bold">{r.value}</p>
+                      <p className="tabular text-ink text-2xl font-bold">{r.value}</p>
                       <p className="text-muted text-sm">{r.label}</p>
                     </div>
                   ))}

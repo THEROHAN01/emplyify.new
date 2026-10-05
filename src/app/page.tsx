@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { CandidateBand, FinalCta } from "@/components/marketing/cta-band";
+import { CandidateBand, CheckIcon, FinalCta } from "@/components/marketing/cta-band";
 import { ProofBar } from "@/components/marketing/proof-bar";
-import { ShortlistCard } from "@/components/marketing/shortlist-card";
+import { ShortlistPreview } from "@/components/marketing/shortlist-card";
 import { HiringSteps } from "@/components/marketing/steps";
 import { Badge } from "@/components/ui/badge";
 import { ButtonLink } from "@/components/ui/button";
@@ -31,41 +31,55 @@ export const metadata = buildMetadata({
 const problems = [
   {
     problem: "Sourcing takes weeks",
-    fix: "AI sourcing across our network and public profiles starts the hour you brief us.",
+    fix: "Search starts the hour you brief us",
+    detail:
+      "AI agents search our network and public profiles against your must-haves, then recruiters screen the best matches.",
   },
   {
     problem: "Agencies send CV dumps",
-    fix: "Three to five candidates, each with a dossier: evidence per must-have, risks and a recruiter's sign-off.",
+    fix: "Three to five people, each with a dossier",
+    detail:
+      "Evidence for every must-have, notice period and CTC, honest risks and a recruiter's sign-off.",
   },
   {
     problem: "No idea where things stand",
-    fix: "A live pipeline with written SLAs at every step, from brief to offer.",
+    fix: "Written SLAs at every step",
+    detail:
+      "A reply within 4 business hours, a shortlist within 72, and feedback chased within 48 hours of each interview.",
   },
 ];
+
+const heroPoints = ["Shortlist in 72 hours", "Pay only on hire", "90-day free replacement"];
 
 export default function HomePage() {
   const sample = getSampleShortlist("ai-ml");
   const caseStudy = getCaseStudies()[0];
   const talentIndex = getInsights().find((i) => i.kind === "Talent Index");
+  const families = getRoleFamilies();
 
   return (
     <>
       {/* 1 · Hero */}
       <section
         aria-labelledby="hero-title"
-        className="overflow-hidden pt-12 pb-16 lg:pt-20 lg:pb-24"
+        className="overflow-hidden pt-14 pb-16 lg:pt-24 lg:pb-24"
       >
-        <Container className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+        <Container className="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-16">
           <div>
-            <Badge tone="sla">For tech and GCC hiring teams in India</Badge>
-            <h1 id="hero-title" className="mt-5 text-4xl font-extrabold sm:text-5xl lg:text-[4rem]">
-              Vetted tech talent, shortlisted in <span className="text-accent">72&nbsp;hours</span>.
+            <p className="text-muted text-sm font-medium">
+              Hiring partner for tech and GCC teams in India
+            </p>
+            <h1
+              id="hero-title"
+              className="mt-5 text-[2.75rem] font-bold sm:text-6xl lg:text-[4.25rem]"
+            >
+              Vetted tech talent, shortlisted in 72&nbsp;hours.
             </h1>
             <p className="text-muted mt-6 max-w-xl text-lg sm:text-xl">
               AI does the searching. Senior recruiters vouch for every shortlist. You see the price
               before you talk to us.
             </p>
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-9 flex flex-wrap gap-3">
               <ButtonLink href={ctas.submitRole.href} size="lg">
                 {ctas.submitRole.label}
               </ButtonLink>
@@ -73,25 +87,62 @@ export default function HomePage() {
                 {ctas.bookCall.label}
               </ButtonLink>
             </div>
-            <p className="text-muted mt-6">
+            <ul className="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-[15px]">
+              {heroPoints.map((p) => (
+                <li key={p} className="flex items-center gap-2">
+                  <CheckIcon className="text-signal" />
+                  {p}
+                </li>
+              ))}
+            </ul>
+            <p className="text-muted mt-8 text-[15px]">
               Looking for a job?{" "}
               <Link
                 href="/candidates"
-                className="text-accent font-semibold underline-offset-4 hover:underline"
+                className="text-ink hover:text-accent font-semibold underline underline-offset-4"
               >
-                See how we work with engineers →
+                See how we work with engineers
               </Link>
             </p>
           </div>
           <div className="relative">
-            <div aria-hidden className="bg-accent-soft absolute -inset-6 -z-10 rounded-[28px]" />
-            <ShortlistCard candidate={sample.candidates[0]} role={sample.role} headingLevel="h2" />
-            <p className="text-muted mt-3 text-center text-sm">
-              An anonymised sample.{" "}
-              <Link href="/sample-shortlist" className="text-accent underline">
-                See the full dossier
+            <div
+              aria-hidden
+              className="bg-bg absolute -inset-x-4 -inset-y-6 -z-10 rounded-[32px] sm:-inset-x-8 sm:-inset-y-10"
+            />
+            <ShortlistPreview shortlist={sample} />
+            <p className="text-muted mt-4 text-center text-sm">
+              <Link
+                href="/sample-shortlist"
+                className="hover:text-ink underline underline-offset-4"
+              >
+                Open the full sample dossier
               </Link>
             </p>
+          </div>
+        </Container>
+      </section>
+
+      {/* Specialisms strip (instead of a logo wall until clients approve logos) */}
+      <section aria-label="Role families we hire for" className="pb-12">
+        <Container>
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
+            <p className="text-muted shrink-0 text-sm font-medium">We hire for</p>
+            <ul className="flex flex-wrap gap-2">
+              {families.map((f) => {
+                const role = getRoleByFamily(f.slug)!;
+                return (
+                  <li key={f.slug}>
+                    <Link
+                      href={`/hire/${role.slug}`}
+                      className="border-line hover:border-ink flex min-h-10 items-center rounded-full border px-4 text-sm font-medium transition-colors"
+                    >
+                      {f.name}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </Container>
       </section>
@@ -106,44 +157,38 @@ export default function HomePage() {
           eyebrow="Why teams switch"
           title="Hiring engineers shouldn't take a quarter."
         />
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3">
           {problems.map((p) => (
             <Card key={p.problem}>
-              <p className="text-muted text-sm font-semibold line-through decoration-2">
-                {p.problem}
-              </p>
-              <p className="mt-3 text-lg font-semibold">{p.fix}</p>
+              <p className="text-muted text-sm">Instead of: {p.problem.toLowerCase()}</p>
+              <h3 className="mt-4 text-xl font-bold">{p.fix}</h3>
+              <p className="text-muted mt-2">{p.detail}</p>
             </Card>
           ))}
-        </div>
-        <div className="mt-8">
-          <ButtonLink href="/how-it-works" variant="link">
-            See how it works →
-          </ButtonLink>
         </div>
       </Section>
 
       {/* 4 · How it works */}
       <Section tone="surface" labelledBy="how">
-        <SectionHeading
-          id="how"
-          eyebrow="How it works"
-          title="Four steps, each with a written SLA."
-          intro="AI handles the search. A senior recruiter signs off every candidate you see."
-        />
-        <HiringSteps />
-        <div className="mt-10 flex flex-wrap gap-3">
-          <ButtonLink href={ctas.submitRole.href}>{ctas.submitRole.label}</ButtonLink>
-          <ButtonLink href="/sample-shortlist" variant="secondary">
-            View a sample shortlist
+        <div className="mb-12 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+          <SectionHeading
+            id="how"
+            eyebrow="How it works"
+            title="Four steps, each with a written SLA."
+            intro="AI handles the search. A senior recruiter signs off every candidate you see."
+            className="mb-0"
+          />
+          <ButtonLink href="/how-it-works" variant="secondary" className="self-start lg:self-auto">
+            See how it works
           </ButtonLink>
         </div>
+        <HiringSteps />
       </Section>
 
       {/* 5 · Services */}
       <Section labelledBy="services">
         <SectionHeading id="services" eyebrow="Services" title="One role or a whole GCC." />
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {getServices().map((s) => (
             <LinkCard key={s.slug} href={`/services/${s.slug}`} title={s.name}>
               {s.outcome}
@@ -158,10 +203,10 @@ export default function HomePage() {
           id="roles"
           eyebrow="Specialisms"
           title="We only hire for roles we know deeply."
-          intro="Organised by role family and city — never generic “IT staffing”."
+          intro="Organised by role family and city, never generic “IT staffing”."
         />
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {getRoleFamilies().map((f) => {
+          {families.map((f) => {
             const role = getRoleByFamily(f.slug)!;
             return (
               <LinkCard key={f.slug} href={`/hire/${role.slug}`} title={f.name}>
@@ -174,51 +219,48 @@ export default function HomePage() {
 
       {/* 7 · Pricing preview */}
       <Section labelledBy="pricing-preview">
-        <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-center">
-          <SectionHeading
-            id="pricing-preview"
-            eyebrow="Published pricing"
-            title="You see the price before the first call."
-            intro="Almost no recruitment firm publishes its fees. We do, because surprises cost trust."
-            className="mb-0"
-          />
-          <div className="grid gap-4 sm:grid-cols-3">
-            <Card>
-              <p className="tabular text-accent font-mono text-xl font-bold whitespace-nowrap">
-                8.33–16.67%
+        <SectionHeading
+          id="pricing-preview"
+          eyebrow="Published pricing"
+          title="You see the price before the first call."
+          intro="Almost no recruitment firm publishes its fees. We do, because surprises cost trust."
+        />
+        <div className="border-line grid overflow-hidden rounded-2xl border sm:grid-cols-3">
+          {[
+            {
+              value: "8.33–16.67%",
+              label: "Per hire",
+              note: "of annual fixed CTC, by seniority. Paid when the hire joins.",
+            },
+            {
+              value: podFromMonthlyInr ? `from ${formatInr(podFromMonthlyInr)}/mo` : "Monthly fee",
+              label: "Talent Pod",
+              note: "An embedded recruiter for 5+ roles a quarter, plus a reduced per-hire fee.",
+            },
+            {
+              value: `${REPLACEMENT_DAYS} days`,
+              label: "Free replacement",
+              note: "If a hire leaves early, we search again at no fee.",
+            },
+          ].map((x, i) => (
+            <div
+              key={x.label}
+              className={i > 0 ? "border-line border-t p-8 sm:border-t-0 sm:border-l" : "p-8"}
+            >
+              <p className="text-muted text-sm font-medium">{x.label}</p>
+              <p className="tabular mt-2 text-[2rem] leading-tight font-bold tracking-tight whitespace-nowrap">
+                {x.value}
               </p>
-              <p className="mt-2 font-semibold">Per hire</p>
-              <p className="text-muted text-sm">
-                of annual fixed CTC, by seniority. Pay on joining.
-              </p>
-            </Card>
-            <Card>
-              <p className="tabular text-accent font-mono text-xl font-bold">
-                {podFromMonthlyInr ? `from ${formatInr(podFromMonthlyInr)}/mo` : "Monthly"}
-              </p>
-              <p className="mt-2 font-semibold">Talent Pod</p>
-              <p className="text-muted text-sm">
-                Embedded recruiter for 5+ roles a quarter, plus a reduced per-hire fee.
-              </p>
-            </Card>
-            <Card>
-              <p className="tabular text-accent font-mono text-xl font-bold">
-                {REPLACEMENT_DAYS} days
-              </p>
-              <p className="mt-2 font-semibold">Free replacement</p>
-              <p className="text-muted text-sm">
-                If a hire leaves early, we search again at no fee.
-              </p>
-            </Card>
-            <div className="sm:col-span-3">
-              <ButtonLink href="/pricing" variant="secondary">
-                See pricing and the fee calculator
-              </ButtonLink>
+              <p className="text-muted mt-3">{x.note}</p>
             </div>
-          </div>
+          ))}
+        </div>
+        <div className="mt-8">
+          <ButtonLink href="/pricing" variant="secondary">
+            See pricing and the fee calculator
+          </ButtonLink>
         </div>
       </Section>
-
       {/* 8 · Case study */}
       <Section tone="surface" labelledBy="case-study">
         {caseStudy ? (
@@ -231,7 +273,7 @@ export default function HomePage() {
                 className="mb-6"
               />
               {caseStudy.quote && (
-                <blockquote className="border-accent border-l-4 pl-4 text-lg">
+                <blockquote className="border-ink border-l-2 pl-5 text-lg">
                   “{caseStudy.quote.text}”
                   <footer className="text-muted mt-2 text-sm">
                     {caseStudy.quote.name}, {caseStudy.quote.title}
@@ -245,7 +287,7 @@ export default function HomePage() {
             <div className="grid grid-cols-2 gap-4">
               {caseStudy.results.map((r) => (
                 <Card key={r.label}>
-                  <p className="tabular text-accent font-mono text-3xl font-bold">{r.value}</p>
+                  <p className="tabular text-3xl font-bold">{r.value}</p>
                   <p className="text-muted mt-1">{r.label}</p>
                 </Card>
               ))}

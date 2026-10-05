@@ -10,7 +10,7 @@ const labels: Record<SalaryBand["seniority"], string> = {
 
 export function SalaryTable({ bands, caption }: { bands: SalaryBand[]; caption: string }) {
   return (
-    <div className="border-line bg-surface overflow-x-auto rounded-[12px] border">
+    <div className="border-line bg-surface overflow-x-auto rounded-2xl border">
       <table className="w-full text-left text-sm sm:text-base">
         <caption className="text-muted px-6 pt-4 text-left text-sm">{caption}</caption>
         <thead>
@@ -33,7 +33,7 @@ export function SalaryTable({ bands, caption }: { bands: SalaryBand[]; caption: 
                 {labels[b.seniority]}
               </th>
               <td className="text-muted px-6 py-3">{b.years}</td>
-              <td className="tabular px-6 py-3 font-mono font-semibold">
+              <td className="tabular px-6 py-3 font-semibold">
                 {formatLpaRange(b.minLpa, b.maxLpa)}
               </td>
             </tr>

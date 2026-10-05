@@ -22,7 +22,7 @@ export function MobileCtaBar() {
   return (
     <div
       data-print-hide
-      className="border-line bg-bg/95 fixed inset-x-0 bottom-0 z-30 flex gap-2 border-t p-3 backdrop-blur lg:hidden"
+      className="border-line bg-surface/95 fixed inset-x-0 bottom-0 z-30 flex gap-2 border-t p-3 backdrop-blur lg:hidden"
     >
       <Link
         href={cta.href}

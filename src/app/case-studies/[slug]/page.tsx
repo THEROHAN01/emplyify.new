@@ -42,7 +42,7 @@ export default async function CaseStudyPage(props: PageProps<"/case-studies/[slu
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {c.results.map((r) => (
             <Card key={r.label}>
-              <p className="tabular text-accent font-mono text-3xl font-bold">{r.value}</p>
+              <p className="tabular text-ink text-3xl font-bold">{r.value}</p>
               <p className="text-muted mt-1">{r.label}</p>
             </Card>
           ))}

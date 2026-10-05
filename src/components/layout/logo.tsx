@@ -4,7 +4,7 @@ export function Logo() {
   return (
     <Link
       href="/"
-      className="font-display flex min-h-11 items-center gap-2 text-xl font-extrabold tracking-tight"
+      className="font-display flex min-h-11 items-center gap-2 text-xl font-bold tracking-tight"
       aria-label="Emplyify home"
     >
       <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden>

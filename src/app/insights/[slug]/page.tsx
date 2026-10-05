@@ -47,7 +47,7 @@ export default async function InsightPage(props: PageProps<"/insights/[slug]">) 
                 <Badge tone="pending">{insight.releaseLabel}</Badge>
               )}
             </div>
-            <h1 className="mt-4 text-3xl font-extrabold sm:text-4xl">{insight.title}</h1>
+            <h1 className="mt-4 text-3xl font-bold sm:text-4xl">{insight.title}</h1>
             <p className="text-muted mt-3 text-lg">{insight.description}</p>
             <p className="text-muted mt-2 text-sm">
               {formatLongDate(insight.publishedAt)} · {insight.readingMinutes} min read

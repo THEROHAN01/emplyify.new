@@ -10,10 +10,23 @@ const tones: Record<Tone, string> = {
   new: "bg-accent text-accent-ink",
   pending: "bg-warn-bg text-warn",
   draft: "bg-warn-bg text-warn",
-  neutral: "bg-bg text-muted border border-line",
+  neutral: "bg-bg text-ink",
 };
 
-const icons: Partial<Record<Tone, string>> = { verified: "✓", ai: "✦", sla: "⏱" };
+function Check() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden className="shrink-0">
+      <path
+        d="M2.5 6.2 5 8.5l4.5-5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export function Badge({
   tone = "neutral",
@@ -27,12 +40,12 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-sm font-semibold",
+        "inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[13px] font-medium",
         tones[tone],
         className,
       )}
     >
-      {icons[tone] && <span aria-hidden>{icons[tone]}</span>}
+      {tone === "verified" && <Check />}
       {children}
     </span>
   );

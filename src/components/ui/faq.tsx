@@ -6,7 +6,7 @@ import { faqSchema } from "@/lib/seo/schema";
 export function FaqList({ faqs, withSchema = true }: { faqs: Faq[]; withSchema?: boolean }) {
   return (
     <>
-      <div className="divide-line border-line bg-surface divide-y rounded-[12px] border">
+      <div className="divide-line border-line bg-surface divide-y rounded-2xl border">
         {faqs.map((f) => (
           <details key={f.q} className="group px-6 py-4 [&_summary::-webkit-details-marker]:hidden">
             <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-4 font-semibold">

@@ -68,7 +68,7 @@ export function TalentNetworkForm({ families }: { families: { value: string; lab
     <form
       noValidate
       onSubmit={onSubmit}
-      className="border-line bg-surface relative grid gap-5 rounded-[12px] border p-6 sm:grid-cols-2 sm:p-8"
+      className="border-line bg-surface relative grid gap-5 rounded-2xl border p-6 sm:grid-cols-2 sm:p-8"
     >
       {formError && (
         <div className="sm:col-span-2">

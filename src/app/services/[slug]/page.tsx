@@ -94,8 +94,8 @@ export default async function ServicePage(props: PageProps<"/services/[slug]">) 
         <SectionHeading id="process" eyebrow="Process" title="How it runs, with timelines" />
         <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {service.process.map((p, i) => (
-            <li key={p.step} className="border-line bg-bg rounded-[12px] border p-6">
-              <span className="tabular text-accent font-mono text-sm font-bold">0{i + 1}</span>
+            <li key={p.step} className="border-line bg-bg rounded-2xl border p-6">
+              <span className="tabular text-accent text-sm font-bold">0{i + 1}</span>
               <h3 className="mt-2 text-lg font-bold">{p.step}</h3>
               <Badge tone="sla" className="mt-2">
                 {p.sla}

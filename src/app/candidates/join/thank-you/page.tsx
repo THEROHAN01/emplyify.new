@@ -20,7 +20,7 @@ export default function JoinThankYou() {
       />
       <div className="mx-auto max-w-2xl">
         <Badge tone="verified">You're in</Badge>
-        <h1 className="mt-4 text-3xl font-extrabold sm:text-4xl">Welcome to the talent network.</h1>
+        <h1 className="mt-4 text-3xl font-bold sm:text-4xl">Welcome to the talent network.</h1>
         <p className="text-muted mt-4 text-lg">
           A welcome email is on its way with what to expect. We'll only contact you when a role
           matches your field, level and location — with the salary band upfront.

@@ -36,13 +36,13 @@ export default async function AppliedPage(props: PageProps<"/jobs/[slug]/applied
       />
       <div className="mx-auto max-w-2xl">
         <Badge tone="verified">Application received</Badge>
-        <h1 className="mt-4 text-3xl font-extrabold sm:text-4xl">
+        <h1 className="mt-4 text-3xl font-bold sm:text-4xl">
           Thanks — you've applied for {job.title}.
         </h1>
         {ref && (
           <p className="text-muted mt-3 text-lg">
-            Reference <span className="text-ink font-mono font-bold">{ref}</span>. A confirmation
-            email is on its way.
+            Reference <span className="text-ink font-bold">{ref}</span>. A confirmation email is on
+            its way.
           </p>
         )}
         <ol className="mt-8 space-y-2" aria-label="Application status">
@@ -51,7 +51,7 @@ export default async function AppliedPage(props: PageProps<"/jobs/[slug]/applied
               key={s}
               className={`flex items-center gap-3 rounded-lg border px-4 py-3 ${i === 0 ? "border-signal bg-signal-bg" : "border-line bg-surface text-muted"}`}
             >
-              <span className="tabular font-mono font-bold">{i + 1}</span>
+              <span className="tabular font-bold">{i + 1}</span>
               {s}
               {i === 0 && <span className="text-signal ml-auto text-sm font-semibold">Now</span>}
             </li>

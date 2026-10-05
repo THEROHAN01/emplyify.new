@@ -9,7 +9,7 @@ Built from the *Emplyify Website Building Playbook* (Oct 2026). Launch status fo
 | Layer | Choice |
 | --- | --- |
 | Framework | Next.js 16 (App Router, Turbopack) + React 19 + TypeScript (strict) |
-| Styling | Tailwind CSS v4 with design tokens in `src/app/globals.css` (light + dark) |
+| Styling | Tailwind CSS v4 with design tokens in `src/app/globals.css` (light theme only, by design) |
 | Content | Typed content modules in `src/content`, read only through `src/lib/content` (the boundary where Sanity plugs in) |
 | Data | Supabase Postgres + private Storage (`supabase/migrations`) |
 | CRM / email / alerts | HubSpot Forms API, Resend, Slack webhook |

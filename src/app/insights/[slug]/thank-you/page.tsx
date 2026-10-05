@@ -35,7 +35,7 @@ export default async function ReportThankYou(props: PageProps<"/insights/[slug]/
       />
       <div className="mx-auto max-w-2xl">
         <Badge tone="verified">{available ? "On its way" : "You're on the list"}</Badge>
-        <h1 className="mt-4 text-3xl font-extrabold sm:text-4xl">
+        <h1 className="mt-4 text-3xl font-bold sm:text-4xl">
           {available ? "Check your inbox." : "We'll email you on release day."}
         </h1>
         <p className="text-muted mt-4 text-lg">

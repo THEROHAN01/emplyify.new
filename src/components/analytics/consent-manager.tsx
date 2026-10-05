@@ -77,7 +77,7 @@ export function ConsentManager({
           role="dialog"
           aria-modal="false"
           aria-labelledby="consent-title"
-          className="border-line bg-surface fixed inset-x-3 bottom-20 z-50 mx-auto max-w-xl rounded-[12px] border p-5 shadow-2xl lg:bottom-6"
+          className="border-line bg-surface fixed inset-x-3 bottom-20 z-50 mx-auto max-w-xl rounded-2xl border p-5 shadow-2xl lg:bottom-6"
         >
           <h2 id="consent-title" className="font-display text-lg font-bold">
             Cookies, briefly

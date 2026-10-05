@@ -70,7 +70,7 @@ export default function CandidatesHub() {
         <ol className="grid gap-3 sm:grid-cols-5">
           {stages.map((s, i) => (
             <li key={s} className="border-line bg-bg rounded-lg border p-4">
-              <span className="tabular text-accent font-mono text-sm font-bold">{i + 1}</span>
+              <span className="tabular text-accent text-sm font-bold">{i + 1}</span>
               <p className="font-semibold">{s}</p>
             </li>
           ))}
@@ -126,7 +126,7 @@ export default function CandidatesHub() {
       <Section tone="surface" labelledBy="roles">
         <SectionHeading id="roles" title="Open roles" />
         {jobs.length > 0 ? (
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-3 lg:grid-cols-2">
             {jobs.map((j) => (
               <JobCard key={j.slug} job={j} />
             ))}

@@ -64,7 +64,7 @@ export function ContactForm({ defaultTopic = "" }: { defaultTopic?: string }) {
 
   if (done) {
     return (
-      <div role="status" className="border-line bg-signal-bg rounded-[12px] border p-6">
+      <div role="status" className="border-line bg-signal-bg rounded-2xl border p-6">
         <p className="text-signal font-bold">Message sent — reference {done}.</p>
         <p className="mt-2">We reply within 4 business hours (Mon–Fri, 9:30–18:30 IST).</p>
       </div>

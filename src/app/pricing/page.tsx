@@ -38,7 +38,7 @@ export default function PricingPage() {
             <div
               key={p.id}
               className={cn(
-                "bg-surface flex flex-col rounded-[12px] border p-6",
+                "bg-surface flex flex-col rounded-2xl border p-6",
                 p.featured ? "border-accent border-2" : "border-line",
               )}
             >
@@ -47,7 +47,9 @@ export default function PricingPage() {
                 {p.featured && <Badge tone="new">Best value at volume</Badge>}
               </div>
               <p className="text-muted">{p.for}</p>
-              <p className="tabular text-accent mt-6 font-mono text-3xl font-bold">{p.price}</p>
+              <p className="tabular mt-6 text-[1.75rem] leading-tight font-bold tracking-tight">
+                {p.price}
+              </p>
               <p className="text-muted text-sm">{p.priceNote}</p>
               <ul className="mt-6 flex-1 space-y-2">
                 {p.includes.map((i) => (
@@ -70,7 +72,7 @@ export default function PricingPage() {
           ))}
         </div>
 
-        <div className="border-line bg-surface mt-10 overflow-x-auto rounded-[12px] border">
+        <div className="border-line bg-surface mt-10 overflow-x-auto rounded-2xl border">
           <table className="w-full text-left">
             <caption className="px-6 pt-4 text-left font-semibold">
               Per-hire fee by seniority
@@ -94,7 +96,7 @@ export default function PricingPage() {
                   <th scope="row" className="px-6 py-3 font-semibold">
                     {perHireFees[k].label}
                   </th>
-                  <td className="tabular px-6 py-3 font-mono">
+                  <td className="tabular px-6 py-3">
                     {formatPercent(perHireFees[k].percent)} of annual fixed CTC
                   </td>
                   <td className="text-muted px-6 py-3">
@@ -125,7 +127,7 @@ export default function PricingPage() {
           title="Emplyify vs a typical agency vs in-house"
           intro="“Typical” columns describe common market practice in India, not any named firm."
         />
-        <div className="border-line bg-surface overflow-x-auto rounded-[12px] border">
+        <div className="border-line bg-surface overflow-x-auto rounded-2xl border">
           <table className="w-full min-w-[640px] text-left">
             <thead>
               <tr className="border-line border-b">

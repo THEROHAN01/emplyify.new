@@ -60,7 +60,7 @@ export function ExitIntent() {
       ref={dialogRef}
       onClose={() => setOpen(false)}
       aria-labelledby="exit-title"
-      className="border-line bg-surface text-ink m-auto max-w-md rounded-[12px] border p-6 shadow-2xl backdrop:bg-black/40"
+      className="border-line bg-surface text-ink m-auto max-w-md rounded-2xl border p-6 shadow-2xl backdrop:bg-black/40"
     >
       <h2 id="exit-title" className="font-display text-xl font-bold">
         Before you go — see what you'd get

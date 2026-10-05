@@ -15,40 +15,38 @@ export const humanWork = [
   "Runs the offer, counter-offers and notice period",
 ];
 
+function List({ items, tone }: { items: string[]; tone: "light" | "dark" }) {
+  return (
+    <ul className="mt-6 space-y-3.5">
+      {items.map((w) => (
+        <li key={w} className="flex gap-3">
+          <span
+            aria-hidden
+            className={
+              tone === "dark"
+                ? "mt-2.5 size-1.5 shrink-0 rounded-full bg-white/60"
+                : "bg-muted/60 mt-2.5 size-1.5 shrink-0 rounded-full"
+            }
+          />
+          <span className={tone === "dark" ? "text-white/85" : "text-muted"}>{w}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function AiHumanSplit() {
   return (
-    <div className="grid gap-6 md:grid-cols-2">
-      <div className="border-line bg-surface rounded-[12px] border p-6">
-        <h3 className="flex items-center gap-2 text-lg font-bold">
-          <span aria-hidden className="text-accent">
-            ✦
-          </span>{" "}
-          What AI does
-        </h3>
-        <ul className="text-muted mt-4 space-y-3">
-          {aiWork.map((w) => (
-            <li key={w} className="flex gap-2">
-              <span aria-hidden>–</span>
-              {w}
-            </li>
-          ))}
-        </ul>
+    <div className="grid gap-4 md:grid-cols-2">
+      <div className="border-line bg-surface rounded-2xl border p-8">
+        <p className="text-muted text-sm font-semibold">AI assists</p>
+        <h3 className="mt-1 text-xl font-bold">What our agents do</h3>
+        <List items={aiWork} tone="light" />
       </div>
-      <div className="border-signal bg-surface rounded-[12px] border-2 p-6">
-        <h3 className="flex items-center gap-2 text-lg font-bold">
-          <span aria-hidden className="text-signal">
-            ✓
-          </span>{" "}
-          What our recruiters decide
-        </h3>
-        <ul className="text-muted mt-4 space-y-3">
-          {humanWork.map((w) => (
-            <li key={w} className="flex gap-2">
-              <span aria-hidden>–</span>
-              {w}
-            </li>
-          ))}
-        </ul>
+      <div className="bg-navy rounded-2xl p-8 text-white">
+        <p className="text-sm font-semibold text-white/70">People decide</p>
+        <h3 className="mt-1 text-xl font-bold">What our recruiters own</h3>
+        <List items={humanWork} tone="dark" />
       </div>
     </div>
   );

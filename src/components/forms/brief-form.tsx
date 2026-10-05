@@ -311,7 +311,7 @@ export function BriefForm({
     <form
       noValidate
       onSubmit={(e) => (e.preventDefault(), step < 2 ? next() : submit())}
-      className="border-line bg-surface relative rounded-[12px] border p-6 shadow-sm sm:p-8"
+      className="border-line bg-surface relative rounded-2xl border p-6 shadow-sm sm:p-8"
       aria-labelledby="brief-step-title"
     >
       {/* Progress */}
@@ -436,7 +436,6 @@ export function BriefForm({
                   onClick={runAssistant}
                   disabled={assistantState.loading}
                 >
-                  <span aria-hidden>✦</span>{" "}
                   {assistantState.loading ? "Reading your JD…" : "Fill from job description"}
                 </Button>
                 <span className="text-muted text-sm">AI-assisted · never shared</span>

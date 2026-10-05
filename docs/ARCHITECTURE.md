@@ -55,3 +55,9 @@ Upload → size, extension and **magic-byte** check (`lib/security/upload.ts`) �
 - `retention_sweep()` → 24-month candidate deletion and 21-day auto-close.
 - `candidates.embedding vector(1024)` → pgvector role matching.
 - `consents` ledger with versioned wording → per-employer share consent.
+
+## Visual design (Oct 2026 refresh)
+
+- **Light theme only.** The site is designed for one look, so it doesn't follow the OS dark-mode setting (`color-scheme: light`, no `prefers-color-scheme` tokens).
+- **Influences:** remote.com (white canvas, alternating cool-tint sections, product-UI hero), Toptal (deep navy ink, candidate profile cards), Glassdoor (dense job rows: company tile, title, location, salary and meta chips).
+- **Rules:** one accent (blue) reserved for actions and links; numbers in navy ink; pill buttons; 16px card radius; borders over shadows, with a soft shadow on hover only; sentence-case labels; no decorative glyphs, gradients or glows.

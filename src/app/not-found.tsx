@@ -5,8 +5,8 @@ import { Container } from "@/components/ui/layout";
 export default function NotFound() {
   return (
     <Container className="py-24 text-center">
-      <p className="text-accent font-mono text-sm font-bold">404</p>
-      <h1 className="mt-2 text-3xl font-extrabold sm:text-4xl">We couldn't find that page.</h1>
+      <p className="text-accent text-sm font-bold">404</p>
+      <h1 className="mt-2 text-3xl font-bold sm:text-4xl">We couldn't find that page.</h1>
       <p className="text-muted mx-auto mt-4 max-w-xl text-lg">
         The link may be old or the role may have closed. Here are the most useful places to go next.
       </p>

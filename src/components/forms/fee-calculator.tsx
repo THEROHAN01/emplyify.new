@@ -41,7 +41,7 @@ export function FeeCalculator({
   }, [estimate, family, seniority, ctcNum]);
 
   return (
-    <div className="border-line bg-surface grid gap-8 rounded-[12px] border p-6 sm:p-8 lg:grid-cols-2">
+    <div className="border-line bg-surface grid gap-8 rounded-2xl border p-6 sm:p-8 lg:grid-cols-2">
       <div className="grid gap-5">
         <SelectField
           id="calc-family"
@@ -82,17 +82,17 @@ export function FeeCalculator({
               Fee at {formatPercent(estimate.percent)} ({estimate.months}{" "}
               {estimate.months === 1 ? "month" : "months"} of CTC)
             </p>
-            <p className="tabular text-accent mt-1 font-mono text-4xl font-bold">
+            <p className="tabular text-accent mt-1 text-4xl font-bold">
               {formatInr(estimate.feeInr)}
             </p>
             <dl className="mt-4 space-y-2 text-sm">
               <div className="flex justify-between">
                 <dt className="text-muted">GST (18%)</dt>
-                <dd className="tabular font-mono">{formatInr(estimate.gstInr)}</dd>
+                <dd className="tabular">{formatInr(estimate.gstInr)}</dd>
               </div>
               <div className="border-line flex justify-between border-t pt-2 font-semibold">
                 <dt>Total invoice</dt>
-                <dd className="tabular font-mono">{formatInr(estimate.totalInr)}</dd>
+                <dd className="tabular">{formatInr(estimate.totalInr)}</dd>
               </div>
               <div className="flex justify-between">
                 <dt className="text-muted">Payable</dt>

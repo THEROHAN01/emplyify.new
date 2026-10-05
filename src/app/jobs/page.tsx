@@ -29,10 +29,8 @@ export default async function JobsPage(props: PageProps<"/jobs">) {
 
   const chip = (active: boolean) =>
     cn(
-      "min-h-11 rounded-full border px-4 py-2 text-sm font-semibold",
-      active
-        ? "border-accent bg-accent text-accent-ink"
-        : "border-line bg-surface hover:border-accent",
+      "inline-flex min-h-10 items-center rounded-full border px-4 text-sm font-medium",
+      active ? "border-ink bg-ink text-white" : "border-line bg-surface hover:border-ink",
     );
   const href = (next: { role?: string; city?: string }) => {
     const q = new URLSearchParams(Object.entries(next).filter(([, v]) => v) as [string, string][]);
@@ -94,7 +92,7 @@ export default async function JobsPage(props: PageProps<"/jobs">) {
         )}
 
         {jobs.length > 0 ? (
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 lg:grid-cols-2">
             {jobs.map((j) => (
               <JobCard key={j.slug} job={j} />
             ))}

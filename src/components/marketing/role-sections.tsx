@@ -18,13 +18,13 @@ export function RoleFacts({ role, cityName }: { role: RolePage; cityName?: strin
     <div className="grid gap-4 sm:grid-cols-3">
       <Card>
         <p className="text-muted text-sm">Shortlist</p>
-        <p className="tabular text-accent font-mono text-2xl font-bold">72 hours</p>
+        <p className="tabular text-ink text-2xl font-bold">72 hours</p>
       </Card>
       <Card>
         <p className="text-muted text-sm">
           Typical time to hire{cityName ? ` in ${cityName}` : ""}
         </p>
-        <p className="tabular font-mono text-2xl font-bold">
+        <p className="tabular text-2xl font-bold">
           {role.typicalTimeToHireDays.min}–{role.typicalTimeToHireDays.max} days
         </p>
       </Card>
@@ -49,7 +49,7 @@ export function SkillsWeVet({ role }: { role: RolePage }) {
         title={`Skills we vet for ${role.title.toLowerCase()}`}
         intro={role.intro}
       />
-      <div className="border-line bg-surface overflow-x-auto rounded-[12px] border">
+      <div className="border-line bg-surface overflow-x-auto rounded-2xl border">
         <table className="w-full text-left">
           <thead>
             <tr className="border-line border-b">

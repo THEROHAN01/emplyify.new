@@ -116,11 +116,7 @@ export function SkillsInput({
         </p>
       )}
       {error && (
-        <p
-          id={`${id}-error`}
-          role="alert"
-          className="mt-1 text-sm font-semibold text-red-700 dark:text-red-400"
-        >
+        <p id={`${id}-error`} role="alert" className="mt-1 text-sm font-semibold text-red-700">
           {error}
         </p>
       )}

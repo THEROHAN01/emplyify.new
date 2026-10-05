@@ -1,46 +1,41 @@
-import { Badge } from "@/components/ui/badge";
-
 export const hiringSteps = [
   {
     title: "You brief us",
     sla: "2 minutes",
-    who: "You",
     body: "Submit a role online or brief us on a 20-minute call. We confirm must-haves, budget and timeline in writing.",
   },
   {
-    title: "AI searches and screens",
+    title: "AI searches, recruiters screen",
     sla: "0–48 hours",
-    who: "AI + recruiter",
-    body: "Our agents search our network and public profiles, rank matches against your must-haves and draft evidence. Recruiters run structured screens.",
+    body: "Our agents search our network and public profiles and rank matches against your must-haves. Recruiters run structured screens.",
   },
   {
     title: "A senior recruiter verifies",
     sla: "By 72 hours",
-    who: "Human",
-    body: "Every candidate is interviewed and signed off by a senior recruiter. You get three to five candidates, each with a dossier.",
+    body: "Every candidate is interviewed and signed off. You get three to five people, each with a written dossier.",
   },
   {
     title: "You hire, we guarantee",
     sla: "90-day cover",
-    who: "You + us",
-    body: "We run scheduling, feedback and offer support. Pay only when the hire joins, with a 90-day free replacement.",
+    body: "We run scheduling, feedback and offer support. Pay only when the hire joins, with a free replacement for 90 days.",
   },
 ];
 
+/** Numbered timeline. Horizontal on desktop, stacked on mobile. */
 export function HiringSteps() {
   return (
-    <ol className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+    <ol className="grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
       {hiringSteps.map((s, i) => (
-        <li key={s.title} className="border-line bg-surface relative rounded-[12px] border p-6">
-          <span className="tabular text-accent font-mono text-sm font-bold">0{i + 1}</span>
-          <h3 className="mt-2 text-lg font-bold">{s.title}</h3>
-          <div className="mt-2 flex flex-wrap gap-2">
-            <Badge tone="sla">{s.sla}</Badge>
-            <Badge tone={s.who === "Human" ? "verified" : s.who.includes("AI") ? "ai" : "neutral"}>
-              {s.who}
-            </Badge>
+        <li key={s.title} className="relative">
+          <div className="flex items-center gap-3">
+            <span className="bg-ink flex size-9 shrink-0 items-center justify-center rounded-full text-sm font-semibold text-white">
+              {i + 1}
+            </span>
+            <span aria-hidden className="bg-line hidden h-px flex-1 lg:block" />
           </div>
-          <p className="text-muted mt-3">{s.body}</p>
+          <p className="text-accent mt-5 text-sm font-semibold">{s.sla}</p>
+          <h3 className="mt-1 text-lg font-bold">{s.title}</h3>
+          <p className="text-muted mt-2">{s.body}</p>
         </li>
       ))}
     </ol>

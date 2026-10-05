@@ -11,9 +11,9 @@ import { Stat } from "@/components/ui/stat";
 export function ProofBar() {
   const live = proofMetrics.filter((m) => m.value);
   return (
-    <section aria-label="Proof" className="border-line bg-surface border-y py-10">
+    <section aria-label="Proof" className="border-line border-y py-12">
       <Container>
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="lg:divide-line grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0 lg:divide-x [&>*]:lg:px-8 [&>*:first-child]:lg:pl-0">
           <Stat
             value={`${site.promises.shortlistHours}h`}
             label="Shortlist promise"

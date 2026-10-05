@@ -92,7 +92,7 @@ export default async function GccCityPage(props: PageProps<"/gcc/[city]">) {
           title={`Salary benchmarks in ${city.name}`}
           intro="Fixed annual CTC for mid and senior engineers. Each role page has the full range."
         />
-        <div className="border-line bg-bg overflow-x-auto rounded-[12px] border">
+        <div className="border-line bg-bg overflow-x-auto rounded-2xl border">
           <table className="w-full text-left">
             <thead>
               <tr className="border-line border-b">
@@ -122,10 +122,8 @@ export default async function GccCityPage(props: PageProps<"/gcc/[city]">) {
                         {r.title}
                       </Link>
                     </th>
-                    <td className="tabular px-6 py-3 font-mono">
-                      {formatLpaRange(mid.minLpa, mid.maxLpa)}
-                    </td>
-                    <td className="tabular px-6 py-3 font-mono">
+                    <td className="tabular px-6 py-3">{formatLpaRange(mid.minLpa, mid.maxLpa)}</td>
+                    <td className="tabular px-6 py-3">
                       {formatLpaRange(senior.minLpa, senior.maxLpa)}
                     </td>
                   </tr>
@@ -141,7 +139,7 @@ export default async function GccCityPage(props: PageProps<"/gcc/[city]">) {
         <SectionHeading id="notes" title={`Hiring in ${city.name}: what we've learned`} />
         <ul className="grid gap-4 md:grid-cols-3">
           {city.hiringNotes.map((n) => (
-            <li key={n} className="border-line bg-surface rounded-[12px] border p-6">
+            <li key={n} className="border-line bg-surface rounded-2xl border p-6">
               {n}
             </li>
           ))}

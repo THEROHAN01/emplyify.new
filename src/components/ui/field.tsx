@@ -44,11 +44,7 @@ export function FieldShell({
         </p>
       )}
       {error && (
-        <p
-          id={`${id}-error`}
-          className="mt-1 text-sm font-semibold text-red-700 dark:text-red-400"
-          role="alert"
-        >
+        <p id={`${id}-error`} className="mt-1 text-sm font-semibold text-red-700" role="alert">
           {error}
         </p>
       )}
@@ -215,11 +211,7 @@ export function CheckboxField({
         </label>
       </div>
       {error && (
-        <p
-          id={`${id}-error`}
-          role="alert"
-          className="mt-1 text-sm font-semibold text-red-700 dark:text-red-400"
-        >
+        <p id={`${id}-error`} role="alert" className="mt-1 text-sm font-semibold text-red-700">
           {error}
         </p>
       )}
@@ -257,7 +249,7 @@ export function FormAlert({
       className={cn(
         "rounded-lg border px-4 py-3 text-sm",
         tone === "error"
-          ? "border-red-300 bg-red-50 text-red-800 dark:border-red-900 dark:bg-red-950 dark:text-red-200"
+          ? "border-red-300 bg-red-50 text-red-800"
           : "border-line bg-accent-soft text-ink",
       )}
     >

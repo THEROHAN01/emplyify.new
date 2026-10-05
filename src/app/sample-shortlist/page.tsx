@@ -53,10 +53,10 @@ export default async function SampleShortlistPage(props: PageProps<"/sample-shor
               scroll={false}
               aria-current={chosen.family === f.slug ? "page" : undefined}
               className={cn(
-                "min-h-11 rounded-full border px-4 py-2 text-sm font-semibold",
+                "inline-flex min-h-10 items-center rounded-full border px-4 text-sm font-medium",
                 chosen.family === f.slug
-                  ? "border-accent bg-accent text-accent-ink"
-                  : "border-line bg-surface hover:border-accent",
+                  ? "border-ink bg-ink text-white"
+                  : "border-line bg-surface hover:border-ink",
               )}
             >
               {f.name}
@@ -64,7 +64,7 @@ export default async function SampleShortlistPage(props: PageProps<"/sample-shor
           ))}
         </nav>
 
-        <div className="border-line bg-surface rounded-[12px] border p-6">
+        <div className="border-line bg-surface rounded-2xl border p-6">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <div>
               <Badge tone="pending">Sample · anonymised</Badge>

@@ -9,7 +9,7 @@ export function Container({ className, children }: { className?: string; childre
   );
 }
 
-/** Section rhythm: 64px mobile, 96px desktop vertical padding. */
+/** Section rhythm: 64px mobile, 112px desktop. "surface" sections use the cool tint to alternate. */
 export function Section({
   id,
   className,
@@ -30,8 +30,8 @@ export function Section({
       id={id}
       aria-labelledby={labelledBy}
       className={cn(
-        "py-16 lg:py-24",
-        tone === "surface" && "border-line bg-surface border-y",
+        "py-16 lg:py-28",
+        tone === "surface" && "bg-bg",
         tone === "accent" && "bg-accent-soft",
         className,
       )}
@@ -42,11 +42,7 @@ export function Section({
 }
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
-  return (
-    <p className={cn("text-accent mb-3 text-sm font-semibold tracking-wider uppercase", className)}>
-      {children}
-    </p>
-  );
+  return <p className={cn("text-accent mb-4 text-sm font-semibold", className)}>{children}</p>;
 }
 
 export function SectionHeading({
@@ -65,12 +61,12 @@ export function SectionHeading({
   className?: string;
 }) {
   return (
-    <div className={cn("mb-10 max-w-3xl", align === "center" && "mx-auto text-center", className)}>
+    <div className={cn("mb-12 max-w-2xl", align === "center" && "mx-auto text-center", className)}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 id={id} className="text-2xl font-bold sm:text-3xl">
+      <h2 id={id} className="text-3xl font-bold sm:text-[2.5rem]">
         {title}
       </h2>
-      {intro && <p className="text-muted mt-4 text-lg">{intro}</p>}
+      {intro && <p className="text-muted mt-5 text-lg">{intro}</p>}
     </div>
   );
 }

@@ -23,7 +23,7 @@ export default function JoinPage() {
       />
       <div className="grid gap-10 lg:grid-cols-[1.6fr_1fr]">
         <div>
-          <h1 className="text-3xl font-extrabold sm:text-4xl">Join the talent network</h1>
+          <h1 className="text-3xl font-bold sm:text-4xl">Join the talent network</h1>
           <p className="text-muted mt-3 text-lg">
             One minute now. Relevant roles later — never spam.
           </p>
@@ -32,7 +32,7 @@ export default function JoinPage() {
           </div>
         </div>
         <aside className="space-y-4 lg:pt-24">
-          <div className="border-line bg-surface rounded-[12px] border p-6">
+          <div className="border-line bg-surface rounded-2xl border p-6">
             <h2 className="font-bold">What you can expect</h2>
             <ul className="text-muted mt-3 space-y-2">
               <li>✓ Only roles that match your field and level</li>

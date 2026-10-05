@@ -56,7 +56,7 @@ Legend: **[x]** done and verified in code · **[ ]** needs an owner action (cont
 - [x] Keyboard and screen-reader pass on forms. *axe WCAG 2.2 AA: 0 violations on 20 pages. Errors move focus to the first invalid field, are announced via `role="alert"` and linked with `aria-describedby`; native `<details>` FAQs; skip link; 44 px targets.*
 - [ ] Tested on Safari, Firefox, Android and iPhone. *Chromium tested at 390 px and 1280 px with no horizontal overflow and no console errors. Real-device testing is still to do.*
 - [x] 404 and error pages designed; internal links checked against the route registry (`tests/content.test.ts`)
-- [x] WCAG contrast ≥ 4.5:1 for every token pair in both themes (`tests/contrast.test.ts`). *The playbook's light `--signal` and `--warn` failed as text, so they were darkened. See `globals.css`.*
+- [x] WCAG contrast ≥ 4.5:1 for every token pair (single light theme; OS dark mode is deliberately ignored) (`tests/contrast.test.ts`). *The playbook's light `--signal` and `--warn` failed as text, so they were darkened. See `globals.css`.*
 
 ## SEO and tracking
 

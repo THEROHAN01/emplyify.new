@@ -39,16 +39,16 @@ export default async function BriefThankYou(props: PageProps<"/submit-a-role/tha
       />
       <div className="mx-auto max-w-2xl">
         <Badge tone="verified">Brief received</Badge>
-        <h1 className="mt-4 text-3xl font-extrabold sm:text-4xl">Thanks — we're on {role}.</h1>
+        <h1 className="mt-4 text-3xl font-bold sm:text-4xl">Thanks — we're on {role}.</h1>
         {ref && (
           <p className="text-muted mt-3 text-lg">
-            Your reference is <span className="text-ink font-mono font-bold">{ref}</span>. A
-            confirmation email is on its way.
+            Your reference is <span className="text-ink font-bold">{ref}</span>. A confirmation
+            email is on its way.
           </p>
         )}
 
         <ol className="mt-10 space-y-6">
-          <li className="border-line bg-surface rounded-[12px] border p-6">
+          <li className="border-line bg-surface rounded-2xl border p-6">
             <p className="text-accent text-sm font-semibold">
               Next ·{" "}
               {replyBy
@@ -60,7 +60,7 @@ export default async function BriefThankYou(props: PageProps<"/submit-a-role/tha
               will reply to confirm must-haves and budget.
             </p>
           </li>
-          <li className="border-line bg-surface rounded-[12px] border p-6">
+          <li className="border-line bg-surface rounded-2xl border p-6">
             <p className="text-accent text-sm font-semibold">
               Then ·{" "}
               {shortlistBy
@@ -73,7 +73,7 @@ export default async function BriefThankYou(props: PageProps<"/submit-a-role/tha
             <p className="text-muted mt-1">The 72-hour clock starts once the brief is confirmed.</p>
           </li>
           {isPod && (
-            <li className="border-accent bg-accent-soft rounded-[12px] border p-6">
+            <li className="border-accent bg-accent-soft rounded-2xl border p-6">
               <p className="text-lg font-semibold">Hiring five or more roles?</p>
               <p className="mt-1">
                 A Talent Pod usually costs less than per-hire fees at your volume. We'll include a

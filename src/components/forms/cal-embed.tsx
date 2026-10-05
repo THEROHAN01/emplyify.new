@@ -35,7 +35,7 @@ export function CalEmbed({ link, title }: { link?: string; title: string }) {
       src={url.toString()}
       title={title}
       loading="lazy"
-      className="border-line bg-surface h-[720px] w-full rounded-[12px] border"
+      className="border-line bg-surface h-[720px] w-full rounded-2xl border"
     />
   );
 }

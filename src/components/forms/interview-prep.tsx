@@ -94,7 +94,7 @@ export function InterviewPrep({
 
   return (
     <div className="grid gap-8">
-      <div className="border-line bg-surface grid gap-5 rounded-[12px] border p-6 sm:grid-cols-3 sm:items-end">
+      <div className="border-line bg-surface grid gap-5 rounded-2xl border p-6 sm:grid-cols-3 sm:items-end">
         {jobs.length > 0 && (
           <SelectField
             id="prep-job"
@@ -121,7 +121,6 @@ export function InterviewPrep({
           onChange={(e) => setSeniority(e.target.value)}
         />
         <Button onClick={load} disabled={busy} className="sm:col-span-3 sm:justify-self-start">
-          <span aria-hidden>✦</span>{" "}
           {busy && !questions ? "Preparing questions…" : "Get practice questions"}
         </Button>
       </div>
@@ -138,7 +137,7 @@ export function InterviewPrep({
           </div>
           <ol className="grid gap-4">
             {questions.map((q, i) => (
-              <li key={q.question} className="border-line bg-surface rounded-[12px] border p-5">
+              <li key={q.question} className="border-line bg-surface rounded-2xl border p-5">
                 <p className="text-accent text-sm font-semibold">{q.category}</p>
                 <p className="mt-1 text-lg font-semibold">{q.question}</p>
                 <details className="text-muted mt-2">

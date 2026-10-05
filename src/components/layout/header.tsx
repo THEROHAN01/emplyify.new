@@ -66,7 +66,7 @@ function Dropdown({
         aria-expanded={open}
         aria-controls={id}
         onClick={() => setOpen((o) => !o)}
-        className="hover:text-accent flex min-h-11 items-center gap-1 rounded-lg px-3 font-medium"
+        className="text-ink/80 hover:text-ink hover:bg-bg flex min-h-11 items-center gap-1 rounded-full px-2.5 text-[15px] font-medium whitespace-nowrap xl:px-3"
       >
         {label}
         <span
@@ -80,7 +80,7 @@ function Dropdown({
         id={id}
         hidden={!open}
         className={cn(
-          "border-line bg-surface absolute top-full left-0 z-50 mt-2 rounded-[12px] border p-4 shadow-xl",
+          "border-line bg-surface absolute top-full left-0 z-50 mt-2 rounded-2xl border p-4 shadow-xl",
           wide ? "w-[min(760px,90vw)]" : "w-80",
         )}
       >
@@ -117,7 +117,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
 
   return (
     <>
-      <header className="border-line bg-bg/95 supports-[backdrop-filter]:bg-bg/80 sticky top-0 z-40 border-b backdrop-blur">
+      <header className="border-line bg-surface/90 supports-[backdrop-filter]:bg-surface/75 sticky top-0 z-40 border-b backdrop-blur-md">
         <Container className="flex h-16 items-center justify-between gap-4">
           <Logo />
 
@@ -126,15 +126,11 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
               {(close) => (
                 <div className="grid grid-cols-2 gap-6">
                   <div>
-                    <p className="text-muted mb-2 px-3 text-sm font-semibold tracking-wider uppercase">
-                      Services
-                    </p>
+                    <p className="text-muted mb-2 px-3 text-sm font-medium">Services</p>
                     <MenuLinks links={hireMenu.services} onNavigate={close} />
                   </div>
                   <div>
-                    <p className="text-muted mb-2 px-3 text-sm font-semibold tracking-wider uppercase">
-                      Role families
-                    </p>
+                    <p className="text-muted mb-2 px-3 text-sm font-medium">Role families</p>
                     <MenuLinks
                       links={hireMenu.roles.map(({ label, href }) => ({ label, href }))}
                       onNavigate={close}
@@ -155,7 +151,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
                 key={l.href}
                 href={l.href}
                 aria-current={pathname === l.href ? "page" : undefined}
-                className="hover:text-accent aria-[current=page]:text-accent flex min-h-11 items-center rounded-lg px-3 font-medium"
+                className="text-ink/80 hover:text-ink aria-[current=page]:text-ink hover:bg-bg flex min-h-11 items-center rounded-full px-2.5 text-[15px] font-medium whitespace-nowrap xl:px-3"
               >
                 {l.label}
               </Link>
@@ -168,7 +164,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
                 key={l.href}
                 href={l.href}
                 aria-current={pathname.startsWith(l.href) ? "page" : undefined}
-                className="hover:text-accent aria-[current=page]:text-accent flex min-h-11 items-center rounded-lg px-3 font-medium"
+                className="text-ink/80 hover:text-ink aria-[current=page]:text-ink hover:bg-bg flex min-h-11 items-center rounded-full px-2.5 text-[15px] font-medium whitespace-nowrap xl:px-3"
               >
                 {l.label}
               </Link>
@@ -178,13 +174,13 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
           <div className="flex items-center gap-2">
             <Link
               href={isCandidatePage ? "/" : "/jobs"}
-              className="text-muted hover:text-accent hidden min-h-11 items-center px-2 text-sm font-semibold underline-offset-4 hover:underline sm:flex"
+              className="text-muted hover:text-accent hidden min-h-11 items-center px-2 text-sm font-semibold whitespace-nowrap underline-offset-4 hover:underline sm:flex lg:hidden xl:flex"
             >
               {isCandidatePage ? "Hiring? For employers" : "Find jobs"}
             </Link>
             <ButtonLink
               href={cta.href}
-              className="hidden sm:inline-flex"
+              className="max-sm:hidden"
               onClick={() =>
                 track("cta_click", { cta_name: cta.label, page: pathname, position: "header" })
               }
@@ -226,16 +222,14 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
         <nav
           id="mobile-menu"
           aria-label="Mobile"
-          className="border-line bg-bg fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t lg:hidden"
+          className="border-line bg-surface fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t lg:hidden"
         >
           <Container className="space-y-6 py-6">
             <ButtonLink href={cta.href} className="w-full" size="lg">
               {cta.label}
             </ButtonLink>
             <div>
-              <p className="text-muted mb-2 px-3 text-sm font-semibold tracking-wider uppercase">
-                Hire talent
-              </p>
+              <p className="text-muted mb-2 px-3 text-sm font-medium">Hire talent</p>
               <MenuLinks
                 links={[...hireMenu.services, { label: "All role families", href: "/hire" }]}
                 onNavigate={() => setDrawerOpen(false)}
@@ -243,9 +237,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
             </div>
             <MenuLinks links={primaryNav.slice(0, 2)} onNavigate={() => setDrawerOpen(false)} />
             <div>
-              <p className="text-muted mb-2 px-3 text-sm font-semibold tracking-wider uppercase">
-                For GCCs
-              </p>
+              <p className="text-muted mb-2 px-3 text-sm font-medium">For GCCs</p>
               <MenuLinks links={gccMenu} onNavigate={() => setDrawerOpen(false)} />
             </div>
             <MenuLinks

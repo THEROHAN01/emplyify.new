@@ -52,7 +52,7 @@ export default async function JobPage(props: PageProps<"/jobs/[slug]">) {
             <Badge>{job.workMode}</Badge>
             <Badge>{location}</Badge>
           </div>
-          <h1 className="mt-4 text-3xl font-extrabold sm:text-4xl">{job.title}</h1>
+          <h1 className="mt-4 text-3xl font-bold sm:text-4xl">{job.title}</h1>
           <p className="text-muted mt-2 text-lg">
             {job.company.disclosed
               ? job.company.descriptor
@@ -60,10 +60,10 @@ export default async function JobPage(props: PageProps<"/jobs/[slug]">) {
             · {job.company.size}
           </p>
 
-          <dl className="border-line bg-surface mt-6 grid gap-4 rounded-[12px] border p-5 sm:grid-cols-4">
+          <dl className="border-line bg-surface mt-6 grid gap-4 rounded-2xl border p-5 sm:grid-cols-4">
             <div>
               <dt className="text-muted text-sm">Salary (fixed)</dt>
-              <dd className="tabular text-accent font-mono font-bold">
+              <dd className="tabular text-accent font-bold">
                 {formatLpaRange(job.salary.minLpa, job.salary.maxLpa)}
               </dd>
             </div>

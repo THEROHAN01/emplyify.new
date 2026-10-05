@@ -77,7 +77,7 @@ export default function AboutPage() {
                   alt={`${m.name}, ${m.title}`}
                   width={320}
                   height={320}
-                  className="aspect-square w-full rounded-[12px] object-cover"
+                  className="aspect-square w-full rounded-2xl object-cover"
                 />
                 <p className="mt-3 font-bold">{m.name}</p>
                 <p className="text-muted text-sm">{m.title}</p>

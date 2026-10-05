@@ -79,7 +79,7 @@ export default function HowItWorksPage() {
 
       <Section tone="surface" labelledBy="slas">
         <SectionHeading id="slas" eyebrow="Service levels" title="Promises we put in writing" />
-        <div className="border-line bg-surface overflow-x-auto rounded-[12px] border">
+        <div className="border-line bg-surface overflow-x-auto rounded-2xl border">
           <table className="w-full text-left">
             <thead>
               <tr className="border-line border-b">
