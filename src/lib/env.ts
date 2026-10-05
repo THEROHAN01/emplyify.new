@@ -11,11 +11,18 @@ const read = (key: string): string | undefined => {
 };
 
 export const env = {
-  siteUrl: (read("NEXT_PUBLIC_SITE_URL") ?? "https://emplyify.com").replace(/\/$/, ""),
+  siteUrl: (
+    read("NEXT_PUBLIC_SITE_URL") ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL
+      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+      : "https://emplyify.com")
+  ).replace(/\/$/, ""),
   isProduction: process.env.NODE_ENV === "production",
   /** Show draft CMS content (sample jobs, unpublished case studies). Never on in public production. */
   contentPreview:
     read("CONTENT_PREVIEW") === "true" ||
+    // Vercel preview deployments show drafts (and robots.txt blocks indexing).
+    (process.env.VERCEL_ENV === "preview" && read("CONTENT_PREVIEW") !== "false") ||
     (process.env.NODE_ENV !== "production" && read("CONTENT_PREVIEW") !== "false"),
 
   // Public (exposed to the browser — must be NEXT_PUBLIC_ and inlined at build).

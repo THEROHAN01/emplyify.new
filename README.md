@@ -79,8 +79,4 @@ The playbook forbids placeholder stats, logos and testimonials. The code enforce
 
 ## Deploying (Vercel)
 
-1. Import the repo; framework preset is Next.js. Set the function region to Mumbai (`bom1`).
-2. Add the environment variables from `.env.example` for Production. For Preview, also set `CONTENT_PREVIEW=true`; preview deployments then show drafts and send `robots: disallow`.
-3. Apply `supabase/migrations/0001_init.sql` to the Supabase project (SQL editor or `supabase db push`).
-4. In HubSpot, create the brief, contact and report forms and the `emplyify_*` contact properties listed in `src/lib/leads/pipeline.ts`.
-5. Work through `docs/LAUNCH_CHECKLIST.md`.
+Import the repo at vercel.com/new. `vercel.json` sets the Mumbai region and build commands, and preview deployments show draft content automatically. Full steps, the environment-variable table and post-deploy checks are in [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md). CI (lint, typecheck, tests, build) runs on every push via GitHub Actions.
