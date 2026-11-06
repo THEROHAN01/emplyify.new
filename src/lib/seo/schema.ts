@@ -13,7 +13,7 @@ export function organizationSchema() {
     "@type": "Organization",
     name: site.name,
     url: absoluteUrl("/"),
-    logo: absoluteUrl("/icon.svg"),
+    logo: absoluteUrl("/brand/logo-full.png"),
     description: site.positioning,
     email: site.email.hello,
     address: {
@@ -127,7 +127,7 @@ export function articleSchema(insight: Insight) {
     publisher: {
       "@type": "Organization",
       name: site.name,
-      logo: { "@type": "ImageObject", url: absoluteUrl("/icon.svg") },
+      logo: { "@type": "ImageObject", url: absoluteUrl("/brand/logo-full.png") },
     },
     mainEntityOfPage: absoluteUrl(`/insights/${insight.slug}`),
   };

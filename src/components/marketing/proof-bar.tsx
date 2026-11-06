@@ -35,16 +35,21 @@ export function ProofBar() {
           ))}
         </div>
         {clientLogos.length > 0 && (
-          <ul
-            className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-6 opacity-80"
-            aria-label="Clients"
-          >
-            {clientLogos.map((l) => (
-              <li key={l.name}>
-                <Image src={l.src} alt={l.name} width={l.width} height={l.height} />
-              </li>
-            ))}
-          </ul>
+          <div className="mt-12">
+            <h2 id="partners-heading" className="text-muted text-center text-sm font-medium">
+              Companies we partner with
+            </h2>
+            <ul
+              className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-8"
+              aria-labelledby="partners-heading"
+            >
+              {clientLogos.map((l) => (
+                <li key={l.name}>
+                  <Image src={l.src} alt={l.name} width={l.width} height={l.height} />
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </Container>
     </section>

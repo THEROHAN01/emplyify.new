@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Logo() {
@@ -7,10 +8,7 @@ export function Logo() {
       className="font-display flex min-h-11 items-center gap-2 text-xl font-bold tracking-tight"
       aria-label="Emplyify home"
     >
-      <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden>
-        <rect width="32" height="32" rx="8" fill="var(--accent)" />
-        <path d="M10 9h12v3.2h-8.4v2.4h7.4v3.1h-7.4v2.5H22V23H10z" fill="var(--accent-ink)" />
-      </svg>
+      <Image src="/brand/logo-mark.png" alt="" width={35} height={32} />
       <span>Emplyify</span>
     </Link>
   );
