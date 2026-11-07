@@ -118,6 +118,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
   return (
     <>
       <header className="border-line bg-surface/90 supports-[backdrop-filter]:bg-surface/75 sticky top-0 z-40 border-b backdrop-blur-md">
+        <div aria-hidden className="brand-bar h-1" />
         <Container className="flex h-16 items-center justify-between gap-4">
           <Logo />
 
@@ -130,7 +131,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
                     <MenuLinks links={hireMenu.services} onNavigate={close} />
                   </div>
                   <div>
-                    <p className="text-muted mb-2 px-3 text-sm font-medium">Role families</p>
+                    <p className="text-muted mb-2 px-3 text-sm font-medium">IT specialisms</p>
                     <MenuLinks
                       links={hireMenu.roles.map(({ label, href }) => ({ label, href }))}
                       onNavigate={close}
@@ -222,7 +223,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
         <nav
           id="mobile-menu"
           aria-label="Mobile"
-          className="border-line bg-surface fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t lg:hidden"
+          className="border-line bg-surface fixed inset-x-0 top-[68px] bottom-0 z-40 overflow-y-auto border-t lg:hidden"
         >
           <Container className="space-y-6 py-6">
             <ButtonLink href={cta.href} className="w-full" size="lg">
@@ -231,7 +232,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
             <div>
               <p className="text-muted mb-2 px-3 text-sm font-medium">Hire talent</p>
               <MenuLinks
-                links={[...hireMenu.services, { label: "All role families", href: "/hire" }]}
+                links={[...hireMenu.services, { label: "All IT and Non-IT roles", href: "/hire" }]}
                 onNavigate={() => setDrawerOpen(false)}
               />
             </div>

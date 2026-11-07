@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import { ConsentManager } from "@/components/analytics/consent-manager";
 import { ExitIntent } from "@/components/analytics/exit-intent";
 import { Footer } from "@/components/layout/footer";
@@ -12,15 +12,21 @@ import { organizationSchema } from "@/lib/seo/schema";
 import "./globals.css";
 
 /**
- * One self-hosted variable font (Inter, latin subset) for body and headings.
- * Numbers use tabular figures; metrics use the system monospace stack. Keeping
- * to a single font file is the biggest single lever on mobile LCP.
+ * Brand book type: Inter for body text, Space Grotesk for headlines and the
+ * wordmark. Both are self-hosted variable fonts (latin subset). Numbers use
+ * tabular figures; metrics use the system monospace stack.
  */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
   adjustFontFallback: true,
+});
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -38,7 +44,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN" className={inter.variable}>
+    <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="min-h-dvh antialiased">
         <a
           href="#main"

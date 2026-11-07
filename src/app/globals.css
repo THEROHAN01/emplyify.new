@@ -9,20 +9,27 @@
  * --bg       cool tint: alternating sections, insets inside cards
  */
 :root {
-  --bg: #f5f7fb;
+  /* Brand book palette (../brand/brand-kit/emplyify-tokens.css) */
+  --bg: #f6f8fc;
   --surface: #ffffff;
-  --ink: #0b1b33;
-  --muted: #4f5b6e;
-  --accent: #2f5bff;
-  --accent-hover: #2148e0;
+  --ink: #071330;
+  --muted: #4a5670;
+  --accent: #0062d6;
+  --accent-hover: #004fae;
   --accent-ink: #ffffff;
-  --accent-soft: #eef2ff;
+  --accent-soft: #eaf2fe;
   --signal: #0b7a58;
   --signal-bg: #e7f6ef;
   --warn: #8a5a00;
   --warn-bg: #fdf3dc;
-  --line: #e3e7ef;
-  --navy: #0b1b33;
+  --line: #dce3ef;
+  --navy: #071330;
+  /* Logo accents: rings, icons and the brand bar only, never body text */
+  --brand-blue: #007dfb;
+  --brand-cyan: #00c2ff;
+  --brand-violet: #740cf5;
+  --brand-orange: #ff9702;
+  --brand-teal: #01bfa3;
   color-scheme: light;
 }
 
@@ -41,9 +48,14 @@
   --color-line: var(--line);
   --color-accent-hover: var(--accent-hover);
   --color-navy: var(--navy);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-brand-violet: var(--brand-violet);
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-teal: var(--brand-teal);
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono:
     ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
@@ -80,13 +92,25 @@ h3,
 h4 {
   font-family: var(--font-display);
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   font-weight: 700;
   text-wrap: balance;
 }
 
 p {
   text-wrap: pretty;
+}
+
+/* Five-colour bar from the logo (brand book "The brand bar"). Never put text on it. */
+.brand-bar {
+  background: linear-gradient(
+    90deg,
+    var(--brand-cyan) 0%,
+    var(--brand-blue) 28%,
+    var(--brand-violet) 58%,
+    var(--brand-orange) 82%,
+    var(--brand-teal) 100%
+  );
 }
 
 .tabular {
