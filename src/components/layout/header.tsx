@@ -66,7 +66,7 @@ function Dropdown({
         aria-expanded={open}
         aria-controls={id}
         onClick={() => setOpen((o) => !o)}
-        className="text-ink/80 hover:text-ink hover:bg-bg flex min-h-11 items-center gap-1 rounded-full px-2.5 text-[15px] font-medium whitespace-nowrap xl:px-3"
+        className="nav-item label text-ink/80 hover:text-ink hover:bg-bg flex min-h-11 items-center gap-1 px-2.5 whitespace-nowrap xl:px-3"
       >
         {label}
         <span
@@ -80,7 +80,7 @@ function Dropdown({
         id={id}
         hidden={!open}
         className={cn(
-          "border-line bg-surface absolute top-full left-0 z-50 mt-2 rounded-2xl border p-4 shadow-xl",
+          "border-line bg-surface text-ink absolute top-full left-0 z-50 mt-2 border p-4 shadow-xl",
           wide ? "w-[min(760px,90vw)]" : "w-80",
         )}
       >
@@ -115,10 +115,26 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
 
   const cta = isCandidatePage ? ctas.joinNetwork : ctas.submitRole;
 
+  // On the home page the header sits transparent over the hero video until the visitor scrolls.
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  const overHero = pathname === "/" && !scrolled && !drawerOpen;
+
   return (
     <>
-      <header className="border-line bg-surface/90 supports-[backdrop-filter]:bg-surface/75 sticky top-0 z-40 border-b backdrop-blur-md">
-        <div aria-hidden className="brand-bar h-1" />
+      <header
+        className={cn(
+          "sticky top-0 z-40 border-b transition-colors duration-300",
+          overHero
+            ? "border-transparent bg-transparent text-white [&_.logo-dark]:hidden [&_.logo-light]:block [&_.menu-btn]:border-white/40 [&_.nav-item]:text-white [&_.nav-item:hover]:bg-white/10"
+            : "border-line bg-surface/95 supports-[backdrop-filter]:bg-surface/80 backdrop-blur-md",
+        )}
+      >
         <Container className="flex h-16 items-center justify-between gap-4">
           <Logo />
 
@@ -152,7 +168,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
                 key={l.href}
                 href={l.href}
                 aria-current={pathname === l.href ? "page" : undefined}
-                className="text-ink/80 hover:text-ink aria-[current=page]:text-ink hover:bg-bg flex min-h-11 items-center rounded-full px-2.5 text-[15px] font-medium whitespace-nowrap xl:px-3"
+                className="nav-item label text-ink/80 hover:text-ink aria-[current=page]:text-ink hover:bg-bg flex min-h-11 items-center px-2.5 whitespace-nowrap xl:px-3"
               >
                 {l.label}
               </Link>
@@ -165,7 +181,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
                 key={l.href}
                 href={l.href}
                 aria-current={pathname.startsWith(l.href) ? "page" : undefined}
-                className="text-ink/80 hover:text-ink aria-[current=page]:text-ink hover:bg-bg flex min-h-11 items-center rounded-full px-2.5 text-[15px] font-medium whitespace-nowrap xl:px-3"
+                className="nav-item label text-ink/80 hover:text-ink aria-[current=page]:text-ink hover:bg-bg flex min-h-11 items-center px-2.5 whitespace-nowrap xl:px-3"
               >
                 {l.label}
               </Link>
@@ -175,7 +191,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
           <div className="flex items-center gap-2">
             <Link
               href={isCandidatePage ? "/" : "/jobs"}
-              className="text-muted hover:text-accent hidden min-h-11 items-center px-2 text-sm font-semibold whitespace-nowrap underline-offset-4 hover:underline sm:flex lg:hidden xl:flex"
+              className="nav-item label text-muted hover:text-accent hidden min-h-11 items-center px-2 whitespace-nowrap underline-offset-4 hover:underline sm:flex lg:hidden xl:flex"
             >
               {isCandidatePage ? "Hiring? For employers" : "Find jobs"}
             </Link>
@@ -190,7 +206,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
             </ButtonLink>
             <button
               type="button"
-              className="border-line flex size-11 items-center justify-center rounded-lg border lg:hidden"
+              className="menu-btn border-line flex size-11 items-center justify-center border lg:hidden"
               aria-expanded={drawerOpen}
               aria-controls="mobile-menu"
               onClick={() => setDrawerOpen((o) => !o)}
@@ -223,7 +239,7 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
         <nav
           id="mobile-menu"
           aria-label="Mobile"
-          className="border-line bg-surface fixed inset-x-0 top-[68px] bottom-0 z-40 overflow-y-auto border-t lg:hidden"
+          className="border-line bg-surface fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto border-t lg:hidden"
         >
           <Container className="space-y-6 py-6">
             <ButtonLink href={cta.href} className="w-full" size="lg">

@@ -38,3 +38,13 @@ The site was built as "the AI-native hiring partner for India's tech and GCC tea
 - Case studies (competitor analysis action 4).
 - Mayuri Patil's photo.
 - Hiring-desk cities beyond Pune.
+
+## Phase 2: editorial redesign (layout modelled on rentahuman.ai)
+
+Our content, colours and code; no copied assets, code or licensed fonts.
+
+- Serif headlines (Newsreader, free) with Inter body text and small uppercase labels; square corners; ↗ arrow boxes on links.
+- Wordmark: the brand-kit EMPLYIFY lock-up with the gradient first Y (cut from `brand/logo-full-transparent.png`, never retyped); a white version for dark backgrounds.
+- Home: full-screen hero video under a transparent header, service picture cards, partner strip, brand-blue mission block with a turning ring of people (our logo motif), sticky "How it works" with a live step counter and steps revealed on scroll, a sideways-scrolling "Roles we fill" row, a video section with stat tiles, pricing and comparison, team grid, dark finale.
+- Motion: muted looping videos that play only on screen, scroll reveals, slow ring rotation, header fade on scroll. All of it stops for visitors who prefer reduced motion.
+- Videos: two free Pexels clips (19538635 and 6952048), trimmed to 10 seconds with no audio, in `public/media/`.

@@ -18,14 +18,14 @@ export function PageHeader({
   aside?: ReactNode;
 }) {
   return (
-    <header className="bg-bg pt-8 pb-14 lg:pt-10 lg:pb-20">
+    <header className="bg-navy pt-8 pb-16 text-white lg:pt-10 lg:pb-24 [&_.text-ink]:text-white [&_.text-muted]:text-white/70 [&_nav_*]:text-white/70 [&_[aria-current=page]]:text-white">
       <Container>
         {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
         <div className={aside ? "grid gap-10 lg:grid-cols-[1.3fr_1fr] lg:items-center" : undefined}>
           <div className="max-w-3xl">
-            {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-            <h1 className="text-[2.25rem] font-bold sm:text-5xl">{title}</h1>
-            {intro && <div className="text-muted mt-5 max-w-2xl text-lg">{intro}</div>}
+            {eyebrow && <Eyebrow className="text-[#5fd4ff]">{eyebrow}</Eyebrow>}
+            <h1 className="text-[2.75rem] sm:text-6xl lg:text-[4.5rem]">{title}</h1>
+            {intro && <div className="mt-6 max-w-2xl text-lg text-white/75">{intro}</div>}
             {actions && <div className="mt-8 flex flex-wrap gap-3">{actions}</div>}
           </div>
           {aside}

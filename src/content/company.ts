@@ -167,3 +167,25 @@ export const trustPoints = [
     detail: "Data handling aligned with the DPDP Act.",
   },
 ];
+
+/** Non-IT functions shown as role cards beside the IT specialisms. */
+export const nonItRoleCards = [
+  {
+    title: "Sales and business development",
+    blurb: "Field sales, inside sales, key accounts and BD managers.",
+  },
+  { title: "Marketing", blurb: "Digital, brand, performance and content marketers." },
+  { title: "Finance and accounting", blurb: "Accountants, analysts, controllers and finance heads." },
+  { title: "Human resources", blurb: "HR generalists, HRBPs, talent acquisition and payroll." },
+  {
+    title: "Operations and administration",
+    blurb: "Operations, supply chain, admin and facilities roles.",
+  },
+  { title: "Customer service", blurb: "Support executives, team leads and service managers." },
+];
+
+/** Background video clips (free Pexels licence), trimmed to 10s, muted. */
+export const media = {
+  hero: { src: "/media/hero.mp4", poster: "/media/hero-poster.jpg" },
+  boardroom: { src: "/media/boardroom.mp4", poster: "/media/boardroom-poster.jpg" },
+};

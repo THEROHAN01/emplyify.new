@@ -1,4 +1,6 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
+import { PeopleRing } from "@/components/visuals/people-ring";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/layout";
 import { ctas, site } from "@/content/site";
@@ -21,8 +23,8 @@ export function CheckIcon({ className = "" }: { className?: string }) {
 }
 
 export function FinalCta({
-  title = "Have a role open? Get a shortlist this week.",
-  body = `Pay only when you hire. ${site.promises.replacementDays}-day free replacement. Published pricing.`,
+  title = "Share a role. Get a shortlist.",
+  body = `Screened candidates in 72 hours. Pay only when the hire joins, with a ${site.promises.replacementDays}-day free replacement.`,
   primary = ctas.submitRole,
   secondary = ctas.bookCall,
   children,
@@ -34,35 +36,46 @@ export function FinalCta({
   children?: ReactNode;
 }) {
   return (
-    <section aria-labelledby="final-cta" className="py-16 lg:py-24">
-      <Container>
-        <div className="bg-navy rounded-3xl px-6 py-14 text-white sm:px-12 lg:px-16 lg:py-20">
-          <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-end">
-            <div>
-              <h2 id="final-cta" className="text-3xl font-bold sm:text-[2.75rem]">
-                {title}
-              </h2>
-              <p className="mt-4 max-w-xl text-lg text-white/75">{body}</p>
-            </div>
-            <div className="flex flex-wrap gap-3 lg:justify-end">
-              <ButtonLink href={primary.href} size="lg">
-                {primary.label}
-              </ButtonLink>
-              {secondary && (
-                <ButtonLink
-                  href={secondary.href}
-                  size="lg"
-                  variant="secondary"
-                  className="border-white/25 bg-transparent text-white hover:border-white"
-                >
-                  {secondary.label}
-                </ButtonLink>
-              )}
-            </div>
-          </div>
-          {children}
+    <section
+      aria-labelledby="final-cta"
+      className="bg-navy relative isolate overflow-hidden px-5 pt-20 pb-32 text-white md:px-10 md:py-28 lg:py-40"
+    >
+      <PeopleRing
+        mono="rgba(255,255,255,0.18)"
+        size={720}
+        className="pointer-events-none absolute -bottom-96 -left-72 -z-10"
+      />
+      <div className="mx-auto max-w-4xl text-center">
+        <p className="label text-white/80">{site.tagline}</p>
+        <h2 id="final-cta" className="mt-6 text-[2.75rem] sm:text-6xl lg:text-[5.5rem]">
+          {title}
+        </h2>
+        <p className="mx-auto mt-6 max-w-xl text-lg text-white/75">{body}</p>
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+          <ButtonLink href={primary.href} size="lg">
+            {primary.label}
+          </ButtonLink>
+          {secondary && (
+            <ButtonLink
+              href={secondary.href}
+              size="lg"
+              variant="secondary"
+              className="border-white/40 text-white hover:border-white"
+            >
+              {secondary.label}
+            </ButtonLink>
+          )}
         </div>
-      </Container>
+        <p className="mt-10">
+          <Link
+            href={ctas.joinNetwork.href}
+            className="label text-white/80 underline underline-offset-4 hover:text-white"
+          >
+            Looking for work? {ctas.joinNetwork.label}
+          </Link>
+        </p>
+        {children}
+      </div>
     </section>
   );
 }

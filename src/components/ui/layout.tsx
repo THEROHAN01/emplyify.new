@@ -21,7 +21,7 @@ export function Section({
   id?: string;
   className?: string;
   children: ReactNode;
-  tone?: "default" | "surface" | "accent";
+  tone?: "default" | "surface" | "accent" | "ink" | "brand";
   labelledBy?: string;
   as?: ElementType;
 }) {
@@ -33,6 +33,8 @@ export function Section({
         "py-16 lg:py-28",
         tone === "surface" && "bg-bg",
         tone === "accent" && "bg-accent-soft",
+        tone === "ink" && "bg-navy text-white",
+        tone === "brand" && "bg-accent text-white",
         className,
       )}
     >
@@ -42,7 +44,7 @@ export function Section({
 }
 
 export function Eyebrow({ children, className }: { children: ReactNode; className?: string }) {
-  return <p className={cn("text-accent mb-4 text-sm font-semibold", className)}>{children}</p>;
+  return <p className={cn("label text-accent mb-5", className)}>{children}</p>;
 }
 
 export function SectionHeading({
@@ -63,10 +65,10 @@ export function SectionHeading({
   return (
     <div className={cn("mb-12 max-w-2xl", align === "center" && "mx-auto text-center", className)}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <h2 id={id} className="text-3xl font-bold sm:text-[2.5rem]">
+      <h2 id={id} className="text-[2.5rem] sm:text-[3.5rem]">
         {title}
       </h2>
-      {intro && <p className="text-muted mt-5 text-lg">{intro}</p>}
+      {intro && <p className="mt-5 text-lg opacity-75">{intro}</p>}
     </div>
   );
 }

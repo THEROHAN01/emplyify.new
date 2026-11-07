@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Inter, Newsreader } from "next/font/google";
 import { ConsentManager } from "@/components/analytics/consent-manager";
 import { ExitIntent } from "@/components/analytics/exit-intent";
 import { Footer } from "@/components/layout/footer";
@@ -12,9 +12,8 @@ import { organizationSchema } from "@/lib/seo/schema";
 import "./globals.css";
 
 /**
- * Brand book type: Inter for body text, Space Grotesk for headlines and the
- * wordmark. Both are self-hosted variable fonts (latin subset). Numbers use
- * tabular figures; metrics use the system monospace stack.
+ * Editorial type: Newsreader (serif) for headlines, Inter for body text and
+ * uppercase labels. Both are self-hosted variable fonts (latin subset).
  */
 const inter = Inter({
   subsets: ["latin"],
@@ -23,9 +22,9 @@ const inter = Inter({
   adjustFontFallback: true,
 });
 
-const spaceGrotesk = Space_Grotesk({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-newsreader",
   display: "swap",
 });
 
@@ -44,7 +43,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en-IN" className={`${inter.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en-IN" className={`${inter.variable} ${newsreader.variable}`}>
       <body className="min-h-dvh antialiased">
         <a
           href="#main"

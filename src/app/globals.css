@@ -55,7 +55,7 @@
   --color-brand-teal: var(--brand-teal);
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), Georgia, "Times New Roman", serif;
   --font-mono:
     ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
@@ -69,7 +69,12 @@
   --text-4xl: 3rem;
   --text-5xl: 4rem;
 
-  --radius-card: 16px;
+  /* Editorial look: square corners everywhere except pills and avatars */
+  --radius-lg: 2px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+  --radius-card: 0px;
   --container-content: 1200px;
 }
 
@@ -91,26 +96,23 @@ h2,
 h3,
 h4 {
   font-family: var(--font-display);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  font-weight: 400;
   text-wrap: balance;
+}
+
+/* Small uppercase label used for eyebrows, nav and buttons */
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 p {
   text-wrap: pretty;
-}
-
-/* Five-colour bar from the logo (brand book "The brand bar"). Never put text on it. */
-.brand-bar {
-  background: linear-gradient(
-    90deg,
-    var(--brand-cyan) 0%,
-    var(--brand-blue) 28%,
-    var(--brand-violet) 58%,
-    var(--brand-orange) 82%,
-    var(--brand-teal) 100%
-  );
 }
 
 .tabular {

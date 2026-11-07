@@ -6,18 +6,18 @@ type Variant = "primary" | "secondary" | "ghost" | "link";
 type Size = "md" | "lg";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold whitespace-nowrap transition-colors duration-200 ease-out disabled:cursor-not-allowed disabled:opacity-60 min-h-11";
+  "inline-flex items-center justify-center gap-3 rounded-none text-xs font-semibold tracking-[0.08em] uppercase whitespace-nowrap transition-colors duration-200 ease-out disabled:cursor-not-allowed disabled:opacity-60 min-h-11";
 
 const variants: Record<Variant, string> = {
   primary: "bg-accent text-accent-ink hover:bg-accent-hover",
-  secondary: "border border-line bg-surface text-ink hover:border-ink",
+  secondary: "border border-ink/30 bg-transparent text-ink hover:border-ink",
   ghost: "text-ink hover:bg-bg",
-  link: "min-h-0 px-0 text-accent underline-offset-4 hover:underline",
+  link: "min-h-0 px-0 text-accent underline underline-offset-4 hover:no-underline",
 };
 
 const sizes: Record<Size, string> = {
-  md: "px-5 py-2.5 text-base",
-  lg: "px-7 py-3.5 text-base",
+  md: "px-5 py-2.5",
+  lg: "px-6 py-3.5",
 };
 
 export function buttonClasses(variant: Variant = "primary", size: Size = "md", className?: string) {

@@ -1,15 +1,5 @@
 import Image from "next/image";
 import type { TeamMember } from "@/content/types";
-import { cn } from "@/lib/utils/cn";
-
-/** Brand book: team photos are circles with a 4px ring cycling blue, violet, orange, teal, cyan. */
-const rings = [
-  "ring-brand-blue",
-  "ring-brand-violet",
-  "ring-brand-orange",
-  "ring-brand-teal",
-  "ring-brand-cyan",
-];
 
 function initials(name: string) {
   return name
@@ -19,62 +9,34 @@ function initials(name: string) {
     .join("");
 }
 
-export function TeamPhoto({
-  member,
-  index,
-  size = 160,
-}: {
-  member: TeamMember;
-  index: number;
-  size?: number;
-}) {
-  const ring = cn("rounded-full ring-4 ring-offset-4 ring-offset-surface", rings[index % rings.length]);
-  return member.photo ? (
-    <Image
-      src={member.photo}
-      alt={`${member.name}, ${member.title}`}
-      width={size}
-      height={size}
-      className={cn("aspect-square object-cover", ring)}
-      style={{ width: size, height: size }}
-    />
-  ) : (
-    <span
-      role="img"
-      aria-label={`${member.name}, ${member.title} (photo coming soon)`}
-      className={cn("bg-accent-soft text-accent font-display flex items-center justify-center font-bold", ring)}
-      style={{ width: size, height: size, fontSize: size / 3.2 }}
-    >
-      {initials(member.name)}
-    </span>
-  );
-}
-
-/** Full cards with bios (About page). */
-export function TeamGrid({ team }: { team: TeamMember[] }) {
+/** Editorial team grid: square photos in bordered cells, name in serif, title as a label. */
+export function TeamGrid({ team, bios = true }: { team: TeamMember[]; bios?: boolean }) {
   return (
-    <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
-      {team.map((m, i) => (
-        <li key={m.name} className="flex flex-col items-center text-center">
-          <TeamPhoto member={m} index={i} />
-          <p className="font-display mt-6 text-xl font-bold">{m.name}</p>
-          <p className="text-accent text-sm font-semibold">{m.title}</p>
-          <p className="text-muted mt-3 max-w-sm text-[15px]">{m.bio}</p>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-/** Compact strip: photo, name and title (home page). */
-export function TeamStrip({ team }: { team: TeamMember[] }) {
-  return (
-    <ul className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3 lg:grid-cols-5">
-      {team.map((m, i) => (
-        <li key={m.name} className="flex flex-col items-center text-center">
-          <TeamPhoto member={m} index={i} size={112} />
-          <p className="mt-5 font-bold">{m.name}</p>
-          <p className="text-muted text-sm">{m.title}</p>
+    <ul className="border-line grid border-t border-l sm:grid-cols-2 lg:grid-cols-3">
+      {team.map((m) => (
+        <li key={m.name} className="border-line group border-r border-b p-5">
+          <div className="bg-bg aspect-square overflow-hidden">
+            {m.photo ? (
+              <Image
+                src={m.photo}
+                alt={`${m.name}, ${m.title}`}
+                width={480}
+                height={480}
+                className="size-full object-cover grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
+              />
+            ) : (
+              <span
+                role="img"
+                aria-label={`${m.name}, ${m.title}`}
+                className="font-display text-accent flex size-full items-center justify-center text-7xl"
+              >
+                {initials(m.name)}
+              </span>
+            )}
+          </div>
+          <p className="font-display mt-6 text-3xl">{m.name}</p>
+          <p className="label text-accent mt-2 leading-relaxed">{m.title}</p>
+          {bios && <p className="text-muted mt-4 text-[15px]">{m.bio}</p>}
         </li>
       ))}
     </ul>
