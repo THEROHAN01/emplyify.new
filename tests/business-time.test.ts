@@ -33,13 +33,13 @@ describe("replyDeadline (4 business hours, Mon–Fri 09:30–18:30 IST)", () => 
 });
 
 describe("shortlistDate", () => {
-  it("is 72 calendar hours later on a weekday", () => {
-    expect(shortlistDate(ist("2026-10-05T12:00:00"))).toEqual(ist("2026-10-08T12:00:00"));
+  it("is 48 calendar hours later on a weekday", () => {
+    expect(shortlistDate(ist("2026-10-05T12:00:00"))).toEqual(ist("2026-10-07T12:00:00"));
   });
 
   it("never lands on a weekend", () => {
-    // Wed + 72h = Sat → Monday same time
-    const d = shortlistDate(ist("2026-10-07T12:00:00"));
+    // Thu + 48h = Sat → Monday same time
+    const d = shortlistDate(ist("2026-10-08T12:00:00"));
     expect(d).toEqual(ist("2026-10-12T12:00:00"));
   });
 });

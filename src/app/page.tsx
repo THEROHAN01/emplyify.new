@@ -50,7 +50,7 @@ const tints = [
 const serviceImages: Record<string, string | undefined> = {};
 
 const stats = [
-  { value: "72h", label: "To an initial shortlist" },
+  { value: "48h", label: "To an initial shortlist" },
   { value: "4h", label: "Business-hours reply" },
   { value: "48h", label: "Interview feedback chased" },
   { value: "90 days", label: "Free replacement" },
@@ -92,7 +92,7 @@ export default function HomePage() {
             <div className="text-ink max-w-md bg-white p-6">
               <p className="text-lg">
                 Pan-India recruitment and staffing for IT and Non-IT roles. Screened shortlists in
-                72 hours.
+                48 hours.
               </p>
               <Link
                 href={ctas.submitRole.href}
@@ -228,7 +228,7 @@ export default function HomePage() {
       <HowSteps
         steps={processSteps}
         title="Brief. Shortlist. Joining."
-        intro="A complete process from a confirmed requirement to the candidate's first day, with an initial shortlist in 72 hours."
+        intro="A complete process from a confirmed requirement to the candidate's first day, with an initial shortlist in 48 hours."
       />
 
       {/* 6 · Roles we fill: horizontal card row on blue */}
@@ -249,7 +249,7 @@ export default function HomePage() {
             >
               <div className="label flex justify-between text-white/80">
                 <span>{r.category}</span>
-                <span>72h shortlist</span>
+                <span>48h shortlist</span>
               </div>
               <h3 className="mt-8 text-3xl">{r.title}</h3>
               <p className="mt-3 text-white/80">{r.blurb}</p>

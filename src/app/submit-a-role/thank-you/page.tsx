@@ -70,7 +70,7 @@ export default async function BriefThankYou(props: PageProps<"/submit-a-role/tha
             <p className="mt-1 text-lg font-semibold">
               Your verified shortlist: three to five candidates, each with a dossier.
             </p>
-            <p className="text-muted mt-1">The 72-hour clock starts once the brief is confirmed.</p>
+            <p className="text-muted mt-1">The 48-hour clock starts once the brief is confirmed.</p>
           </li>
           {isPod && (
             <li className="border-accent bg-accent-soft rounded-2xl border p-6">

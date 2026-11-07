@@ -47,7 +47,7 @@ const standardSteps = [
     step: "Requirement understanding",
     sla: "Day 0",
     detail:
-      "A calibration call or a written brief. We confirm must-haves and budget in writing, and the 72-hour clock starts.",
+      "A calibration call or a written brief. We confirm must-haves and budget in writing, and the 48-hour clock starts.",
   },
   {
     step: "Sourcing and screening",
@@ -57,7 +57,7 @@ const standardSteps = [
   },
   {
     step: "Shortlist",
-    sla: "By 72 hours",
+    sla: "By 48 hours",
     detail: "Three to five candidates, each with a fit summary and a senior recruiter's sign-off.",
   },
   {
@@ -80,7 +80,7 @@ export const services: Service[] = [
     slug: "permanent-recruitment",
     name: "Permanent Recruitment",
     navLabel: "Permanent recruitment",
-    outcome: "Full-time hires at every level, with a shortlist in 72 hours.",
+    outcome: "Full-time hires at every level, with a shortlist in 48 hours.",
     summary:
       "For one to ten open roles. You brief us once, we return three to five screened candidates and run the process through to the joining date.",
     whoFor: [
@@ -90,7 +90,7 @@ export const services: Service[] = [
     ],
     included: [
       "A confirmed written brief",
-      "An initial shortlist of 3–5 screened candidates in 72 hours",
+      "An initial shortlist of 3–5 screened candidates in 48 hours",
       "Interview scheduling and feedback chasing",
       "Offer support and joining follow-up",
       "A weekly status report",
@@ -123,7 +123,7 @@ export const services: Service[] = [
     ],
     included: [
       "A confirmed written brief and contract terms",
-      "A shortlist of screened contract candidates in 72 hours",
+      "A shortlist of screened contract candidates in 48 hours",
       "Interview scheduling and onboarding coordination",
       "Monthly billing, payroll and statutory compliance (PF, ESI, PT)",
       "A single point of contact for extensions and replacements",
@@ -190,7 +190,7 @@ export const services: Service[] = [
       "A brief built around must-have skills, not a job-description copy",
       "AI-assisted search across portals, LinkedIn and our database",
       "A recruiter screen on skills, motivation, notice period and CTC",
-      "3–5 screened candidates in 72 hours",
+      "3–5 screened candidates in 48 hours",
       "Interview scheduling, feedback chasing and offer support",
       "90-day free replacement on permanent hires",
     ],
@@ -232,7 +232,7 @@ export const services: Service[] = [
       "A confirmed written brief",
       "Sourcing across job portals, networks and referrals",
       "A recruiter screen on experience, motivation, notice period and CTC",
-      "3–5 screened candidates in 72 hours",
+      "3–5 screened candidates in 48 hours",
       "Interview scheduling, offer and joining follow-up",
       "90-day free replacement on permanent hires",
     ],

@@ -14,7 +14,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata = buildMetadata({
   title: "How it works",
   description:
-    "Six steps from a confirmed brief to the candidate's first day: the timeline for each step, where we search, what AI does and what recruiters decide.",
+    "Five steps from a confirmed brief to the candidate's first day: the timeline for each step, where we search, what AI does and what recruiters decide.",
   path: "/how-it-works",
 });
 
@@ -60,7 +60,7 @@ export default function HowItWorksPage() {
         breadcrumbs={[{ name: "How it works", path: "/how-it-works" }]}
         eyebrow="How it works"
         title="From a confirmed brief to the first day."
-        intro="Every role runs through the same six steps, with an initial shortlist in 72 hours. Here's exactly what happens after you share a role."
+        intro="Every role runs through the same five steps, with an initial shortlist in 48 hours. Here's exactly what happens after you share a role."
         actions={
           <>
             <ButtonLink href={ctas.submitRole.href} size="lg">
@@ -74,7 +74,7 @@ export default function HowItWorksPage() {
       />
 
       <Section labelledBy="steps">
-        <SectionHeading id="steps" title="The six steps" />
+        <SectionHeading id="steps" title="The five steps" />
         <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {processSteps.map((p, i) => (
             <li key={p.step} className="border-line bg-surface rounded-2xl border p-6">
@@ -125,7 +125,7 @@ export default function HowItWorksPage() {
             steps={[
               { label: "Brief confirmed", detail: "Within 4 business hours" },
               { label: "Search and screen", detail: "0–48 hours" },
-              { label: "Shortlist sent", detail: "By 72 hours" },
+              { label: "Shortlist sent", detail: "By 48 hours" },
               { label: "Interviews", detail: "Feedback chased in 48h" },
               { label: "Offer and joining", detail: "90-day cover starts" },
             ]}

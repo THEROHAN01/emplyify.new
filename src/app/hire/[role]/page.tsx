@@ -27,7 +27,7 @@ export async function generateMetadata(props: PageProps<"/hire/[role]">) {
   if (!role) return {};
   return buildMetadata({
     title: `Hire ${role.title.toLowerCase()} in India`,
-    description: `${role.shortDescription} Vetted shortlist in 72 hours, salary bands for Pune, Bengaluru and Hyderabad, and published fees.`,
+    description: `${role.shortDescription} Vetted shortlist in 48 hours, salary bands for Pune, Bengaluru and Hyderabad, and published fees.`,
     path: `/hire/${role.slug}`,
   });
 }
@@ -46,7 +46,7 @@ export default async function RolePageView(props: PageProps<"/hire/[role]">) {
           { name: role.title, path: `/hire/${role.slug}` },
         ]}
         eyebrow="Hire"
-        title={`Hire ${role.title.toLowerCase()}, shortlisted in 72 hours`}
+        title={`Hire ${role.title.toLowerCase()}, shortlisted in 48 hours`}
         intro={role.shortDescription}
         actions={
           <>

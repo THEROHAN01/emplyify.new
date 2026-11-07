@@ -12,7 +12,7 @@ function TechHiringMock() {
   return (
     <Window
       title="Shortlist · Senior Backend Engineer"
-      badge={<Pill tone="signal">Delivered in 72h</Pill>}
+      badge={<Pill tone="signal">Delivered in 48h</Pill>}
     >
       <div className="flex items-center gap-3">
         <div className="flex -space-x-2">

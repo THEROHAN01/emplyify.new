@@ -12,7 +12,7 @@ export const problems = [
   },
   {
     problem: "Weeks to the first good candidate",
-    fix: "An initial shortlist in 72 hours",
+    fix: "An initial shortlist in 48 hours",
     detail:
       "With 30–90 day notice periods, every lost week pushes the joining date further out. The clock starts the moment your brief is confirmed.",
   },
@@ -24,28 +24,24 @@ export const problems = [
   },
 ];
 
-/** The six-step process (Business Document, "How we work"). */
+/** The five-step process (Business Document, "How we work"). */
 export const processSteps = [
   {
     step: "Requirement understanding",
     when: "Day 0",
     detail:
-      "A calibration call or written brief. Must-haves and budget are confirmed in writing, and the 72-hour clock starts.",
+      "A calibration call or written brief. Must-haves and budget are confirmed in writing, and the 48-hour clock starts.",
   },
   {
     step: "Talent sourcing",
-    when: "0–48 hours",
+    when: "From day 0",
     detail: "Job portals, LinkedIn, referrals, our candidate database and AI-assisted search.",
   },
   {
-    step: "Candidate screening",
-    when: "0–48 hours",
-    detail: "A recruiter screen on skills, motivation, notice period and CTC.",
-  },
-  {
-    step: "Shortlist and submission",
-    when: "By 72 hours",
-    detail: "Three to five candidates, each with a fit summary and recruiter sign-off.",
+    step: "Screening and shortlist",
+    when: "By 48 hours",
+    detail:
+      "A recruiter screen on skills, motivation, notice period and CTC, then three to five candidates submitted, each with a fit summary and recruiter sign-off.",
   },
   {
     step: "Interview coordination",
@@ -73,14 +69,14 @@ export const sourcingChannels = [
 ];
 
 export const commitments = [
-  { value: "72 hours", label: "To an initial shortlist once the brief is confirmed" },
+  { value: "48 hours", label: "To an initial shortlist once the brief is confirmed" },
   { value: "4 hours", label: "Business-hours reply to every new requirement" },
   { value: "48 hours", label: "To chase interview feedback after every round" },
   { value: "90 days", label: "Free replacement if a permanent hire leaves early" },
 ];
 
 export const commitmentsNote =
-  "The 72-hour shortlist depends on role complexity and candidate availability. Replacement covers resignation or performance exits within 90 days of joining, not redundancy or a change of role.";
+  "The 48-hour shortlist depends on role complexity and candidate availability. Replacement covers resignation or performance exits within 90 days of joining, not redundancy or a change of role.";
 
 export const industries = [
   "IT and software",
@@ -131,7 +127,7 @@ export const comparison = [
   },
   {
     row: "First shortlist",
-    emplyify: "72 hours",
+    emplyify: "48 hours",
     agency: "Often 1–3 weeks",
     inhouse: "Depends on team capacity",
   },

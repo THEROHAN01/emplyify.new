@@ -24,7 +24,7 @@ export const plans = [
     price: "8.33–16.67%",
     priceNote: "of annual fixed CTC, by seniority",
     includes: [
-      "Initial shortlist in 72 hours",
+      "Initial shortlist in 48 hours",
       "Interview scheduling and offer support",
       "90-day free replacement",
       "Pay only when the hire joins",
@@ -54,7 +54,7 @@ export const plans = [
     price: "Monthly",
     priceNote: "service fee per contractor, quoted in writing",
     includes: [
-      "Screened contract candidates in 72 hours",
+      "Screened contract candidates in 48 hours",
       "Payroll and statutory compliance (PF, ESI, PT)",
       "Monthly billing",
       "One point of contact for extensions",

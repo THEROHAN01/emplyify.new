@@ -11,7 +11,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata = buildMetadata({
   title: "Hire IT and Non-IT talent in India",
   description:
-    "Hire IT specialists (AI/ML, data, cloud and DevOps, full-stack, embedded, product) and Non-IT talent (sales, marketing, finance, HR, operations, customer service) across India, with a shortlist in 72 hours.",
+    "Hire IT specialists (AI/ML, data, cloud and DevOps, full-stack, embedded, product) and Non-IT talent (sales, marketing, finance, HR, operations, customer service) across India, with a shortlist in 48 hours.",
   path: "/hire",
 });
 

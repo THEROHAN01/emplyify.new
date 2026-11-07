@@ -18,7 +18,7 @@ export function RoleFacts({ role, cityName }: { role: RolePage; cityName?: strin
     <div className="grid gap-4 sm:grid-cols-3">
       <Card>
         <p className="text-muted text-sm">Shortlist</p>
-        <p className="tabular text-ink text-2xl font-bold">72 hours</p>
+        <p className="tabular text-ink text-2xl font-bold">48 hours</p>
       </Card>
       <Card>
         <p className="text-muted text-sm">
@@ -210,7 +210,7 @@ export function RoleBrief({
           id="brief"
           eyebrow="Two-minute brief"
           title={`Hiring ${role.title.toLowerCase()}${location ? ` in ${location}` : ""}?`}
-          intro="We've pre-filled the role. A recruiter replies within 4 business hours; your shortlist follows within 72 hours."
+          intro="We've pre-filled the role. A recruiter replies within 4 business hours; your shortlist follows within 48 hours."
         />
         <BriefForm
           {...briefFormProps()}

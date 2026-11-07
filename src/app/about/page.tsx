@@ -18,7 +18,7 @@ export const metadata = buildMetadata({
 
 const principles = [
   ["Understand the need first", "Every search starts with the business requirement, not a job-description copy."],
-  ["Promises in writing", "A shortlist in 72 hours, a reply in 4 business hours, feedback chased in 48."],
+  ["Promises in writing", "A shortlist in 48 hours, a reply in 4 business hours, feedback chased in 48."],
   ["Show the price", "Our permanent-hire fees are published, and nothing is due until the hire joins."],
   ["Proof over adjectives", "We publish only real numbers and approved names, never placeholder quotes."],
   ["People decide", "AI helps our recruiters search. A person signs off every shortlist."],

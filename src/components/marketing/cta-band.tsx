@@ -24,7 +24,7 @@ export function CheckIcon({ className = "" }: { className?: string }) {
 
 export function FinalCta({
   title = "Share a role. Get a shortlist.",
-  body = `Screened candidates in 72 hours. Pay only when the hire joins, with a ${site.promises.replacementDays}-day free replacement.`,
+  body = `Screened candidates in 48 hours. Pay only when the hire joins, with a ${site.promises.replacementDays}-day free replacement.`,
   primary = ctas.submitRole,
   secondary = ctas.bookCall,
   children,

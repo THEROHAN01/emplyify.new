@@ -14,7 +14,7 @@ function StepCard({ s, i }: { s: Step; i: number }) {
     <>
       <div>
         <p className="font-display text-accent text-4xl">{i + 1}</p>
-        <h3 className="mt-3 text-[1.6rem] leading-[1.05] [overflow-wrap:anywhere] xl:text-[1.9rem]">{s.step}</h3>
+        <h3 className="mt-3 text-[1.6rem] leading-[1.05] [overflow-wrap:anywhere] xl:text-[2.2rem]">{s.step}</h3>
         <p className="label text-muted mt-4">{s.when}</p>
         <p className="text-muted mt-3 text-[15px]">{s.detail}</p>
       </div>
@@ -71,10 +71,10 @@ export function HowSteps({ steps, title, intro }: { steps: Step[]; title: string
     };
   }, [pinned]);
 
-  // Timeline: statement until 8%, grid fades in by 16%, then one card every 12%.
+  // Timeline: statement until 8%, grid fades in by 16%, then one card every 15%.
   const introOut = clamp((p - 0.06) / 0.08);
   const gridIn = clamp((p - 0.1) / 0.06);
-  const shown = steps.filter((_, i) => p > 0.16 + i * 0.12).length;
+  const shown = steps.filter((_, i) => p > 0.16 + i * 0.15).length;
 
   const bar = (count: number) => (
     <div className="border-line flex h-[53px] shrink-0 items-center justify-between border-b px-5 md:px-10">
@@ -95,7 +95,7 @@ export function HowSteps({ steps, title, intro }: { steps: Step[]; title: string
           </h2>
           <p className="text-muted mx-auto mt-6 max-w-xl text-lg">{intro}</p>
         </div>
-        <ol className="border-line grid border-t sm:grid-cols-2 lg:grid-cols-3">
+        <ol className="border-line grid border-t sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {steps.map((s, i) => (
             <li key={s.step} className="border-line flex flex-col border-b px-5 py-10 sm:border-r md:px-8">
               <StepCard s={s} i={i} />
@@ -107,7 +107,7 @@ export function HowSteps({ steps, title, intro }: { steps: Step[]; title: string
   }
 
   return (
-    <section ref={sectionRef} aria-labelledby="how" className="border-line relative h-[420svh] border-b bg-white">
+    <section ref={sectionRef} aria-labelledby="how" className="border-line relative h-[380svh] border-b bg-white">
       <div ref={frameRef} className="sticky top-16 flex h-[calc(100svh-4rem)] flex-col overflow-hidden">
         {bar(shown)}
         <div className="relative flex-1">
@@ -126,7 +126,7 @@ export function HowSteps({ steps, title, intro }: { steps: Step[]; title: string
           </div>
 
           <ol
-            className="absolute inset-0 grid grid-cols-6"
+            className="absolute inset-0 grid grid-cols-5"
             style={{ opacity: gridIn, visibility: gridIn === 0 ? "hidden" : undefined }}
           >
             {steps.map((s, i) => (

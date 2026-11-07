@@ -31,7 +31,7 @@ export async function generateMetadata(props: PageProps<"/hire/[role]/[city]">) 
   if (!role || !city) return {};
   return buildMetadata({
     title: `Hire ${role.title.toLowerCase()} in ${city.name}`,
-    description: `Hire ${role.title.toLowerCase()} in ${city.name}: ${city.name} salary bands, notice-period norms, hiring clusters and a vetted shortlist in 72 hours.`,
+    description: `Hire ${role.title.toLowerCase()} in ${city.name}: ${city.name} salary bands, notice-period norms, hiring clusters and a vetted shortlist in 48 hours.`,
     path: `/hire/${role.slug}/${city.slug}`,
   });
 }

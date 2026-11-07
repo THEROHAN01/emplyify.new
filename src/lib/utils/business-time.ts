@@ -1,7 +1,7 @@
 /**
  * Business-time helpers in India Standard Time (UTC+05:30, no DST).
  * Office hours: Mon–Fri, 09:30–18:30 IST. Used for the "human reply within
- * 4 business hours" promise and the 72-hour shortlist date.
+ * 4 business hours" promise and the 48-hour shortlist date.
  */
 const IST_OFFSET_MIN = 330;
 const OPEN_MIN = 9 * 60 + 30;
@@ -53,10 +53,10 @@ export function replyDeadline(from: Date, businessHours = 4): Date {
 }
 
 /**
- * The 72-hour shortlist clock starts when the brief is confirmed. We quote
+ * The 48-hour shortlist clock starts when the brief is confirmed. We quote
  * calendar hours but never land a promise on a weekend: Sat/Sun roll to Monday.
  */
-export function shortlistDate(from: Date, hours = 72): Date {
+export function shortlistDate(from: Date, hours = 48): Date {
   const target = toIstWall(new Date(from.getTime() + hours * 3_600_000));
   while (isWeekend(target)) target.setUTCDate(target.getUTCDate() + 1);
   return fromIstWall(target);

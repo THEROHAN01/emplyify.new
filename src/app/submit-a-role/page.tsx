@@ -10,7 +10,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata = buildMetadata({
   title: "Submit a role",
   description:
-    "Brief Emplyify in about two minutes. A senior recruiter replies within 4 business hours and your verified shortlist arrives within 72 hours.",
+    "Brief Emplyify in about two minutes. A senior recruiter replies within 4 business hours and your verified shortlist arrives within 48 hours.",
   path: "/submit-a-role",
 });
 

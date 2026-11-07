@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 /**
- * Line-art spot illustrations for the six hiring steps. One style: navy
+ * Line-art spot illustrations for the five hiring steps. One style: navy
  * 2.5px strokes, round joins, flat fills from the logo palette.
  */
 const ink = "#071330";
@@ -62,25 +62,7 @@ function Sourcing() {
   );
 }
 
-/** 3 · Candidate screening: a call with a candidate, waveform and notes. */
-function Screening() {
-  return (
-    <Frame>
-      <rect x="52" y="24" width="84" height="160" rx="14" fill="#ffffff" {...s} />
-      <path d="M82 34h24" {...s} />
-      <circle cx="94" cy="78" r="18" fill="#f1e9fe" {...s} />
-      <circle cx="94" cy="72" r="7" fill="#740cf5" {...s} />
-      <path d="M82 90c2-7 6-10 12-10s10 3 12 10" fill="#740cf5" {...s} />
-      <path d="M66 120v10M74 114v22M82 108v34M90 116v18M98 104v42M106 114v22M114 120v10M122 116v18" {...s} />
-      <circle cx="80" cy="164" r="9" fill="#01bfa3" {...s} />
-      <circle cx="108" cy="164" r="9" fill="#ff5a5a" {...s} />
-      <rect x="132" y="96" width="52" height="64" rx="6" fill="#fff2df" {...s} />
-      <path d="M142 112h32M142 124h24M142 136h28M142 148h18" {...s} />
-    </Frame>
-  );
-}
-
-/** 4 · Shortlist and submission: stacked profile cards with a rosette. */
+/** 3 · Screening and shortlist: stacked profile cards with a rosette. */
 function Shortlist() {
   return (
     <Frame>
@@ -98,7 +80,7 @@ function Shortlist() {
   );
 }
 
-/** 5 · Interview coordination: a calendar with booked slots and a nudge. */
+/** 4 · Interview coordination: a calendar with booked slots and a nudge. */
 function Interviews() {
   return (
     <Frame>
@@ -130,7 +112,7 @@ function Interviews() {
   );
 }
 
-/** 6 · Offer and joining: an offer letter with a celebration. */
+/** 5 · Offer and joining: an offer letter with a celebration. */
 function Joining() {
   return (
     <Frame>
@@ -148,4 +130,4 @@ function Joining() {
   );
 }
 
-export const stepIllustrations = [Brief, Sourcing, Screening, Shortlist, Interviews, Joining];
+export const stepIllustrations = [Brief, Sourcing, Shortlist, Interviews, Joining];
