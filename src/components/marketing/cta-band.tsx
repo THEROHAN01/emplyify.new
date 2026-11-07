@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { PeopleRing } from "@/components/visuals/people-ring";
+import { GrowingRing } from "@/components/visuals/people-ring";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/layout";
 import { ctas, site } from "@/content/site";
@@ -40,11 +40,7 @@ export function FinalCta({
       aria-labelledby="final-cta"
       className="bg-navy relative isolate overflow-hidden px-5 pt-20 pb-32 text-white md:px-10 md:py-28 lg:py-40"
     >
-      <PeopleRing
-        mono="rgba(255,255,255,0.18)"
-        size={720}
-        className="pointer-events-none absolute -bottom-96 -left-72 -z-10"
-      />
+      <GrowingRing corner="bottom-left" mono="#ffffff" opacity={0.3} />
       <div className="mx-auto max-w-4xl text-center">
         <p className="label text-white/80">{site.tagline}</p>
         <h2 id="final-cta" className="mt-6 text-[2.75rem] sm:text-6xl lg:text-[5.5rem]">

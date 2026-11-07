@@ -4,7 +4,7 @@ import { FinalCta } from "@/components/marketing/cta-band";
 import { ComparisonTable } from "@/components/marketing/comparison-table";
 import { HowSteps } from "@/components/marketing/how-steps";
 import { BgVideo } from "@/components/visuals/bg-video";
-import { PeopleRing } from "@/components/visuals/people-ring";
+import { GrowingRing } from "@/components/visuals/people-ring";
 import { Reveal } from "@/components/visuals/reveal";
 import { icons, type IconName } from "@/components/ui/icons";
 import { ArrowBox } from "@/components/ui/card";
@@ -43,6 +43,12 @@ const tints = [
   "bg-[#eef3ff] text-[#0062d6]",
 ];
 
+/**
+ * Photos for the service cards, dropped in /public/services/<slug>.jpg.
+ * Until a photo is added, the card shows a tinted icon.
+ */
+const serviceImages: Record<string, string | undefined> = {};
+
 const stats = [
   { value: "72h", label: "To an initial shortlist" },
   { value: "4h", label: "Business-hours reply" },
@@ -76,6 +82,7 @@ export default function HomePage() {
         className="bg-navy relative isolate -mt-16 min-h-[min(780px,100svh)] overflow-hidden text-white lg:h-[100svh] lg:min-h-[720px]"
       >
         <BgVideo src={media.hero.src} poster={media.hero.poster} overlay="bg-navy/55" />
+        <div aria-hidden className="from-navy/80 absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b to-transparent" />
         <div className={cn(wrap, "flex h-full min-h-[inherit] flex-col justify-between pt-32 pb-8 lg:pt-36")}>
           <h1 id="hero-title" className="max-w-5xl text-[3rem] leading-[0.95] sm:text-7xl lg:text-[6.5rem]">
             Connecting talent. Building teams.
@@ -128,30 +135,42 @@ export default function HomePage() {
               a permanent hire until they join.
             </p>
           </div>
-          <ul className="border-line mt-12 grid border-t border-l sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => (
-              <li key={s.slug} className="border-line group relative border-r border-b p-5">
-                <div
-                  className={cn(
-                    "flex aspect-[4/3] items-center justify-center transition-transform duration-500 group-hover:scale-[1.02]",
-                    tints[i % tints.length],
-                  )}
-                >
-                  <span className="[&_svg]:size-20 [&_svg]:stroke-[1.25]">
-                    {icons[s.slug as IconName]}
-                  </span>
-                </div>
-                <h3 className="mt-6 text-3xl">{s.name}</h3>
-                <p className="text-muted mt-2">{s.outcome}</p>
-                <Link
-                  href={`/services/${s.slug}`}
-                  className="label text-ink mt-8 flex items-center justify-between after:absolute after:inset-0"
-                >
-                  Learn more
-                  <ArrowBox />
-                </Link>
-              </li>
-            ))}
+          <ul className="border-line mt-12 grid grid-cols-2 border-t border-l md:grid-cols-3 xl:grid-cols-6">
+            {services.map((s, i) => {
+              const img = serviceImages[s.slug];
+              return (
+                <li key={s.slug} className="border-line group relative flex flex-col border-r border-b p-4">
+                  <div className="aspect-square overflow-hidden">
+                    {img ? (
+                      <Image
+                        src={img}
+                        alt=""
+                        width={400}
+                        height={400}
+                        className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      />
+                    ) : (
+                      <div
+                        className={cn(
+                          "flex size-full items-center justify-center transition-transform duration-500 group-hover:scale-[1.04] [&_svg]:size-14 [&_svg]:stroke-[1.25]",
+                          tints[i % tints.length],
+                        )}
+                      >
+                        {icons[s.slug as IconName]}
+                      </div>
+                    )}
+                  </div>
+                  <h3 className="mt-5 text-[1.6rem] leading-[1.05]">{s.name}</h3>
+                  <Link
+                    href={`/services/${s.slug}`}
+                    className="label text-ink mt-auto flex items-center justify-between gap-3 pt-8 after:absolute after:inset-0"
+                  >
+                    Start hiring
+                    <ArrowBox />
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </section>
@@ -182,11 +201,7 @@ export default function HomePage() {
 
       {/* 4 · Mission: brand-blue block with the turning ring */}
       <section aria-labelledby="mission" className="bg-accent relative isolate overflow-hidden text-white">
-        <PeopleRing
-          mono="rgba(255,255,255,0.28)"
-          size={760}
-          className="pointer-events-none absolute -top-64 -right-48 -z-10 max-md:opacity-60"
-        />
+        <GrowingRing corner="top-right" mono="#ffffff" />
         <div className={cn(wrap, "flex min-h-[640px] flex-col justify-between py-16 md:py-20")}>
           <p className="label">Our mission</p>
           <Reveal>
