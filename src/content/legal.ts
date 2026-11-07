@@ -91,7 +91,7 @@ export const legalDocs: LegalDoc[] = [
       {
         heading: "Fees",
         body: [
-          "Per-hire fees are 8.33% (junior), 12.5% (mid) or 16.67% (senior and leadership) of the hire's annual fixed CTC, plus GST at 18%. Fees are due 15 days after the candidate's joining date. Talent Pod and Hiring Sprint fees are set out in the order form.",
+          "Per-hire fees are 8.33% (junior), 12.5% (mid) or 16.67% (senior and leadership) of the hire's annual fixed CTC, plus GST at 18%. Fees are due 15 days after the candidate's joining date. Contract staffing, bulk hiring and leadership search fees are set out in the order form.",
         ],
       },
       {

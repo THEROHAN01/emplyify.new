@@ -58,9 +58,9 @@ const funnel = [
   ["Offers", 4],
 ] as const;
 
-function TalentPodMock() {
+function ReportMock({ title }: { title: string }) {
   return (
-    <Window title="Weekly pod report · example" badge={<Pill tone="accent">Week 6</Pill>}>
+    <Window title={title} badge={<Pill tone="accent">Week 6</Pill>}>
       <div className="grid grid-cols-3 gap-2 text-center">
         {[
           ["Open roles", "8"],
@@ -84,7 +84,7 @@ function TalentPodMock() {
         ))}
       </ul>
       <p className="text-muted border-line mt-4 border-t pt-3 text-[11px]">
-        Shared every Friday, reviewed in a 30-minute call.
+        Shared every Friday, reviewed in a 15-minute call.
       </p>
     </Window>
   );
@@ -101,7 +101,7 @@ const sprint = [
 export function GccSprintMock() {
   const weeks = 13;
   return (
-    <Window title="Sprint plan · 12 weeks" badge={<Pill tone="accent">GCC launch</Pill>}>
+    <Window title="Hiring plan · 12 weeks" badge={<Pill tone="accent">GCC launch</Pill>}>
       <div className="text-muted mb-2 grid grid-cols-[6.5rem_1fr] gap-3 text-[10px]">
         <span />
         <div className="flex justify-between">
@@ -172,18 +172,19 @@ function LeadershipMock() {
   );
 }
 
+const shortlist = {
+  node: <TechHiringMock />,
+  label: "Illustration of a delivered shortlist with interview status for each candidate.",
+};
+
 const visuals: Record<string, { node: ReactNode; label: string }> = {
-  "tech-hiring": {
-    node: <TechHiringMock />,
-    label: "Illustration of a delivered shortlist with interview status for each candidate.",
-  },
-  "talent-pods": {
-    node: <TalentPodMock />,
-    label: "Illustration of a weekly Talent Pod report with a hiring funnel.",
-  },
-  "gcc-hiring-sprints": {
-    node: <GccSprintMock />,
-    label: "Illustration of a 12-week GCC hiring sprint plan.",
+  "permanent-recruitment": shortlist,
+  "it-hiring": shortlist,
+  "non-it-recruitment": shortlist,
+  "contract-staffing": shortlist,
+  "bulk-hiring": {
+    node: <ReportMock title="Hiring drive report · example" />,
+    label: "Illustration of a weekly hiring drive report with a funnel.",
   },
   "leadership-hiring": {
     node: <LeadershipMock />,

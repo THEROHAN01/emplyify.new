@@ -3,11 +3,16 @@ import type { Cta } from "./types";
 export const site = {
   name: "Emplyify",
   legalName: "Emplyify",
-  tagline: "Vetted tech talent, shortlisted in 72 hours.",
+  tagline: "Connecting Talent. Building Teams.",
+  /** One-liner (Business Document, "Brand, voice and contact"). */
+  oneLiner:
+    "Pan-India recruitment and staffing for IT and Non-IT roles: permanent, contract and bulk hiring.",
   positioning:
-    "Emplyify is the AI-native hiring partner for India's tech and GCC teams — vetted shortlists in 72 hours, verified by humans, priced transparently.",
+    "Emplyify is a Pune-based recruitment and staffing partner that delivers screened shortlists for IT and Non-IT roles across India.",
+  /** Proof line (brand book "Core lines to reuse"). */
+  proofLine: "Screened shortlists in 72 hours. A real reply in 4 business hours.",
   description:
-    "AI does the searching. Senior recruiters vouch for every shortlist. Hire AI/ML, data, cloud, full-stack and embedded engineers in Pune, Bengaluru and Hyderabad.",
+    "Pune-based, pan-India recruitment and staffing for IT and Non-IT roles: permanent recruitment, contract staffing, leadership search and bulk hiring. An initial shortlist within 72 hours of a confirmed brief, with a 90-day free replacement on permanent hires.",
   email: {
     hello: "hello@emplyify.com",
     candidates: "talent@emplyify.com",
@@ -19,10 +24,13 @@ export const site = {
     region: "Maharashtra",
     country: "IN",
     hours: "Mon–Fri, 9:30–18:30 IST",
+    coverage: "Pan-India",
   },
   promises: {
     shortlistHours: 72,
     replyBusinessHours: 4,
+    feedbackHours: 48,
+    shortlistSize: "3–5",
     replacementDays: 90,
     candidateUpdateBusinessDays: 2,
     autoCloseDays: 21,

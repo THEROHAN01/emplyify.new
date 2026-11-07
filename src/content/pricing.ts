@@ -15,95 +15,86 @@ export const perHireFees: Record<Seniority, { percent: number; months: number; l
 export const GST_RATE = 0.18;
 export const REPLACEMENT_DAYS = 90;
 
-/** Set when the founder approves a published floor; null renders "quoted per pod". */
-export const podFromMonthlyInr: number | null = null;
-
+/** The four commercial models (Business Document, "Pricing and commercial terms"). */
 export const plans = [
   {
-    id: "per-hire",
-    name: "Per hire",
-    for: "1–4 roles",
+    id: "permanent",
+    name: "Permanent hiring",
+    for: "1–10 open roles",
     price: "8.33–16.67%",
     priceNote: "of annual fixed CTC, by seniority",
     includes: [
-      "Verified shortlist in 72 hours",
+      "Initial shortlist in 72 hours",
       "Interview scheduling and offer support",
       "90-day free replacement",
       "Pay only when the hire joins",
     ],
     cta: { label: "Submit a role", href: "/submit-a-role" },
-    featured: false,
-  },
-  {
-    id: "talent-pod",
-    name: "Talent Pod",
-    for: "5+ roles a quarter",
-    price: "Monthly fee",
-    priceNote: "+ reduced per-hire fee",
-    includes: [
-      "Named, embedded recruiter",
-      "AI sourcing and screening agents",
-      "Weekly pipeline report",
-      "90-day free replacement on every hire",
-    ],
-    cta: { label: "Book a hiring call", href: "/book-a-call?plan=talent-pod" },
     featured: true,
   },
   {
-    id: "hiring-sprint",
-    name: "Hiring Sprint",
-    for: "GCC launch, 10–50 roles",
-    price: "Fixed project fee",
-    priceNote: "+ per-hire fee",
+    id: "bulk",
+    name: "Bulk and volume",
+    for: "10+ similar roles",
+    price: "Per drive",
+    priceNote: "reduced per-hire fee or a fixed drive fee",
     includes: [
-      "Dedicated pod for 30–90 days",
-      "City market map and salary benchmarks",
-      "Leads-first hiring plan",
-      "Weekly steering report",
+      "Dedicated recruiter team",
+      "Drive plan with weekly targets",
+      "Weekly drive report",
+      "90-day free replacement on permanent hires",
     ],
-    cta: { label: "Talk to our GCC team", href: "/book-a-call?team=gcc" },
+    cta: { label: "Book a hiring call", href: "/book-a-call?plan=bulk" },
+    featured: false,
+  },
+  {
+    id: "contract",
+    name: "Contract staffing",
+    for: "Project or temporary needs",
+    price: "Monthly",
+    priceNote: "service fee per contractor, quoted in writing",
+    includes: [
+      "Screened contract candidates in 72 hours",
+      "Payroll and statutory compliance (PF, ESI, PT)",
+      "Monthly billing",
+      "One point of contact for extensions",
+    ],
+    cta: { label: "Book a hiring call", href: "/book-a-call?plan=contract" },
+    featured: false,
+  },
+  {
+    id: "leadership",
+    name: "Senior and leadership",
+    for: "Head, VP and CXO roles",
+    price: "Per search",
+    priceNote: "share of annual CTC, part paid at milestones",
+    includes: [
+      "Confidential search",
+      "Two to four finalists with assessments",
+      "Two references per finalist",
+      "90-day free replacement",
+    ],
+    cta: { label: "Book a hiring call", href: "/book-a-call?plan=leadership" },
     featured: false,
   },
 ] as const;
 
-/** Comparison rows. "Typical" columns describe common market practice, not named competitors. */
-export const comparison = [
-  {
-    row: "Fee",
-    emplyify: "8.33–16.67% of CTC, published",
-    agency: "Often 15–20%+, negotiated",
-    inhouse: "Recruiter salary, tools and job ads",
-  },
-  {
-    row: "Time to first shortlist",
-    emplyify: "72 hours",
-    agency: "1–3 weeks",
-    inhouse: "Depends on recruiter capacity",
-  },
-  {
-    row: "What you receive",
-    emplyify: "3–5 candidates with evidence and sign-off",
-    agency: "Often a batch of CVs",
-    inhouse: "Applicants to screen yourself",
-  },
-  {
-    row: "Replacement",
-    emplyify: "90 days, free, in writing",
-    agency: "Often 30–60 days",
-    inhouse: "Re-run the search yourself",
-  },
-  {
-    row: "Pipeline visibility",
-    emplyify: "Shared status and weekly report",
-    agency: "Email updates on request",
-    inhouse: "Your ATS",
-  },
+/** Standard terms from the Master Services Agreement. */
+export const standardTerms = [
+  "No fee until the hire joins; invoice on the joining date, payment due within 15 days.",
+  "GST extra at 18%.",
+  "Annual fixed CTC excludes variable pay, joining bonus, ESOPs and relocation.",
+  "90-day free replacement for resignation or performance exits; not for redundancy or role change.",
+  "Mutual non-solicit for 12 months; 30 days' notice to terminate. Fees for candidates who have already joined stay payable.",
+  "Contract staffing: monthly billing, a markup on CTC, and payroll and statutory compliance (PF, ESI, PT) set in a schedule.",
 ];
+
+export { comparison } from "./company";
 
 export const pricingFaqs: Faq[] = [
   {
     q: "When do we pay?",
-    a: "For per-hire roles, we invoice when the candidate joins. Payment terms are 15 days from the joining date. Talent Pods are invoiced monthly in advance; Hiring Sprints by milestone.",
+    a: "For permanent hires, we invoice on the joining date and payment is due within 15 days. Contract staffing is billed monthly. Leadership searches are billed at agreed milestones.",
   },
   {
     q: "What counts as CTC for the fee?",
@@ -119,11 +110,11 @@ export const pricingFaqs: Faq[] = [
   },
   {
     q: "Are there any other charges?",
-    a: "No hidden fees. Background verification can be added at cost if you want us to run it. Talent Pods and Sprints are quoted in writing before work starts.",
+    a: "No hidden fees. Bulk drives, contract staffing and leadership searches are quoted in writing before work starts.",
   },
   {
     q: "Do you offer discounts for volume?",
-    a: "Yes — that is what Talent Pods are for. Five or more roles a quarter usually costs less on a pod than on per-hire fees.",
+    a: "Yes. Ten or more similar roles run as a bulk hiring drive, with a reduced per-hire fee or a fixed drive fee.",
   },
   {
     q: "What if we hire a candidate for a different role?",

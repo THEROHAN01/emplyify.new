@@ -12,7 +12,8 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-[1.4fr_repeat(5,1fr)]">
           <div className="max-w-xs">
             <Logo />
-            <p className="text-muted mt-4 text-sm">{site.positioning}</p>
+            <p className="font-display mt-4 font-semibold">{site.tagline}</p>
+            <p className="text-muted mt-2 text-sm">{site.positioning}</p>
             <address className="text-muted mt-4 text-sm not-italic">
               {site.office.city}, {site.office.region}, India
               <br />

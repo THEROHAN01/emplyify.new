@@ -76,8 +76,8 @@ export default async function BriefThankYou(props: PageProps<"/submit-a-role/tha
             <li className="border-accent bg-accent-soft rounded-2xl border p-6">
               <p className="text-lg font-semibold">Hiring five or more roles?</p>
               <p className="mt-1">
-                A Talent Pod usually costs less than per-hire fees at your volume. We'll include a
-                quote when we reply.
+                At ten or more similar roles, a bulk hiring drive brings the cost per hire down.
+                We'll include a quote when we reply.
               </p>
             </li>
           )}

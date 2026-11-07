@@ -24,16 +24,15 @@ export const gccMenu: NavLink[] = [
   {
     label: "GCC hiring overview",
     href: "/gcc",
-    description: "Pods, sprints and leadership for GCCs",
+    description: "Specialist, volume and leadership hiring for GCCs",
   },
   ...cities.map((c) => ({ label: `GCC hiring in ${c.name}`, href: `/gcc/${c.slug}` })),
-  { label: "Hiring Sprints", href: "/services/gcc-hiring-sprints" },
 ];
 
 export const primaryNav: NavLink[] = [
   { label: "How it works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Case studies", href: "/case-studies" },
+  { label: "About", href: "/about" },
   { label: "Insights", href: "/insights" },
 ];
 
@@ -42,7 +41,7 @@ export const footerNav: { heading: string; links: NavLink[] }[] = [
     heading: "Hire",
     links: [
       ...services.map((s) => ({ label: s.name, href: `/services/${s.slug}` })),
-      { label: "All role families", href: "/hire" },
+      { label: "IT and Non-IT roles", href: "/hire" },
       { label: "Pricing", href: "/pricing" },
       { label: "Submit a role", href: "/submit-a-role" },
     ],

@@ -12,7 +12,7 @@ import { whatsappUrl } from "@/lib/utils/contact";
 export const metadata = buildMetadata({
   title: "Book a hiring call",
   description:
-    "Book a 20-minute hiring call with an Emplyify recruiter, or talk to our GCC team about pods and hiring sprints.",
+    "Book a 20-minute hiring call with an Emplyify recruiter, or talk to our GCC team about specialist, volume and leadership hiring.",
   path: "/book-a-call",
 });
 
@@ -92,8 +92,8 @@ export default async function BookCallPage(props: PageProps<"/book-a-call">) {
               <li>Interview loop and timelines</li>
               <li>
                 {gcc
-                  ? "City choice, pod size and sprint plan"
-                  : "Per-hire or Talent Pod — whichever is cheaper for you"}
+                  ? "Locations, volumes and a hiring plan"
+                  : "Permanent, contract or a bulk drive: whichever suits the need"}
               </li>
             </ul>
           </Card>

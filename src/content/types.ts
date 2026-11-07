@@ -152,6 +152,7 @@ export interface TeamMember {
   name: string;
   title: string;
   bio: string;
-  photo: string;
+  /** Square headshot under /public/team. Without one, initials are shown. */
+  photo?: string;
   linkedin?: string;
 }

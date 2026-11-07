@@ -84,7 +84,7 @@ export function CandidateBand() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div>
-            <p className="text-accent mb-4 text-sm font-semibold">For engineers</p>
+            <p className="text-accent mb-4 text-sm font-semibold">For job seekers</p>
             <h2 id="candidate-band" className="text-3xl font-bold sm:text-[2.5rem]">
               Get matched, prepped and kept in the loop.
             </h2>

@@ -1,12 +1,12 @@
 import { AiHumanSplit } from "@/components/marketing/ai-split";
 import { FinalCta } from "@/components/marketing/cta-band";
-import { ProcessShowcase } from "@/components/visuals/process-showcase";
 import { PipelineTracker } from "@/components/visuals/pipeline-tracker";
 import { ButtonLink } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Section, SectionHeading } from "@/components/ui/layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { Stat } from "@/components/ui/stat";
+import { commitmentsNote, processSteps, sourcingChannels } from "@/content/company";
 import { proofMetrics } from "@/content/metrics";
 import { ctas, site } from "@/content/site";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -14,7 +14,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata = buildMetadata({
   title: "How it works",
   description:
-    "From brief to hire: the SLA for each step, exactly what AI does and what recruiters decide, and a sample shortlist dossier.",
+    "Six steps from a confirmed brief to the candidate's first day: the timeline for each step, where we search, what AI does and what recruiters decide.",
   path: "/how-it-works",
 });
 
@@ -59,8 +59,8 @@ export default function HowItWorksPage() {
       <PageHeader
         breadcrumbs={[{ name: "How it works", path: "/how-it-works" }]}
         eyebrow="How it works"
-        title="AI does the searching. Recruiters vouch for every shortlist."
-        intro="Four steps, each with a written SLA. Here's exactly what happens after you submit a role."
+        title="From a confirmed brief to the first day."
+        intro="Every role runs through the same six steps, with an initial shortlist in 72 hours. Here's exactly what happens after you share a role."
         actions={
           <>
             <ButtonLink href={ctas.submitRole.href} size="lg">
@@ -74,11 +74,41 @@ export default function HowItWorksPage() {
       />
 
       <Section labelledBy="steps">
-        <SectionHeading id="steps" title="The four steps" />
-        <ProcessShowcase />
+        <SectionHeading id="steps" title="The six steps" />
+        <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {processSteps.map((p, i) => (
+            <li key={p.step} className="border-line bg-surface rounded-2xl border p-6">
+              <div className="flex items-baseline justify-between gap-3">
+                <span className="font-display text-accent text-3xl font-bold">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-muted text-sm font-medium">{p.when}</span>
+              </div>
+              <h3 className="mt-4 text-lg font-bold">{p.step}</h3>
+              <p className="text-muted mt-2">{p.detail}</p>
+            </li>
+          ))}
+        </ol>
       </Section>
 
-      <Section tone="surface" labelledBy="slas">
+      <Section tone="surface" labelledBy="channels">
+        <SectionHeading
+          id="channels"
+          eyebrow="Where we search"
+          title="The right talent, through more than one channel."
+          intro="Channels are chosen by role, experience level, industry and talent availability."
+        />
+        <div className="grid gap-4 md:grid-cols-3">
+          {sourcingChannels.map((c) => (
+            <Card key={c.name}>
+              <h3 className="text-lg font-bold">{c.name}</h3>
+              <p className="text-muted mt-2">{c.detail}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section labelledBy="slas">
         <SectionHeading
           id="slas"
           eyebrow="Service levels"
@@ -123,9 +153,10 @@ export default function HowItWorksPage() {
             </tbody>
           </table>
         </div>
+        <p className="text-muted mt-4 max-w-3xl text-sm">{commitmentsNote}</p>
       </Section>
 
-      <Section labelledBy="split">
+      <Section tone="surface" labelledBy="split">
         <SectionHeading
           id="split"
           eyebrow="Human + AI"
@@ -135,12 +166,12 @@ export default function HowItWorksPage() {
         <AiHumanSplit />
       </Section>
 
-      <Section tone="surface" labelledBy="dossier">
+      <Section labelledBy="dossier">
         <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
           <SectionHeading
             id="dossier"
             eyebrow="What you receive"
-            title="A dossier, not a CV dump"
+            title="A shortlist, not a pile of CVs"
             intro="For every candidate: a fit summary, evidence for each must-have, notice period and CTC, risks, and the recruiter's note."
             className="mb-0"
           />
@@ -168,7 +199,7 @@ export default function HowItWorksPage() {
         </div>
       </Section>
 
-      <Section labelledBy="quality">
+      <Section tone="surface" labelledBy="quality">
         <SectionHeading
           id="quality"
           eyebrow="Quality"

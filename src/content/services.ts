@@ -1,92 +1,106 @@
 import type { Service } from "./types";
 import { ctas } from "./site";
 
+/**
+ * The six ways to hire (Business Document, "Services"). Fees that are not yet
+ * set in the business document are shown as "quoted in writing", never as a
+ * number we have not agreed.
+ */
+
 const sharedFaqs = {
   guarantee: {
-    q: "What happens if a hire leaves in the first 90 days?",
-    a: "We replace them free of charge. If the hire leaves or is let go for performance within 90 days of joining, we run a fresh search at no additional fee. The terms are written into your agreement.",
+    q: "What happens if a permanent hire leaves in the first 90 days?",
+    a: "We replace them free of charge. If the hire resigns or leaves for performance reasons within 90 days of joining, we run a fresh search at no extra fee. It does not cover redundancy or a change of role, and the terms are written into your agreement.",
   },
   exclusivity: {
     q: "Do you need exclusivity on the role?",
-    a: "No. We work well alongside your in-house team and other partners. If two sources submit the same candidate, the first submission with the candidate's consent and a timestamp counts.",
+    a: "No. We work alongside your in-house team and other partners. If two sources submit the same candidate, the first timestamped submission made with the candidate's consent counts.",
   },
   confidentiality: {
     q: "Can you run a confidential search?",
-    a: "Yes. We describe the role without naming your company until a candidate has passed our screen and signed an NDA where you require one. Confidential searches add no fee.",
+    a: "Yes. We describe the role without naming your company until a candidate has passed our screen and agreed to confidentiality. Confidential searches cost nothing extra.",
   },
   notice: {
-    q: "How do you handle 60–90 day notice periods?",
-    a: "We screen for notice period on the first call and show it on every dossier. For urgent roles we prioritise candidates serving notice or with buy-out options, and we stay in touch through the notice period to reduce dropouts.",
+    q: "How do you handle 30–90 day notice periods?",
+    a: "We check notice period on the first call and show it for every candidate. For urgent roles we prioritise people already serving notice or with a buy-out option, and we stay in touch through the notice period to reduce drop-outs.",
   },
   cvDumps: {
     q: "Will you send us a pile of CVs?",
-    a: "No. You get three to five candidates, each with a written fit summary, evidence for every must-have skill and a recruiter's sign-off. Quality over volume is the whole point.",
+    a: "No. You get three to five screened candidates, each with a short fit summary covering skills, notice period and expected CTC, and a recruiter's sign-off.",
   },
   ai: {
     q: "Does AI make decisions about candidates?",
-    a: "AI searches, ranks and drafts summaries. A senior recruiter interviews every candidate and decides who goes on your shortlist. AI never rejects a candidate on its own.",
+    a: "AI helps our recruiters search and rank profiles. A recruiter speaks to every candidate, a senior recruiter signs off every shortlist, and AI never rejects a candidate on its own.",
   },
+  pan: {
+    q: "Do you hire outside Pune?",
+    a: "Yes. We are based in Pune and recruit across India, for on-site, hybrid and remote roles.",
+  },
+  pay: {
+    q: "When do we pay for a permanent hire?",
+    a: "Only when the candidate joins. We invoice on the joining date and payment is due within 15 days. GST is extra at 18%.",
+  },
+};
+
+const standardSteps = [
+  {
+    step: "Requirement understanding",
+    sla: "Day 0",
+    detail:
+      "A calibration call or a written brief. We confirm must-haves and budget in writing, and the 72-hour clock starts.",
+  },
+  {
+    step: "Sourcing and screening",
+    sla: "0–48 hours",
+    detail:
+      "Job portals, LinkedIn, referrals, our database and AI-assisted search, then a recruiter screen on skills, motivation, notice period and CTC.",
+  },
+  {
+    step: "Shortlist",
+    sla: "By 72 hours",
+    detail: "Three to five candidates, each with a fit summary and a senior recruiter's sign-off.",
+  },
+  {
+    step: "Interviews to joining",
+    sla: "Feedback chased in 48 hours",
+    detail:
+      "We schedule every round, chase feedback, support the offer and stay in touch until the candidate's first day.",
+  },
+];
+
+const permanentPricing = {
+  headline: "8.33–16.67% of annual fixed CTC",
+  detail:
+    "One, one and a half or two months of the hire's fixed CTC, set by seniority. Nothing is payable until the candidate joins.",
+  bullets: ["No retainer", "No fee until the hire joins", "90-day free replacement", "GST extra at 18%"],
 };
 
 export const services: Service[] = [
   {
-    slug: "tech-hiring",
-    name: "Tech Hiring",
-    navLabel: "Tech Hiring",
-    outcome: "Three to five vetted engineers on your desk in 72 hours.",
+    slug: "permanent-recruitment",
+    name: "Permanent Recruitment",
+    navLabel: "Permanent recruitment",
+    outcome: "Full-time hires at every level, with a shortlist in 72 hours.",
     summary:
-      "Per-hire recruiting for engineering, data and product roles. You brief us once; we return a short, evidenced shortlist and run the process to offer.",
+      "For one to ten open roles. You brief us once, we return three to five screened candidates and run the process through to the joining date.",
     whoFor: [
-      "Engineering managers at Series B+ product companies hiring 1–4 roles",
-      "Founders and CTOs building the first 5–20 person engineering team",
-      "GCC teams that need a specialist search alongside in-house TA",
+      "Startups building their first teams",
+      "Growing businesses filling one to ten roles at a time",
+      "HR teams that need an extra recruiter on hard-to-fill positions",
     ],
     included: [
-      "A 20-minute calibration call, or a written brief if you prefer",
-      "AI-assisted search across our network and public profiles",
-      "A recruiter screen on skills, motivation, notice period and CTC",
-      "Shortlist dossier: fit summary, evidence per must-have, risks",
-      "Interview scheduling, feedback collection and offer support",
+      "A confirmed written brief",
+      "An initial shortlist of 3–5 screened candidates in 72 hours",
+      "Interview scheduling and feedback chasing",
+      "Offer support and joining follow-up",
+      "A weekly status report",
       "90-day free replacement",
     ],
-    process: [
-      {
-        step: "Brief",
-        sla: "Day 0",
-        detail:
-          "Submit a role in two minutes or brief us on a call. We confirm must-haves and budget in writing.",
-      },
-      {
-        step: "Search and screen",
-        sla: "0–48 hours",
-        detail:
-          "AI agents search and rank; recruiters run structured screens with the top matches.",
-      },
-      {
-        step: "Verified shortlist",
-        sla: "By 72 hours",
-        detail: "A senior recruiter signs off three to five candidates with a dossier for each.",
-      },
-      {
-        step: "Interviews to offer",
-        sla: "Typically 2–4 weeks",
-        detail:
-          "We schedule, chase feedback within 48 hours and support the offer and notice period.",
-      },
-    ],
-    pricing: {
-      headline: "8.33–16.67% of annual CTC",
-      detail:
-        "Equal to one to two months of the hire's fixed CTC, set by seniority. Pay only when the candidate joins.",
-      bullets: [
-        "No retainer",
-        "No fee until the hire joins",
-        "90-day free replacement",
-        "GST extra at 18%",
-      ],
-    },
+    process: standardSteps,
+    pricing: permanentPricing,
     faqs: [
       sharedFaqs.cvDumps,
+      sharedFaqs.pay,
       sharedFaqs.guarantee,
       sharedFaqs.exclusivity,
       sharedFaqs.notice,
@@ -96,182 +110,180 @@ export const services: Service[] = [
     primaryCta: ctas.submitRole,
   },
   {
-    slug: "talent-pods",
-    name: "Talent Pods",
-    navLabel: "Talent Pods",
-    outcome: "An embedded recruiting team that ships hires every week.",
+    slug: "contract-staffing",
+    name: "Contract Staffing",
+    navLabel: "Contract staffing",
+    outcome: "Skilled professionals on contract, for projects and peak seasons.",
     summary:
-      "For teams hiring five or more roles a quarter. A dedicated recruiter and our AI agents work inside your process, on a monthly fee with a reduced per-hire fee.",
+      "We find, screen and deploy contract professionals for project, seasonal or temporary needs, and handle payroll and statutory compliance for the contract.",
     whoFor: [
-      "GCCs scaling a function from 20 to 200 people",
-      "Product companies with a sustained hiring plan across several teams",
-      "TA leads who need capacity without adding headcount",
+      "Project teams that need skills for a fixed period",
+      "Businesses covering seasonal peaks or leave",
+      "Companies that want to try a role before making it permanent",
     ],
     included: [
-      "A named, dedicated recruiter who joins your stand-ups and tools",
-      "AI sourcing and screening agents tuned to your roles",
-      "Weekly pipeline report: funnel, time-in-stage, offer acceptance",
-      "Employer-brand outreach drafts reviewed by your team",
-      "Reduced per-hire fee on every hire",
-      "90-day free replacement on every hire",
+      "A confirmed written brief and contract terms",
+      "A shortlist of screened contract candidates in 72 hours",
+      "Interview scheduling and onboarding coordination",
+      "Monthly billing, payroll and statutory compliance (PF, ESI, PT)",
+      "A single point of contact for extensions and replacements",
+      "A weekly status report while roles are open",
     ],
     process: [
+      standardSteps[0],
+      standardSteps[1],
+      standardSteps[2],
       {
-        step: "Hiring plan",
-        sla: "Week 0",
-        detail: "We map roles, priorities and interview loops with your TA and hiring managers.",
-      },
-      {
-        step: "Pod set-up",
-        sla: "Week 1",
+        step: "Deployment and payroll",
+        sla: "Monthly",
         detail:
-          "Your recruiter gets access to your ATS or uses ours; agents are calibrated on two sample roles.",
-      },
-      {
-        step: "Rolling shortlists",
-        sla: "72 hours per new role",
-        detail: "Every new role gets a verified shortlist within 72 hours of its brief.",
-      },
-      {
-        step: "Weekly review",
-        sla: "Every week",
-        detail: "A written report and a 30-minute review to re-prioritise roles.",
+          "The contractor joins on our payroll; we bill you monthly and handle PF, ESI and professional tax.",
       },
     ],
     pricing: {
-      headline: "Monthly fee + reduced per-hire fee",
+      headline: "Monthly fee per contractor",
       detail:
-        "The monthly fee depends on pod size and role mix. We quote it in writing after a 20-minute call — no surprises later.",
+        "A monthly service fee on the contractor's billed CTC, quoted in writing before anyone is deployed.",
       bullets: [
-        "Minimum three-month term",
-        "Per-hire fee lower than our standard rate",
-        "Scale the pod up or down monthly",
+        "Billed monthly",
+        "Payroll and statutory compliance included",
+        "Quoted in writing per role",
         "GST extra at 18%",
       ],
     },
     faqs: [
       {
-        q: "How is a Talent Pod different from RPO?",
-        a: "A pod is smaller and faster to start: one dedicated recruiter plus our AI agents, set up in a week, on a three-month minimum. Traditional RPO contracts usually take months to negotiate and lock you in for a year or more.",
+        q: "Who employs the contractor?",
+        a: "Emplyify does. The contractor is on our payroll for the contract period, and we handle salary, PF, ESI and professional tax. You direct their day-to-day work.",
       },
       {
-        q: "Can the pod use our ATS?",
-        a: "Yes. The recruiter works in your ATS if you give access. If you don't have one, we run the pipeline in ours and share a live view.",
+        q: "How long can a contract run?",
+        a: "As long as the project needs, from a few weeks to a year or more. Extensions are agreed in writing.",
       },
       {
-        q: "What if our hiring slows down?",
-        a: "You can resize the pod with 30 days' notice after the minimum term. Hires already in process keep their reduced fee.",
+        q: "Can we hire a contractor permanently?",
+        a: "Yes. A conversion fee applies, set out in your agreement before the contract starts.",
       },
-      sharedFaqs.guarantee,
-      sharedFaqs.confidentiality,
+      {
+        q: "What if a contractor is not working out?",
+        a: "Tell your point of contact. We discuss the issue with you and the contractor and, where needed, find a replacement.",
+      },
+      sharedFaqs.notice,
+      sharedFaqs.pan,
       sharedFaqs.ai,
     ],
     primaryCta: ctas.bookCall,
   },
   {
-    slug: "gcc-hiring-sprints",
-    name: "GCC Hiring Sprints",
-    navLabel: "GCC Hiring Sprints",
-    outcome: "Stand up a 10–50 person GCC team in 30–90 days.",
+    slug: "it-hiring",
+    name: "IT and Technical Hiring",
+    navLabel: "IT and technical hiring",
+    outcome: "Technology talent across the stack, screened by recruiters who know it.",
     summary:
-      "A fixed-scope project for GCC launches and expansions. A dedicated pod hires your founding team in India against a written plan and weekly milestones.",
+      "Software, cloud, data, cybersecurity and engineering roles, hired permanently or on contract. Recruiters screen against the skills you actually need, not keyword matches.",
     whoFor: [
-      "Global companies opening a GCC in Pune, Bengaluru or Hyderabad",
-      "Existing GCCs launching a new capability such as AI, data or embedded",
-      "Heads of TA who need a launch partner with a fixed budget",
+      "Product companies and startups hiring engineers",
+      "IT services firms staffing client projects",
+      "Global Capability Centres (GCCs) setting up or scaling in India",
     ],
     included: [
-      "Market map: salary benchmarks, talent supply and competitor GCCs per city",
-      "Hiring plan with role sequencing — leads first, then teams",
-      "A dedicated pod: lead recruiter, sourcers and AI agents",
-      "Employer-brand starter kit for your India launch",
-      "Weekly steering report and a shared live tracker",
-      "Compliance support: background checks and DPDP-aligned data handling",
+      "A brief built around must-have skills, not a job-description copy",
+      "AI-assisted search across portals, LinkedIn and our database",
+      "A recruiter screen on skills, motivation, notice period and CTC",
+      "3–5 screened candidates in 72 hours",
+      "Interview scheduling, feedback chasing and offer support",
+      "90-day free replacement on permanent hires",
     ],
-    process: [
-      {
-        step: "Launch workshop",
-        sla: "Week 0",
-        detail: "A half-day session to agree roles, levels, budget and success metrics.",
-      },
-      {
-        step: "Market map",
-        sla: "Week 1",
-        detail: "City-level salary and supply data so you can set competitive bands.",
-      },
-      {
-        step: "Leads first",
-        sla: "Weeks 1–4",
-        detail: "We hire engineering leads and managers first so they can shape their teams.",
-      },
-      {
-        step: "Team build-out",
-        sla: "Weeks 3–12",
-        detail: "Rolling 72-hour shortlists for every role, with weekly steering reviews.",
-      },
-    ],
+    process: standardSteps,
     pricing: {
-      headline: "Fixed project fee + per-hire fee",
+      ...permanentPricing,
       detail:
-        "Quoted as a fixed fee for the sprint plus a per-hire fee below our standard rate. Typical sprints run 30–90 days for 10–50 roles.",
-      bullets: [
-        "Fixed, written scope",
-        "Weekly milestones",
-        "Per-hire fee below standard rate",
-        "GST extra at 18%",
-      ],
+        "Permanent hires: one to two months of fixed CTC by seniority, paid on joining. Contract roles: a monthly fee per contractor, quoted in writing.",
     },
     faqs: [
       {
-        q: "Which cities do you cover for GCC launches?",
-        a: "Pune, Bengaluru and Hyderabad today. We publish salary and supply data for each in our Talent Index.",
+        q: "Which IT roles do you hire for?",
+        a: "Software development and engineering, cloud and DevOps, data and analytics, AI and machine learning, cybersecurity, embedded and product roles, from junior engineers to engineering leaders.",
       },
       {
-        q: "Can you help before our legal entity is set up?",
-        a: "Yes. We can start the market map and leadership search while your entity or employer-of-record arrangement is being finalised.",
+        q: "How do you check technical skills?",
+        a: "Recruiters screen against the must-have skills in your brief and ask for evidence from past work. Your technical rounds stay with your team; we make sure the people reaching them are worth the time.",
       },
-      {
-        q: "How do you hire leaders before teams?",
-        a: "We sequence the plan so engineering managers and principal engineers join first. They then interview and help sell their own teams, which improves offer acceptance.",
-      },
+      sharedFaqs.cvDumps,
       sharedFaqs.guarantee,
       sharedFaqs.notice,
-      sharedFaqs.confidentiality,
       sharedFaqs.ai,
     ],
-    primaryCta: ctas.gccTeam,
+    primaryCta: ctas.submitRole,
+  },
+  {
+    slug: "non-it-recruitment",
+    name: "Non-IT Recruitment",
+    navLabel: "Non-IT recruitment",
+    outcome: "Sales, finance, HR, operations and support hires that fit the business.",
+    summary:
+      "Business and support functions across industries: sales and business development, marketing, finance and accounting, human resources, operations and customer service.",
+    whoFor: [
+      "Manufacturing, logistics, BFSI, healthcare, retail and services companies",
+      "Businesses opening a new branch or function",
+      "Teams replacing a key person quickly",
+    ],
+    included: [
+      "A confirmed written brief",
+      "Sourcing across job portals, networks and referrals",
+      "A recruiter screen on experience, motivation, notice period and CTC",
+      "3–5 screened candidates in 72 hours",
+      "Interview scheduling, offer and joining follow-up",
+      "90-day free replacement on permanent hires",
+    ],
+    process: standardSteps,
+    pricing: permanentPricing,
+    faqs: [
+      {
+        q: "Which Non-IT roles do you hire for?",
+        a: "Sales and business development, marketing, finance and accounting, human resources, operations and administration, and customer service, from executives to function heads.",
+      },
+      {
+        q: "Which industries do you cover?",
+        a: "Banking and financial services, manufacturing and engineering, healthcare and pharma, logistics and supply chain, retail and e-commerce, telecom, professional services, and infrastructure and construction.",
+      },
+      sharedFaqs.cvDumps,
+      sharedFaqs.pay,
+      sharedFaqs.guarantee,
+      sharedFaqs.pan,
+    ],
+    primaryCta: ctas.submitRole,
   },
   {
     slug: "leadership-hiring",
-    name: "Leadership Hiring",
-    navLabel: "Leadership",
-    outcome: "Engineering leaders who have built what you are building.",
+    name: "Senior and Leadership Hiring",
+    navLabel: "Senior and leadership",
+    outcome: "Confidential searches for managers, function heads and CXOs.",
     summary:
-      "Confidential searches for engineering managers, directors, heads of data and site leaders. Smaller shortlists, deeper references.",
+      "Searches for senior hires where fit matters as much as skills. Smaller shortlists, deeper conversations and references on every finalist.",
     whoFor: [
-      "GCCs appointing a site lead or head of engineering",
-      "Scale-ups hiring their first director or VP of engineering",
+      "Companies appointing a function head, VP or CXO",
+      "GCCs appointing a site lead",
       "Teams replacing a leader confidentially",
     ],
     included: [
-      "Search strategy agreed in writing, including target companies",
-      "Confidential outreach led by a senior partner",
-      "Structured leadership interviews and two references per finalist",
-      "Shortlist of two to four finalists with a written assessment",
-      "Offer and onboarding support",
+      "A search mandate and scorecard agreed in writing",
+      "Confidential outreach led by a senior recruiter",
+      "In-depth interviews and two references per finalist",
+      "Two to four finalists with a written assessment",
+      "Offer, counter-offer and notice-period support",
       "90-day free replacement",
     ],
     process: [
       {
         step: "Search brief",
         sla: "Week 0",
-        detail:
-          "A working session with the hiring executive to define the mandate and the scorecard.",
+        detail: "A working session with the hiring executive to define the mandate and scorecard.",
       },
       {
         step: "Market map",
         sla: "Week 1",
-        detail: "A named target list and an honest read on availability and pay.",
+        detail: "A target list of companies and an honest read on availability and pay.",
       },
       {
         step: "Finalists",
@@ -285,12 +297,12 @@ export const services: Service[] = [
       },
     ],
     pricing: {
-      headline: "16.67% of annual CTC",
+      headline: "A share of annual CTC",
       detail:
-        "Equal to two months of fixed CTC. Leadership searches can be retained in stages on request; otherwise you pay on hire.",
+        "Part of the fee is paid at agreed milestones and the rest when the leader joins. Quoted in writing before the search starts.",
       bullets: [
-        "Pay on hire by default",
-        "Optional staged retainer",
+        "Quoted per search",
+        "Milestone-based payments",
         "90-day free replacement",
         "GST extra at 18%",
       ],
@@ -298,7 +310,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "How long does a leadership search take?",
-        a: "Finalists usually arrive within two to four weeks. Most leaders have 60–90 days' notice, so plan for a start date about three months after the brief.",
+        a: "Finalists usually arrive within two to four weeks. Most senior people have 60–90 days' notice, so plan for a start date about three months after the brief.",
       },
       {
         q: "Do you take references?",
@@ -308,6 +320,78 @@ export const services: Service[] = [
       sharedFaqs.confidentiality,
       sharedFaqs.exclusivity,
       sharedFaqs.ai,
+    ],
+    primaryCta: ctas.bookCall,
+  },
+  {
+    slug: "bulk-hiring",
+    name: "Bulk and Volume Hiring",
+    navLabel: "Bulk and volume hiring",
+    outcome: "Ten or more similar roles, run as one dedicated hiring drive.",
+    summary:
+      "For new branches, project ramp-ups and expansion. A dedicated recruiter team runs the drive with a shared tracker and a weekly report.",
+    whoFor: [
+      "Companies opening a new site, branch or delivery centre",
+      "Sales, operations and support teams scaling quickly",
+      "IT services firms ramping up for a new project",
+    ],
+    included: [
+      "A drive plan with weekly targets agreed up front",
+      "A dedicated recruiter team and one point of contact",
+      "Screening to a common scorecard for every role",
+      "Batch interview scheduling and offer tracking",
+      "A shared tracker and a weekly drive report",
+      "90-day free replacement on permanent hires",
+    ],
+    process: [
+      {
+        step: "Drive plan",
+        sla: "Week 0",
+        detail: "Roles, volumes, scorecard, interview slots and weekly targets agreed in writing.",
+      },
+      {
+        step: "Sourcing at volume",
+        sla: "From day 1",
+        detail: "Portals, networks, referrals and our database, screened by the dedicated team.",
+      },
+      {
+        step: "Weekly batches",
+        sla: "Every week",
+        detail: "Shortlists in batches, with interview days scheduled for you.",
+      },
+      {
+        step: "Offers and joining",
+        sla: "Tracked weekly",
+        detail: "Offer and joining follow-up for every hire, reported against the plan.",
+      },
+    ],
+    pricing: {
+      headline: "Reduced per-hire or fixed drive fee",
+      detail:
+        "Volume brings the per-hire fee down, or we agree a fixed fee for the drive. Quoted in writing per drive.",
+      bullets: [
+        "Quoted per drive",
+        "Lower cost per hire than single roles",
+        "Weekly drive report",
+        "GST extra at 18%",
+      ],
+    },
+    faqs: [
+      {
+        q: "How many roles count as bulk hiring?",
+        a: "Usually ten or more similar openings. Fewer roles run as permanent recruitment.",
+      },
+      {
+        q: "Do you hire freshers?",
+        a: "Our drives focus on experienced hires. We can include entry-level roles in a drive where the role needs it.",
+      },
+      {
+        q: "How fast can a drive start?",
+        a: "Sourcing starts the day the drive plan is agreed, with the first shortlists in the first week.",
+      },
+      sharedFaqs.pay,
+      sharedFaqs.guarantee,
+      sharedFaqs.pan,
     ],
     primaryCta: ctas.bookCall,
   },

@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { AiHumanSplit } from "@/components/marketing/ai-split";
 import { FinalCta } from "@/components/marketing/cta-band";
+import { TeamGrid } from "@/components/marketing/team-grid";
 import { Card } from "@/components/ui/card";
 import { Section, SectionHeading } from "@/components/ui/layout";
 import { PageHeader } from "@/components/ui/page-header";
@@ -12,17 +12,17 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata = buildMetadata({
   title: "About Emplyify",
   description:
-    "Why we built an AI-native, human-verified hiring partner for India's tech and GCC teams — and the principles we work by.",
+    "Emplyify is a Pune-based, pan-India recruitment and staffing partner for IT and Non-IT roles. Meet the team and the principles we work by.",
   path: "/about",
 });
 
 const principles = [
-  ["One provable promise", "A vetted shortlist in 72 hours, measured and published."],
-  ["Show the price", "Our fees are on the website. Almost no one else's are."],
-  ["Proof over adjectives", "Every claim carries a number, a name or a sample."],
-  ["Human + AI, visibly", "We show where AI works and where a recruiter decides."],
-  ["Specialism over breadth", "Six role families, three cities. We say no to the rest."],
-  ["Candidates are peers", "Salary bands upfront, no spam calls, an answer every time."],
+  ["Understand the need first", "Every search starts with the business requirement, not a job-description copy."],
+  ["Promises in writing", "A shortlist in 72 hours, a reply in 4 business hours, feedback chased in 48."],
+  ["Show the price", "Our permanent-hire fees are published, and nothing is due until the hire joins."],
+  ["Proof over adjectives", "We publish only real numbers and approved names, never placeholder quotes."],
+  ["People decide", "AI helps our recruiters search. A person signs off every shortlist."],
+  ["Candidates are people too", "Consent before any CV is shared, and an answer on every application."],
 ];
 
 export default function AboutPage() {
@@ -31,7 +31,7 @@ export default function AboutPage() {
       <PageHeader
         breadcrumbs={[{ name: "About", path: "/about" }]}
         eyebrow="About"
-        title="Hiring engineers should be fast, honest and specific."
+        title="Connecting talent. Building teams."
         intro={site.positioning}
       />
       <Section labelledBy="story">
@@ -39,20 +39,19 @@ export default function AboutPage() {
           <div className="prose-body">
             <h2 id="story">Why we started Emplyify</h2>
             <p>
-              Engineering leaders in India told us the same three things: sourcing takes weeks,
-              agencies send piles of unsuitable CVs, and nobody can say where a search stands.
-              Candidates told us the mirror image: spam calls, roles without salary bands, and
-              silence after interviews.
+              Hiring well takes too long. Hiring managers lose hours screening CVs that miss the
+              brief, wait weeks for the first good candidate, and pay fees that were never clear,
+              with little follow-through when a hire leaves early.
             </p>
             <p>
-              We built Emplyify to fix both sides at once. AI agents do the slow work of searching
-              and screening, so senior recruiters can spend their time where judgement matters —
-              interviewing, calibrating and vouching for every shortlist. We publish our prices and
-              our SLAs, and we measure ourselves against them.
+              Emplyify finds, screens and delivers the right people for your business: IT and
+              Non-IT, permanent and contract, anywhere in India. Recruitment starts with
+              understanding the business need, not simply filling vacancies. AI helps our
+              recruiters search faster, and a senior recruiter signs off every shortlist.
             </p>
             <p>
-              We are based in {site.office.city} and focus on AI/ML, data, cloud, full-stack,
-              embedded and product roles across Pune, Bengaluru and Hyderabad.
+              We are headquartered in {site.office.city}, {site.office.region}, and hire for
+              startups, SMBs, mid-sized firms and enterprises across India, from one role to fifty.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -66,39 +65,17 @@ export default function AboutPage() {
         </div>
       </Section>
 
-      {team.length > 0 && (
-        <Section tone="surface" labelledBy="team">
-          <SectionHeading id="team" title="The team" />
-          <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {team.map((m) => (
-              <li key={m.name}>
-                <Image
-                  src={m.photo}
-                  alt={`${m.name}, ${m.title}`}
-                  width={320}
-                  height={320}
-                  className="aspect-square w-full rounded-2xl object-cover"
-                />
-                <p className="mt-3 font-bold">{m.name}</p>
-                <p className="text-muted text-sm">{m.title}</p>
-                <p className="mt-2 text-sm">{m.bio}</p>
-                {m.linkedin && (
-                  <a
-                    href={m.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-accent mt-2 inline-block text-sm underline"
-                  >
-                    LinkedIn
-                  </a>
-                )}
-              </li>
-            ))}
-          </ul>
-        </Section>
-      )}
+      <Section tone="surface" labelledBy="team">
+        <SectionHeading
+          id="team"
+          eyebrow="The team"
+          title="The people behind every shortlist."
+          intro="Sourcing, profile evaluation, screening, client coordination and follow-up, led by founder Suraj Patil and co-founder Rohan Salunkhe."
+        />
+        <TeamGrid team={team} />
+      </Section>
 
-      <Section tone={team.length ? "default" : "surface"} labelledBy="ai">
+      <Section labelledBy="ai">
         <SectionHeading
           id="ai"
           title="How we use AI"

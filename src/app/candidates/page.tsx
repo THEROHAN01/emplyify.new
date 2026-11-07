@@ -10,9 +10,9 @@ import { getJobs } from "@/lib/content";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildMetadata({
-  title: "For engineers: get matched, prepped and kept in the loop",
+  title: "For job seekers: get matched, prepped and kept in the loop",
   description:
-    "Curated AI/ML, data, cloud, full-stack and embedded roles with salary bands. No spam calls, status updates at every stage and feedback on every application.",
+    "IT and Non-IT roles across India with salary bands. No spam calls, status updates at every stage, and your CV shared only with your consent.",
   path: "/candidates",
 });
 
@@ -31,7 +31,7 @@ export default function CandidatesHub() {
     <>
       <PageHeader
         breadcrumbs={[{ name: "For candidates", path: "/candidates" }]}
-        eyebrow="For engineers"
+        eyebrow="For job seekers"
         title="Get matched, prepped and kept in the loop."
         intro="Curated roles with the salary band upfront, no calls you didn't book, and a real answer on every application."
         actions={

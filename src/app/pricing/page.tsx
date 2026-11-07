@@ -3,12 +3,13 @@ import { PipelineTracker } from "@/components/visuals/pipeline-tracker";
 import { Tick } from "@/components/visuals/mock-ui";
 import { FeeCalculator } from "@/components/forms/fee-calculator";
 import { FinalCta } from "@/components/marketing/cta-band";
+import { ComparisonTable } from "@/components/marketing/comparison-table";
 import { Badge } from "@/components/ui/badge";
 import { ButtonLink } from "@/components/ui/button";
 import { FaqList } from "@/components/ui/faq";
 import { Section, SectionHeading } from "@/components/ui/layout";
 import { PageHeader } from "@/components/ui/page-header";
-import { comparison, perHireFees, plans, pricingFaqs } from "@/content/pricing";
+import { perHireFees, plans, pricingFaqs, standardTerms } from "@/content/pricing";
 import type { Seniority } from "@/content/types";
 import { calculatorFamilies } from "@/lib/content/forms";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -18,14 +19,15 @@ import { formatPercent } from "@/lib/utils/format";
 export const metadata = buildMetadata({
   title: "Pricing",
   description:
-    "Published recruitment fees: 8.33–16.67% of annual CTC per hire, Talent Pods for 5+ roles and fixed-fee GCC Hiring Sprints. Fee calculator, GST and 90-day replacement.",
+    "Published recruitment fees: 8.33–16.67% of annual fixed CTC for permanent hires, paid only when the hire joins. Bulk drives, contract staffing and leadership search quoted in writing. Fee calculator, GST and 90-day replacement.",
   path: "/pricing",
 });
 
 const planIcons: Record<string, IconName> = {
-  "per-hire": "tech-hiring",
-  "talent-pod": "talent-pods",
-  "hiring-sprint": "gcc-hiring-sprints",
+  permanent: "permanent-recruitment",
+  bulk: "bulk-hiring",
+  contract: "contract-staffing",
+  leadership: "leadership-hiring",
 };
 
 export default function PricingPage() {
@@ -35,14 +37,14 @@ export default function PricingPage() {
         breadcrumbs={[{ name: "Pricing", path: "/pricing" }]}
         eyebrow="Pricing"
         title="Published pricing. Pay when you hire."
-        intro="No retainers for per-hire roles, no hidden fees, and a 90-day free replacement on every hire. GST is added at 18%."
+        intro="Fees agreed up front. Nothing is payable on a permanent hire until the candidate joins, and every permanent hire carries a 90-day free replacement. GST is added at 18%."
       />
 
       <Section labelledBy="plans">
         <h2 id="plans" className="sr-only">
           Plans
         </h2>
-        <div className="grid gap-6 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
           {plans.map((p) => (
             <div
               key={p.id}
@@ -53,7 +55,7 @@ export default function PricingPage() {
             >
               <div className="flex items-start justify-between gap-2">
                 <IconTile name={planIcons[p.id]} tone={p.featured ? "accent" : "ink"} />
-                {p.featured && <Badge tone="new">Best value at volume</Badge>}
+                {p.featured && <Badge tone="new">Published fee</Badge>}
               </div>
               <h3 className="mt-5 text-xl font-bold">{p.name}</h3>
               <p className="text-muted">{p.for}</p>
@@ -82,7 +84,7 @@ export default function PricingPage() {
 
         <div className="mt-10 grid gap-8 lg:grid-cols-2">
           <div className="border-line rounded-2xl border p-6 sm:p-8">
-            <h3 className="text-lg font-bold">Per-hire fee by seniority</h3>
+            <h3 className="text-lg font-bold">Permanent hiring fee by seniority</h3>
             <p className="text-muted mt-1 text-sm">
               Share of annual fixed CTC, paid when the hire joins.
             </p>
@@ -115,13 +117,13 @@ export default function PricingPage() {
           <div className="border-line rounded-2xl border p-6 sm:p-8">
             <h3 className="text-lg font-bold">When you pay</h3>
             <p className="text-muted mt-1 text-sm">
-              Per-hire roles: nothing until your hire's first day.
+              Permanent hires: nothing until your hire's first day.
             </p>
             <PipelineTracker
               className="mt-6"
               orientation="vertical"
               mode="plan"
-              label="When you pay for a per-hire role"
+              label="When you pay for a permanent hire"
               steps={[
                 { label: "Brief and shortlist", detail: "₹0" },
                 { label: "Interviews and offer", detail: "₹0" },
@@ -150,41 +152,27 @@ export default function PricingPage() {
           title="Emplyify vs a typical agency vs in-house"
           intro="“Typical” columns describe common market practice in India, not any named firm."
         />
-        <div className="border-line bg-surface overflow-x-auto rounded-2xl border">
-          <table className="w-full min-w-[640px] text-left">
-            <thead>
-              <tr className="border-line border-b">
-                <th scope="col" className="px-6 py-3">
-                  <span className="sr-only">Criterion</span>
-                </th>
-                <th scope="col" className="bg-accent-soft text-accent px-6 py-3">
-                  Emplyify
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Typical agency
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  In-house only
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {comparison.map((r) => (
-                <tr key={r.row} className="border-line border-b last:border-0">
-                  <th scope="row" className="px-6 py-3 font-semibold">
-                    {r.row}
-                  </th>
-                  <td className="bg-accent-soft/60 px-6 py-3 font-semibold">{r.emplyify}</td>
-                  <td className="text-muted px-6 py-3">{r.agency}</td>
-                  <td className="text-muted px-6 py-3">{r.inhouse}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        <ComparisonTable />
       </Section>
 
-      <Section tone="surface" labelledBy="pricing-faq">
+      <Section tone="surface" labelledBy="terms">
+        <SectionHeading
+          id="terms"
+          eyebrow="Standard terms"
+          title="What the agreement says"
+          intro="These terms sit in our Master Services Agreement, signed before work starts."
+        />
+        <ul className="grid max-w-4xl gap-3 sm:grid-cols-2">
+          {standardTerms.map((t) => (
+            <li key={t} className="border-line bg-surface flex gap-3 rounded-2xl border p-5">
+              <Tick />
+              <span>{t}</span>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      <Section labelledBy="pricing-faq">
         <SectionHeading id="pricing-faq" title="Pricing questions" />
         <div className="max-w-3xl">
           <FaqList faqs={pricingFaqs} />

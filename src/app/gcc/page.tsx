@@ -14,12 +14,12 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata = buildMetadata({
   title: "GCC hiring partner in India",
   description:
-    "Build or scale your Global Capability Centre in Pune, Bengaluru or Hyderabad with Talent Pods, fixed-fee Hiring Sprints and leadership search.",
+    "Build or scale your Global Capability Centre in Pune, Bengaluru or Hyderabad with specialist IT hiring, bulk hiring drives and leadership search.",
   path: "/gcc",
 });
 
 export default function GccHub() {
-  const offerings = ["talent-pods", "gcc-hiring-sprints", "leadership-hiring"].map((s) =>
+  const offerings = ["it-hiring", "bulk-hiring", "leadership-hiring"].map((s) =>
     getService(s)!,
   );
   return (
@@ -30,7 +30,7 @@ export default function GccHub() {
         title="Your GCC hiring partner in India"
         intro="Capacity for a build-out, predictable pricing and DPDP-aligned data handling. From your first ten hires to your next hundred."
         aside={
-          <figure role="img" aria-label="Illustration of a 12-week GCC hiring sprint plan.">
+          <figure role="img" aria-label="Illustration of a 12-week GCC hiring plan.">
             <div aria-hidden className="mx-auto w-full max-w-md">
               <GccSprintMock />
             </div>
@@ -84,7 +84,7 @@ export default function GccHub() {
             <IconTile name="chat" tone="ink" />
             <h3 className="mt-5 font-bold">Agency spam</h3>
             <p className="text-muted mt-2">
-              One named recruiter per pod, one weekly report, no cold CV forwards.
+              One named recruiter for your GCC, one weekly report, no cold CV forwards.
             </p>
           </Card>
           <Card>

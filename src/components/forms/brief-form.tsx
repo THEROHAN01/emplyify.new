@@ -410,7 +410,7 @@ export function BriefForm({
             value={s.openings}
             onChange={(e) => set("openings", e.target.value)}
             error={errors.openings}
-            hint="Five or more? We'll suggest a Talent Pod."
+            hint="Ten or more similar roles? We'll suggest a bulk hiring drive."
           />
         </div>
       )}

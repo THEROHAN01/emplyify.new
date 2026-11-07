@@ -25,14 +25,37 @@ function Icon({ children, ...props }: SVGProps<SVGSVGElement> & { children: Reac
 
 export const icons = {
   // Services
-  "tech-hiring": (
+  "permanent-recruitment": (
     <Icon>
       <circle cx="9" cy="8" r="3.5" />
       <path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5" />
       <path d="m15.5 9.5 2 2 4-4" />
     </Icon>
   ),
-  "talent-pods": (
+  "contract-staffing": (
+    <Icon>
+      <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+      <path d="M3.5 10h17M8 3v4M16 3v4M8 14.5h3M8 17h6" />
+    </Icon>
+  ),
+  "it-hiring": (
+    <Icon>
+      <rect x="2.5" y="4" width="19" height="13" rx="2" />
+      <path d="M8 21h8M12 17v4M9.5 8.5 7.5 10.5l2 2M14.5 8.5l2 2-2 2" />
+    </Icon>
+  ),
+  "non-it-recruitment": (
+    <Icon>
+      <rect x="2.5" y="7" width="19" height="13" rx="2" />
+      <path d="M8.5 7V5.5a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2V7M2.5 12.5h19M12 11.5v2" />
+    </Icon>
+  ),
+  "leadership-hiring": (
+    <Icon>
+      <path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" />
+    </Icon>
+  ),
+  "bulk-hiring": (
     <Icon>
       <circle cx="12" cy="7" r="3" />
       <circle cx="5" cy="10" r="2.25" />
@@ -40,15 +63,10 @@ export const icons = {
       <path d="M6.5 20c.6-3.3 2.8-5 5.5-5s4.9 1.7 5.5 5M1.5 18c.3-1.8 1.4-3 3-3.3M22.5 18c-.3-1.8-1.4-3-3-3.3" />
     </Icon>
   ),
-  "gcc-hiring-sprints": (
+  building: (
     <Icon>
       <path d="M3 21h18M5 21V9l7-5 7 5v12" />
       <path d="M9 21v-5h6v5M9 11h.01M15 11h.01" />
-    </Icon>
-  ),
-  "leadership-hiring": (
-    <Icon>
-      <path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4l-5.2 2.7 1-5.8-4.3-4.1 5.9-.9z" />
     </Icon>
   ),
   // Role families
