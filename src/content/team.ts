@@ -3,7 +3,7 @@ import type { TeamMember } from "./types";
 /**
  * The team, in the order set in the Business Document ("Team and leadership").
  * Square headshots live in /public/team; a member without a photo shows
- * initials until one is supplied.
+ * initials instead.
  */
 export const team: TeamMember[] = [
   {
@@ -34,6 +34,7 @@ export const team: TeamMember[] = [
     name: "Mayuri Patil",
     title: "Recruitment Specialist",
     bio: "An experienced recruitment professional with over 4 years of experience in recruitment. She brings expertise in candidate sourcing, profile screening and recruitment coordination, supporting hiring requirements across different roles.",
+    photo: "/team/mayuri-patil.jpg",
   },
 ];
 
