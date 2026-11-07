@@ -36,7 +36,6 @@ The site was built as "the AI-native hiring partner for India's tech and GCC tea
 - Phone number, registration numbers (Pvt Ltd, Maharashtra placement agency).
 - Written logo approvals from the nine partners.
 - Case studies (competitor analysis action 4).
-- Mayuri Patil's photo.
 - Hiring-desk cities beyond Pune.
 
 ## Phase 2: editorial redesign (layout modelled on rentahuman.ai)
