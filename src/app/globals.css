@@ -115,6 +115,14 @@ p {
   text-wrap: pretty;
 }
 
+/* Scrollable rows that still scroll by touch, trackpad and keyboard, without a visible bar */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .tabular {
   font-variant-numeric: tabular-nums;
 }

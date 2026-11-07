@@ -3,6 +3,7 @@ import Link from "next/link";
 import { FinalCta } from "@/components/marketing/cta-band";
 import { ComparisonTable } from "@/components/marketing/comparison-table";
 import { HowSteps } from "@/components/marketing/how-steps";
+import { ScrollControls } from "@/components/marketing/scroll-controls";
 import { BgVideo } from "@/components/visuals/bg-video";
 import { GrowingRing } from "@/components/visuals/people-ring";
 import { Reveal } from "@/components/visuals/reveal";
@@ -237,11 +238,14 @@ export default function HomePage() {
           <h2 id="roles" className="label font-sans tracking-[0.08em]">
             Roles we fill
           </h2>
-          <Link href="/hire" className="label hover:underline">
-            View all
-          </Link>
+          <div className="flex items-center gap-6">
+            <Link href="/hire" className="label hover:underline">
+              View all
+            </Link>
+            <ScrollControls target="roles-row" label="roles" />
+          </div>
         </div>
-        <ul className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 py-10 md:px-10 [scrollbar-width:thin]">
+        <ul id="roles-row" className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 py-10 md:px-10">
           {roleCards.map((r) => (
             <li
               key={r.title}

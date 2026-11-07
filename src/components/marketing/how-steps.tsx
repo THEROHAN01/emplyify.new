@@ -14,7 +14,7 @@ function StepCard({ s, i }: { s: Step; i: number }) {
     <>
       <div>
         <p className="font-display text-accent text-4xl">{i + 1}</p>
-        <h3 className="mt-3 text-[1.6rem] leading-[1.05] [overflow-wrap:anywhere] xl:text-[2.2rem]">{s.step}</h3>
+        <h3 className="mt-3 text-[clamp(1.4rem,2.05vw,2.4rem)] leading-[1.1] break-normal">{s.step}</h3>
         <p className="label text-muted mt-4">{s.when}</p>
         <p className="text-muted mt-3 text-[15px]">{s.detail}</p>
       </div>
