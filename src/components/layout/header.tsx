@@ -129,10 +129,10 @@ export function HeaderClient({ hireMenu, gccMenu, primaryNav, ctas }: HeaderNav)
     <>
       <header
         className={cn(
-          "sticky top-0 z-40 border-b transition-colors duration-300",
+          "sticky top-0 z-40 transition-[background-color,box-shadow] duration-300",
           overHero
-            ? "border-transparent bg-transparent text-white [&_.logo-dark]:hidden [&_.logo-light]:block [&_.menu-btn]:border-white/40 [&_.nav-item]:text-white [&_.nav-item:hover]:bg-white/10"
-            : "border-line bg-surface/95 supports-[backdrop-filter]:bg-surface/80 backdrop-blur-md",
+            ? "bg-transparent text-white [&_.logo-dark]:hidden [&_.logo-light]:block [&_.menu-btn]:border-white/40 [&_.nav-item]:text-white [&_.nav-item:hover]:bg-white/10"
+            : "bg-surface/95 supports-[backdrop-filter]:bg-surface/80 shadow-[inset_0_-1px_0_var(--line)] backdrop-blur-md",
         )}
       >
         <Container className="flex h-16 items-center justify-between gap-4">
