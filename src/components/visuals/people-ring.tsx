@@ -6,34 +6,19 @@ import { cn } from "@/lib/utils/cn";
 const palette = ["#00c2ff", "#007dfb", "#740cf5", "#ff9702", "#01bfa3"];
 
 /**
- * The logo idea, "people joined in a circle", drawn as a ring: each figure is
- * a head above a curved body that reaches round to its neighbours, so the
- * bodies form one continuous chain.
+ * The logo idea, "people joined in a circle": small figures (head and
+ * shoulders) evenly spaced round a ring, cycling the logo's five colours.
  */
 function Ring({ count, mono }: { count: number; mono?: string }) {
-  const R = 236; // radius of the body chain
-  const step = (2 * Math.PI) / count;
-  const gap = step * 0.3;
+  const r = 280;
   return (
     <svg viewBox="-320 -320 640 640" className="size-full overflow-visible" aria-hidden>
-      <circle r={R - 58} fill="none" stroke={mono ?? "#ffffff"} strokeOpacity="0.22" strokeDasharray="1 9" strokeLinecap="round" strokeWidth="2" />
       {Array.from({ length: count }, (_, i) => {
-        const a0 = i * step + gap / 2;
-        const a1 = (i + 1) * step - gap / 2;
-        const mid = (a0 + a1) / 2;
-        const color = mono ?? palette[i % palette.length];
-        const p = (a: number, r: number) => `${(Math.cos(a) * r).toFixed(1)} ${(Math.sin(a) * r).toFixed(1)}`;
-        // Body: a thick arc segment with round ends.
-        const body = `M ${p(a0, R)} A ${R} ${R} 0 0 1 ${p(a1, R)}`;
+        const fill = mono ?? palette[i % palette.length];
         return (
-          <g key={i}>
-            <path d={body} stroke={color} strokeWidth="30" strokeLinecap="round" fill="none" />
-            <circle
-              cx={Math.cos(mid) * (R + 50)}
-              cy={Math.sin(mid) * (R + 50)}
-              r="21"
-              fill={color}
-            />
+          <g key={i} transform={`rotate(${(i / count) * 360}) translate(0 ${-r})`}>
+            <circle cx="0" cy="-14" r="9" fill={fill} />
+            <path d="M-14 12c0-11 6-18 14-18s14 7 14 18z" fill={fill} />
           </g>
         );
       })}
@@ -48,7 +33,7 @@ function Ring({ count, mono }: { count: number; mono?: string }) {
  */
 export function GrowingRing({
   corner = "top-right",
-  count = 12,
+  count = 30,
   mono,
   opacity = 0.6,
   className,
@@ -122,7 +107,7 @@ export function GrowingRing({
 }
 
 /** Static ring for places without scroll growth. */
-export function PeopleRing({ className, mono, count = 12 }: { className?: string; mono?: string; count?: number }) {
+export function PeopleRing({ className, mono, count = 30 }: { className?: string; mono?: string; count?: number }) {
   return (
     <div aria-hidden className={className}>
       <Ring count={count} mono={mono} />

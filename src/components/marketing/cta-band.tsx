@@ -40,7 +40,7 @@ export function FinalCta({
       aria-labelledby="final-cta"
       className="bg-navy relative isolate overflow-hidden px-5 pt-20 pb-32 text-white md:px-10 md:py-28 lg:py-40"
     >
-      <GrowingRing corner="bottom-left" mono="#ffffff" opacity={0.3} />
+      <GrowingRing corner="bottom-left" mono="#ffffff" opacity={0.2} />
       <div className="mx-auto max-w-4xl text-center">
         <p className="label text-white/80">{site.tagline}</p>
         <h2 id="final-cta" className="mt-6 text-[2.75rem] sm:text-6xl lg:text-[5.5rem]">

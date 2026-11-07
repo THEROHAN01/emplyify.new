@@ -201,7 +201,7 @@ export default function HomePage() {
 
       {/* 4 · Mission: brand-blue block with the turning ring */}
       <section aria-labelledby="mission" className="bg-accent relative isolate overflow-hidden text-white">
-        <GrowingRing corner="top-right" mono="#ffffff" />
+        <GrowingRing corner="top-right" mono="#ffffff" opacity={0.3} />
         <div className={cn(wrap, "flex min-h-[640px] flex-col justify-between py-16 md:py-20")}>
           <p className="label">Our mission</p>
           <Reveal>
