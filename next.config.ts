@@ -60,6 +60,10 @@ const nextConfig: NextConfig = {
       { source: "/sitemap", destination: "/site-map", permanent: true },
       { source: "/privacy", destination: "/legal/privacy", permanent: true },
       { source: "/terms", destination: "/legal/terms", permanent: true },
+      // Service pages retired in the Nov 2026 revamp.
+      { source: "/services/tech-hiring", destination: "/services/it-hiring", permanent: true },
+      { source: "/services/talent-pods", destination: "/services/bulk-hiring", permanent: true },
+      { source: "/services/gcc-hiring-sprints", destination: "/gcc", permanent: true },
     ];
   },
 };
