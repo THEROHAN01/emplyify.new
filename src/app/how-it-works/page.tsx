@@ -25,7 +25,7 @@ const slaTable = [
     sla: `Within ${site.promises.replyBusinessHours} business hours`,
   },
   {
-    step: "Verified shortlist of 3–5 candidates",
+    step: "Verified shortlist of 10+ candidates",
     sla: `Within ${site.promises.shortlistHours} hours of confirmed brief`,
   },
   { step: "Interview feedback chased", sla: "Within 48 hours of each interview" },

@@ -20,7 +20,6 @@ import {
 } from "@/content/company";
 import { clientLogos } from "@/content/metrics";
 import { ctas, site } from "@/content/site";
-import { team } from "@/content/team";
 import { getRoleFamilies, getRoleByFamily, getServices } from "@/lib/content";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { cn } from "@/lib/utils/cn";
@@ -83,9 +82,20 @@ export default function HomePage() {
         className="bg-navy relative isolate -mt-16 min-h-[min(780px,100svh)] overflow-hidden text-white lg:h-[100svh] lg:min-h-[720px]"
       >
         <BgVideo src={media.hero.src} poster={media.hero.poster} overlay="bg-navy/55" />
-        <div aria-hidden className="from-navy/80 absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b to-transparent" />
-        <div className={cn(wrap, "flex h-full min-h-[inherit] flex-col justify-between pt-32 pb-8 lg:pt-36")}>
-          <h1 id="hero-title" className="max-w-5xl text-[3rem] leading-[0.95] sm:text-7xl lg:text-[6.5rem]">
+        <div
+          aria-hidden
+          className="from-navy/80 absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b to-transparent"
+        />
+        <div
+          className={cn(
+            wrap,
+            "flex h-full min-h-[inherit] flex-col justify-between pt-32 pb-8 lg:pt-36",
+          )}
+        >
+          <h1
+            id="hero-title"
+            className="max-w-5xl text-[3rem] leading-[0.95] sm:text-7xl lg:text-[6.5rem]"
+          >
             Connecting talent. Building teams.
           </h1>
 
@@ -97,7 +107,7 @@ export default function HomePage() {
               </p>
               <Link
                 href={ctas.submitRole.href}
-                className="label border-line mt-8 flex items-center justify-between border-t pt-4 hover:text-accent"
+                className="label border-line hover:text-accent mt-8 flex items-center justify-between border-t pt-4"
               >
                 {ctas.submitRole.label}
                 <ArrowBox />
@@ -140,7 +150,10 @@ export default function HomePage() {
             {services.map((s, i) => {
               const img = serviceImages[s.slug];
               return (
-                <li key={s.slug} className="border-line group relative flex flex-col border-r border-b p-4">
+                <li
+                  key={s.slug}
+                  className="border-line group relative flex flex-col border-r border-b p-4"
+                >
                   <div className="aspect-square overflow-hidden">
                     {img ? (
                       <Image
@@ -201,7 +214,10 @@ export default function HomePage() {
       )}
 
       {/* 4 · Mission: brand-blue block with the turning ring */}
-      <section aria-labelledby="mission" className="bg-accent relative isolate overflow-hidden text-white">
+      <section
+        aria-labelledby="mission"
+        className="bg-accent relative isolate overflow-hidden text-white"
+      >
         <GrowingRing corner="top-right" mono="#ffffff" opacity={0.5} />
         <div className={cn(wrap, "flex min-h-[640px] flex-col justify-between py-16 md:py-20")}>
           <p className="label">Our mission</p>
@@ -233,8 +249,13 @@ export default function HomePage() {
       />
 
       {/* 6 · Roles we fill: horizontal card row on blue */}
-      <section aria-labelledby="roles" className="bg-accent overflow-hidden border-b border-white/25 text-white">
-        <div className={cn(wrap, "flex h-14 items-center justify-between border-b border-white/25")}>
+      <section
+        aria-labelledby="roles"
+        className="bg-accent overflow-hidden border-b border-white/25 text-white"
+      >
+        <div
+          className={cn(wrap, "flex h-14 items-center justify-between border-b border-white/25")}
+        >
           <h2 id="roles" className="label font-sans tracking-[0.08em]">
             Roles we fill
           </h2>
@@ -245,7 +266,10 @@ export default function HomePage() {
             <ScrollControls target="roles-row" label="roles" />
           </div>
         </div>
-        <ul id="roles-row" className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 py-10 md:px-10">
+        <ul
+          id="roles-row"
+          className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 py-10 md:px-10"
+        >
           {roleCards.map((r) => (
             <li
               key={r.title}
@@ -259,7 +283,11 @@ export default function HomePage() {
               <p className="mt-3 text-white/80">{r.blurb}</p>
               <div className="label mt-auto flex items-center justify-between pt-8 text-white/80">
                 <span>Pan-India</span>
-                <Link href={r.href} aria-label={`Hire for ${r.title}`} className="after:absolute after:inset-0">
+                <Link
+                  href={r.href}
+                  aria-label={`Hire for ${r.title}`}
+                  className="after:absolute after:inset-0"
+                >
                   <ArrowBox inverted />
                 </Link>
               </div>
@@ -269,7 +297,10 @@ export default function HomePage() {
       </section>
 
       {/* 7 · Reach and promises: video with stat tiles */}
-      <section aria-labelledby="reach" className="bg-navy relative isolate overflow-hidden text-white">
+      <section
+        aria-labelledby="reach"
+        className="bg-navy relative isolate overflow-hidden text-white"
+      >
         <BgVideo src={media.boardroom.src} poster={media.boardroom.poster} overlay="bg-navy/70" />
         <div className={cn(wrap, "grid gap-12 py-24 lg:grid-cols-2 lg:items-center lg:py-36")}>
           <Reveal>
@@ -293,7 +324,11 @@ export default function HomePage() {
             {stats.map((s, i) => (
               <li
                 key={s.label}
-                className={cn("border-white/25 p-6 md:p-8", i % 2 === 0 && "border-r", i < 2 && "border-b")}
+                className={cn(
+                  "border-white/25 p-6 md:p-8",
+                  i % 2 === 0 && "border-r",
+                  i < 2 && "border-b",
+                )}
               >
                 <p className="font-display text-5xl md:text-6xl">{s.value}</p>
                 <p className="label mt-3 text-white/85">{s.label}</p>
@@ -340,9 +375,21 @@ export default function HomePage() {
           </div>
           <ul className="border-line mt-12 grid border-t border-l bg-white md:grid-cols-3">
             {[
-              ["8.33–16.67%", "Permanent hire", "of annual fixed CTC by seniority, paid only when the hire joins."],
-              ["Per drive", "Bulk hiring", "Ten or more similar roles at a reduced per-hire or fixed drive fee."],
-              ["90 days", "Free replacement", "If a permanent hire leaves early, we search again at no fee."],
+              [
+                "8.33–16.67%",
+                "Permanent hire",
+                "of annual fixed CTC by seniority, paid only when the hire joins.",
+              ],
+              [
+                "Per drive",
+                "Bulk hiring",
+                "Ten or more similar roles at a reduced per-hire or fixed drive fee.",
+              ],
+              [
+                "90 days",
+                "Free replacement",
+                "If a permanent hire leaves early, we search again at no fee.",
+              ],
             ].map(([v, l, n]) => (
               <li key={l} className="border-line border-r border-b p-8">
                 <p className="label text-muted">{l}</p>
@@ -382,8 +429,6 @@ export default function HomePage() {
           </ul>
         </div>
       </section>
-
-
 
       {/* 12 · Finale */}
       <FinalCta />

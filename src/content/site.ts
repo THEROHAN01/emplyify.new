@@ -30,7 +30,7 @@ export const site = {
     shortlistHours: 48,
     replyBusinessHours: 4,
     feedbackHours: 48,
-    shortlistSize: "3–5",
+    shortlistSize: "10+",
     replacementDays: 90,
     candidateUpdateBusinessDays: 2,
     autoCloseDays: 21,

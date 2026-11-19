@@ -50,9 +50,7 @@ export default function SubmitRolePage() {
               </li>
               <li>
                 <Badge tone="verified">Within {site.promises.shortlistHours} hours</Badge>
-                <p className="text-muted mt-1">
-                  Three to five verified candidates, each with a dossier.
-                </p>
+                <p className="text-muted mt-1">10+ verified candidates, each with a dossier.</p>
               </li>
             </ol>
           </div>

@@ -6,7 +6,7 @@
 export const problems = [
   {
     problem: "Piles of CVs, not a shortlist",
-    fix: "Ten Plus screened candidates",
+    fix: "10+ screened candidates",
     detail:
       "Every candidate is screened by a recruiter on skills, motivation, notice period and CTC, with a short fit summary and a senior recruiter's sign-off.",
   },
@@ -41,7 +41,7 @@ export const processSteps = [
     step: "Screening and shortlist",
     when: "By 48 hours",
     detail:
-      "A recruiter screen on skills, motivation, notice period and CTC, then three to five candidates submitted, each with a fit summary and recruiter sign-off.",
+      "A recruiter screen on skills, motivation, notice period and CTC, then 10+ candidates submitted, each with a fit summary and recruiter sign-off.",
   },
   {
     step: "Interview coordination",
@@ -157,7 +157,10 @@ export const trustPoints = [
     detail: "A candidate's CV is shared only with their consent, logged with time and purpose.",
   },
   { title: "Private storage", detail: "CVs sit in private storage, and shared links expire." },
-  { title: "People decide", detail: "AI helps us search. It never rejects a candidate on its own." },
+  {
+    title: "People decide",
+    detail: "AI helps us search. It never rejects a candidate on its own.",
+  },
   {
     title: "Built for India's rules",
     detail: "Data handling aligned with the DPDP Act.",
@@ -171,7 +174,10 @@ export const nonItRoleCards = [
     blurb: "Field sales, inside sales, key accounts and BD managers.",
   },
   { title: "Marketing", blurb: "Digital, brand, performance and content marketers." },
-  { title: "Finance and accounting", blurb: "Accountants, analysts, controllers and finance heads." },
+  {
+    title: "Finance and accounting",
+    blurb: "Accountants, analysts, controllers and finance heads.",
+  },
   { title: "Human resources", blurb: "HR generalists, HRBPs, talent acquisition and payroll." },
   {
     title: "Operations and administration",

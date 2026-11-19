@@ -68,7 +68,7 @@ export default async function BriefThankYou(props: PageProps<"/submit-a-role/tha
                 : `within ${site.promises.shortlistHours} hours`}
             </p>
             <p className="mt-1 text-lg font-semibold">
-              Your verified shortlist: three to five candidates, each with a dossier.
+              Your verified shortlist: 10+ candidates, each with a dossier.
             </p>
             <p className="text-muted mt-1">The 48-hour clock starts once the brief is confirmed.</p>
           </li>
