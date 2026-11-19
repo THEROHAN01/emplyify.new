@@ -11,14 +11,29 @@ const palette = ["#00c2ff", "#007dfb", "#740cf5", "#ff9702", "#01bfa3"];
  */
 function Ring({ count, mono }: { count: number; mono?: string }) {
   const r = 280;
+
   return (
-    <svg viewBox="-320 -320 640 640" className="size-full overflow-visible" aria-hidden>
+    <svg
+      viewBox="-320 -320 640 640"
+      className="size-full overflow-visible"
+      aria-hidden="true"
+    >
       {Array.from({ length: count }, (_, i) => {
-        const fill = mono ?? palette[i % palette.length];
+        const angle = (i / count) * 360;
+
         return (
-          <g key={i} transform={`rotate(${(i / count) * 360}) translate(0 ${-r})`}>
-            <circle cx="0" cy="-14" r="9" fill={fill} />
-            <path d="M-14 12c0-11 6-18 14-18s14 7 14 18z" fill={fill} />
+          <g
+            key={i}
+            transform={`rotate(${angle}) translate(0 ${-r})`}
+          >
+            <image
+              href="/brand/logo-mark.png"
+              x="-27.5"
+              y="-27.5"
+              width="55"
+              height="55"
+              preserveAspectRatio="xMidYMid meet"
+            />
           </g>
         );
       })}
@@ -60,9 +75,10 @@ export function GrowingRing({
       const r = section.getBoundingClientRect();
       const vh = window.innerHeight;
       // 0 when the section's top reaches the bottom of the screen, 1 once it is near the top.
-      const t = Math.min(1, Math.max(0, (vh - r.top) / (vh * 0.9)));
-      const eased = 1 - Math.pow(1 - t, 3);
-      el.style.setProperty("--ring-scale", (0.4 + 0.6 * eased).toFixed(3));
+      const t = Math.min(1, Math.max(0, (vh - r.top) / (vh * 1.7)));
+      const eased = t * t * (3 - 2 * t);
+
+      el.style.setProperty("--ring-scale", (0.15 + 0.85 * eased).toFixed(3));
       el.style.setProperty("--ring-play", r.bottom > 0 && r.top < vh ? "running" : "paused");
     };
     const onScroll = () => {
@@ -85,7 +101,8 @@ export function GrowingRing({
         ref={ref}
         className={cn(
           "absolute size-[26rem] sm:size-[36rem] lg:size-[40rem]",
-          topRight ? "-top-[9rem] -right-[10rem] sm:-top-[13rem] sm:-right-[8rem]" : "-bottom-[14rem] -left-[12rem]",
+          topRight
+            ? "-top-[9rem] -right-[10rem] sm:-top-[13rem] sm:-right-[8rem]" : "-bottom-[14rem] -left-[20rem]",
           className,
         )}
         style={{
