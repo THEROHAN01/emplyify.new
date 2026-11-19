@@ -202,7 +202,7 @@ export default function HomePage() {
 
       {/* 4 · Mission: brand-blue block with the turning ring */}
       <section aria-labelledby="mission" className="bg-accent relative isolate overflow-hidden text-white">
-        <GrowingRing corner="top-right" mono="#ffffff" opacity={0.3} />
+        <GrowingRing corner="top-right" mono="#ffffff" opacity={0.5} />
         <div className={cn(wrap, "flex min-h-[640px] flex-col justify-between py-16 md:py-20")}>
           <p className="label">Our mission</p>
           <Reveal>
@@ -383,39 +383,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 11 · Team */}
-      <section aria-labelledby="team" className="border-line border-t bg-white">
-        <div className={cn(wrap, "flex flex-col justify-between gap-6 py-20 lg:flex-row lg:items-end lg:py-24")}>
-          <div>
-            <p className="label text-accent">The team</p>
-            <h2 id="team" className="mt-5 max-w-3xl text-[2.75rem] sm:text-6xl">
-              The people behind every shortlist.
-            </h2>
-          </div>
-          <ButtonLink href="/about#team" variant="secondary" className="self-start lg:self-auto">
-            Meet the team <ArrowBox />
-          </ButtonLink>
-        </div>
-        <ul className="border-line mx-auto grid max-w-[1440px] grid-cols-2 border-t sm:grid-cols-3 lg:grid-cols-5">
-          {team.map((m) => (
-            <li key={m.name} className="border-line group border-r border-b p-5">
-              <div className="bg-bg aspect-square overflow-hidden">
-                {m.photo && (
-                  <Image
-                    src={m.photo}
-                    alt={`${m.name}, ${m.title}`}
-                    width={400}
-                    height={400}
-                    className="size-full object-cover grayscale transition duration-500 group-hover:scale-[1.03] group-hover:grayscale-0"
-                  />
-                )}
-              </div>
-              <p className="font-display mt-5 text-2xl">{m.name}</p>
-              <p className="label text-muted mt-2 leading-relaxed">{m.title}</p>
-            </li>
-          ))}
-        </ul>
-      </section>
+
 
       {/* 12 · Finale */}
       <FinalCta />

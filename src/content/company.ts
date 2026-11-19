@@ -6,7 +6,7 @@
 export const problems = [
   {
     problem: "Piles of CVs, not a shortlist",
-    fix: "Three to five screened candidates",
+    fix: "Ten Plus screened candidates",
     detail:
       "Every candidate is screened by a recruiter on skills, motivation, notice period and CTC, with a short fit summary and a senior recruiter's sign-off.",
   },
@@ -133,7 +133,7 @@ export const comparison = [
   },
   {
     row: "What you receive",
-    emplyify: "3–5 screened candidates with a fit summary",
+    emplyify: "10+ screened candidates with a fit summary",
     agency: "Often a batch of CVs",
     inhouse: "Applicants to screen yourself",
   },
