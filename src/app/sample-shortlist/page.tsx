@@ -33,10 +33,9 @@ export default async function SampleShortlistPage(props: PageProps<"/sample-shor
         title="This is what lands in your inbox."
         intro={
           <>
-            A shortlist is three to five candidates, each verified by a senior recruiter. The
-            candidates below are{" "}
-            <strong className="text-ink">illustrative composites, not real people</strong>; real
-            dossiers are shared only with candidate consent.
+            A shortlist is 10+ candidates, each verified by a senior recruiter. The few candidates
+            below are <strong className="text-ink">illustrative composites, not real people</strong>
+            ; real dossiers are shared only with candidate consent.
           </>
         }
       />

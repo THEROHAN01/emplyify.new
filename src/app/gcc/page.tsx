@@ -19,9 +19,7 @@ export const metadata = buildMetadata({
 });
 
 export default function GccHub() {
-  const offerings = ["it-hiring", "bulk-hiring", "leadership-hiring"].map((s) =>
-    getService(s)!,
-  );
+  const offerings = ["it-hiring", "bulk-hiring", "leadership-hiring"].map((s) => getService(s)!);
   return (
     <>
       <PageHeader
@@ -91,7 +89,7 @@ export default function GccHub() {
             <IconTile name="dossier" tone="ink" />
             <h3 className="mt-5 font-bold">CV dumps</h3>
             <p className="text-muted mt-2">
-              Three to five evidenced candidates per role, signed off by a senior recruiter.
+              10+ evidenced candidates per role, each signed off by a senior recruiter.
             </p>
           </Card>
           <Card>

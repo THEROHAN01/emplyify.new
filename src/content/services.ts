@@ -26,7 +26,7 @@ const sharedFaqs = {
   },
   cvDumps: {
     q: "Will you send us a pile of CVs?",
-    a: "No. You get three to five screened candidates, each with a short fit summary covering skills, notice period and expected CTC, and a recruiter's sign-off.",
+    a: "No. You get 10+ screened candidates, not raw CVs, each with a short fit summary covering skills, notice period and expected CTC, and a recruiter's sign-off.",
   },
   ai: {
     q: "Does AI make decisions about candidates?",
@@ -58,7 +58,7 @@ const standardSteps = [
   {
     step: "Shortlist",
     sla: "By 48 hours",
-    detail: "Three to five candidates, each with a fit summary and a senior recruiter's sign-off.",
+    detail: "10+ candidates, each with a fit summary and a senior recruiter's sign-off.",
   },
   {
     step: "Interviews to joining",
@@ -72,7 +72,12 @@ const permanentPricing = {
   headline: "8.33–16.67% of annual fixed CTC",
   detail:
     "One, one and a half or two months of the hire's fixed CTC, set by seniority. Nothing is payable until the candidate joins.",
-  bullets: ["No retainer", "No fee until the hire joins", "90-day free replacement", "GST extra at 18%"],
+  bullets: [
+    "No retainer",
+    "No fee until the hire joins",
+    "90-day free replacement",
+    "GST extra at 18%",
+  ],
 };
 
 export const services: Service[] = [
@@ -82,7 +87,7 @@ export const services: Service[] = [
     navLabel: "Permanent recruitment",
     outcome: "Full-time hires at every level, with a shortlist in 48 hours.",
     summary:
-      "For one to ten open roles. You brief us once, we return three to five screened candidates and run the process through to the joining date.",
+      "For one to ten open roles. You brief us once, we return 10+ screened candidates and run the process through to the joining date.",
     whoFor: [
       "Startups building their first teams",
       "Growing businesses filling one to ten roles at a time",
@@ -90,7 +95,7 @@ export const services: Service[] = [
     ],
     included: [
       "A confirmed written brief",
-      "An initial shortlist of 3–5 screened candidates in 48 hours",
+      "An initial shortlist of 10+ screened candidates in 48 hours",
       "Interview scheduling and feedback chasing",
       "Offer support and joining follow-up",
       "A weekly status report",
@@ -190,7 +195,7 @@ export const services: Service[] = [
       "A brief built around must-have skills, not a job-description copy",
       "AI-assisted search across portals, LinkedIn and our database",
       "A recruiter screen on skills, motivation, notice period and CTC",
-      "3–5 screened candidates in 48 hours",
+      "10+ screened candidates in 48 hours",
       "Interview scheduling, feedback chasing and offer support",
       "90-day free replacement on permanent hires",
     ],
@@ -232,7 +237,7 @@ export const services: Service[] = [
       "A confirmed written brief",
       "Sourcing across job portals, networks and referrals",
       "A recruiter screen on experience, motivation, notice period and CTC",
-      "3–5 screened candidates in 48 hours",
+      "10+ screened candidates in 48 hours",
       "Interview scheduling, offer and joining follow-up",
       "90-day free replacement on permanent hires",
     ],

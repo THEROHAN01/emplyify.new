@@ -1,31 +1,31 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import { cn } from "@/lib/utils/cn";
 
-const palette = ["#00c2ff", "#007dfb", "#740cf5", "#ff9702", "#01bfa3"];
-
 /**
- * The logo idea, "people joined in a circle": small figures (head and
- * shoulders) evenly spaced round a ring, cycling the logo's five colours.
+ * The Emplyify logo mark repeated evenly round a ring. With `mono`, every
+ * mark is tinted that single colour (e.g. white on the blue and navy bands);
+ * without it the marks keep the logo's own colours.
  */
 function Ring({ count, mono }: { count: number; mono?: string }) {
   const r = 280;
+  const filterId = `ring-tint-${useId().replace(/:/g, "")}`;
 
   return (
-    <svg
-      viewBox="-320 -320 640 640"
-      className="size-full overflow-visible"
-      aria-hidden="true"
-    >
-      {Array.from({ length: count }, (_, i) => {
-        const angle = (i / count) * 360;
-
-        return (
-          <g
-            key={i}
-            transform={`rotate(${angle}) translate(0 ${-r})`}
-          >
+    <svg viewBox="-320 -320 640 640" className="size-full overflow-visible" aria-hidden="true">
+      {mono && (
+        <defs>
+          {/* Fill the logo's shape (its alpha) with the mono colour. */}
+          <filter id={filterId} colorInterpolationFilters="sRGB">
+            <feFlood floodColor={mono} result="tint" />
+            <feComposite in="tint" in2="SourceAlpha" operator="in" />
+          </filter>
+        </defs>
+      )}
+      <g filter={mono ? `url(#${filterId})` : undefined}>
+        {Array.from({ length: count }, (_, i) => (
+          <g key={i} transform={`rotate(${(i / count) * 360}) translate(0 ${-r})`}>
             <image
               href="/brand/logo-mark.png"
               x="-27.5"
@@ -35,14 +35,14 @@ function Ring({ count, mono }: { count: number; mono?: string }) {
               preserveAspectRatio="xMidYMid meet"
             />
           </g>
-        );
-      })}
+        ))}
+      </g>
     </svg>
   );
 }
 
 /**
- * Corner ring that grows from 40% to full size as its section scrolls into
+ * Corner ring that grows from 15% to full size as its section scrolls into
  * view (anchored on the corner it sits in) and turns slowly while visible.
  * Static, full size and still for visitors who prefer reduced motion.
  */
@@ -102,7 +102,8 @@ export function GrowingRing({
         className={cn(
           "absolute size-[26rem] sm:size-[36rem] lg:size-[40rem]",
           topRight
-            ? "-top-[9rem] -right-[10rem] sm:-top-[13rem] sm:-right-[8rem]" : "-bottom-[14rem] -left-[20rem]",
+            ? "-top-[9rem] -right-[10rem] sm:-top-[13rem] sm:-right-[8rem]"
+            : "-bottom-[14rem] -left-[12rem]",
           className,
         )}
         style={{
@@ -124,7 +125,15 @@ export function GrowingRing({
 }
 
 /** Static ring for places without scroll growth. */
-export function PeopleRing({ className, mono, count = 30 }: { className?: string; mono?: string; count?: number }) {
+export function PeopleRing({
+  className,
+  mono,
+  count = 30,
+}: {
+  className?: string;
+  mono?: string;
+  count?: number;
+}) {
   return (
     <div aria-hidden className={className}>
       <Ring count={count} mono={mono} />
