@@ -15,9 +15,10 @@ The site was built as "the AI-native hiring partner for India's tech and GCC tea
 | Proof line | Screened shortlists in 48 hours. A real reply in 4 business hours. | Brand book; competitor analysis action 1 |
 | Services | Six: permanent recruitment, contract staffing, IT and technical hiring, Non-IT recruitment, senior and leadership hiring, bulk and volume hiring. Talent Pods and GCC Hiring Sprints are retired as named products. | Business document "Services" |
 | Pricing | Permanent fees published (8.33 / 12.5 / 16.67%). Contract, leadership and bulk fees shown as "quoted in writing" until the open questions are answered. | Business document "Pricing"; proof policy |
-| 90-day replacement | Keep. The business document puts it in writing. | Business document (wins over the brand book's older caution) |
+| 90-day replacement | Dropped (20 Nov 2026). Not offered or mentioned anywhere on the site, including the Terms. Where it appeared as a promise, it is replaced by "10+ screened candidates per shortlist"; leadership lists simply omit it. | Owner decision (PR #3); overrides the business document |
+| Shortlist size | 10+ screened candidates per shortlist (was 3–5), stated the same way on every page. Leadership searches still present two to four finalists. | Owner decision (PR #2) |
 | Tech role pages (`/hire/*`) and city pages | Keep as the IT specialisms behind the IT hiring service; they carry SEO. | Existing traffic value |
-| Team | Show all five on About and a team strip on the home page. Mayuri Patil shows initials until her photo arrives. | Business document "Team" |
+| Team | Show all five on About. The home-page team strip was removed in PR #1. | Business document "Team"; owner decision (PR #1) |
 | Brand | Brand-book palette (navy #071330, action blue #0062D6), Space Grotesk headlines, the five-colour brand bar under the header, circular team photos with coloured rings. | Brand book |
 | Proof | Partner logos stay; metrics stay pending; no testimonials or invented numbers. | Proof policy |
 
@@ -25,7 +26,7 @@ The site was built as "the AI-native hiring partner for India's tech and GCC tea
 
 1. **Brand foundation.** Tokens from the brand book in `globals.css`, Space Grotesk for display text, brand bar under the header. Contrast tests must still pass.
 2. **Content model.** `site.ts` (tagline, positioning, description), six services in `services.ts`, pricing plans and FAQs in `pricing.ts`, the five team members in `team.ts`, and a new `company.ts` for industries, functions, the five-step process, sourcing channels, commitments, client stages and the comparison table. Navigation and icons follow.
-3. **Home page.** New hero and copy; problems from the document; five-step process; six services; "IT and Non-IT" section (industries, functions, IT specialisms); who we serve; pricing preview; why Emplyify comparison; team strip; responsible AI; final CTA.
+3. **Home page.** New hero and copy; problems from the document; five-step process; six services; "IT and Non-IT" section (industries, functions, IT specialisms); who we serve; pricing preview; why Emplyify comparison; team strip; responsible AI; final CTA. (The comparison table and team strip were later removed from the home page; see "Changes after the revamp".)
 4. **Inner pages.** About (story, principles, team), How it works (five steps, channels, commitments), Hire index (IT specialisms plus Non-IT functions), GCC hub (offerings remapped to the new services), Pricing (four models, terms), service page visuals.
 5. **Metadata and schema.** Titles and descriptions across pages; organisation schema description.
 6. **Checks.** `npm run check`, visual pass in the browser at desktop and mobile widths.
@@ -44,6 +45,14 @@ Our content, colours and code; no copied assets, code or licensed fonts.
 
 - Serif headlines (Newsreader, free) with Inter body text and small uppercase labels; square corners; ↗ arrow boxes on links.
 - Wordmark: the brand-kit EMPLYIFY lock-up with the gradient first Y (cut from `brand/logo-full-transparent.png`, never retyped); a white version for dark backgrounds.
-- Home: full-screen hero video under a transparent header, service picture cards, partner strip, brand-blue mission block with a turning ring of people (our logo motif), sticky "How it works" with a live step counter and steps revealed on scroll, a sideways-scrolling "Roles we fill" row, a video section with stat tiles, pricing and comparison, team grid, dark finale.
+- Home: full-screen hero video under a transparent header, service picture cards, partner strip, brand-blue mission block with a turning ring of white logo marks (our logo motif), sticky "How it works" with a live step counter and steps revealed on scroll, a sideways-scrolling "Roles we fill" row, a video section with stat tiles (48h shortlist, 4h reply, 48h feedback chased, 10+ screened candidates), pricing preview, dark finale.
 - Motion: muted looping videos that play only on screen, scroll reveals, slow ring rotation, header fade on scroll. All of it stops for visitors who prefer reduced motion.
 - Videos: two free Pexels clips (19538635 and 6952048), trimmed to 10 seconds with no audio, in `public/media/`.
+
+## Changes after the revamp
+
+| PR | Date | Change |
+|---|---|---|
+| #1 | 19 Nov 2026 | Home: team section removed; partner strip drops BrillianTech; ring uses the logo mark instead of figures; "10+" shortlist wording started (two places only). |
+| #2 | 19 Nov 2026 | Shortlist size is 10+ on every page (13 remaining "3–5" mentions fixed). The logo ring is tinted white wherever it is used: home mission block and the closing band on every page. |
+| #3 | 20 Nov 2026 | Home comparison table (Emplyify vs typical agency vs in-house) removed. The 90-day free replacement removed site-wide, including the Terms, FAQs, pricing, emails and metadata; the home commitment box and pricing box now read "10+ screened candidates". The comparison table remains on the Pricing page without the replacement row. |
