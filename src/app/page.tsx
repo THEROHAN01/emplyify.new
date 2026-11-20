@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FinalCta } from "@/components/marketing/cta-band";
-import { ComparisonTable } from "@/components/marketing/comparison-table";
 import { HowSteps } from "@/components/marketing/how-steps";
 import { ScrollControls } from "@/components/marketing/scroll-controls";
 import { BgVideo } from "@/components/visuals/bg-video";
@@ -53,7 +52,7 @@ const stats = [
   { value: "48h", label: "To an initial shortlist" },
   { value: "4h", label: "Business-hours reply" },
   { value: "48h", label: "Interview feedback chased" },
-  { value: "90 days", label: "Free replacement" },
+  { value: "10+", label: "Screened candidates per shortlist" },
 ];
 
 export default function HomePage() {
@@ -359,7 +358,7 @@ export default function HomePage() {
         </ul>
       </section>
 
-      {/* 9 · Pricing and comparison */}
+      {/* 9 · Pricing */}
       <section aria-labelledby="pricing" className="bg-bg">
         <div className={cn(wrap, "py-20 lg:py-28")}>
           <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr] lg:items-end">
@@ -386,9 +385,9 @@ export default function HomePage() {
                 "Ten or more similar roles at a reduced per-hire or fixed drive fee.",
               ],
               [
-                "90 days",
-                "Free replacement",
-                "If a permanent hire leaves early, we search again at no fee.",
+                "10+",
+                "Screened candidates",
+                "Every shortlist brings 10+ screened candidates with a fit summary, not a pile of CVs.",
               ],
             ].map(([v, l, n]) => (
               <li key={l} className="border-line border-r border-b p-8">
@@ -398,9 +397,6 @@ export default function HomePage() {
               </li>
             ))}
           </ul>
-          <div className="mt-12">
-            <ComparisonTable />
-          </div>
         </div>
       </section>
 

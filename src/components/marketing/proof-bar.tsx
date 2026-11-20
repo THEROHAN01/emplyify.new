@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/layout";
 import { Stat } from "@/components/ui/stat";
 
 /**
- * Proof bar. Shows only verifiable numbers: the written guarantees today,
+ * Proof bar. Shows only verifiable numbers: the written commitments today,
  * live metrics as they become real, client logos only with permission.
  */
 export function ProofBar() {
@@ -20,9 +20,9 @@ export function ProofBar() {
             footnote="From confirmed brief to verified shortlist."
           />
           <Stat
-            value={`${site.promises.replacementDays} days`}
-            label="Free replacement"
-            footnote="Written into every agreement."
+            value="10+"
+            label="Screened candidates"
+            footnote="In every shortlist, each with a fit summary."
           />
           {(live.length ? live : proofMetrics.slice(0, 2)).map((m) => (
             <Stat

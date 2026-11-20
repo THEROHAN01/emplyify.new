@@ -33,10 +33,6 @@ const slaTable = [
     step: "Candidate status updates",
     sla: `Every ${site.promises.candidateUpdateBusinessDays} business days, at every stage`,
   },
-  {
-    step: "Replacement if a hire leaves",
-    sla: `Within ${site.promises.replacementDays} days of joining, free`,
-  },
 ];
 
 const qualityMetrics = [
@@ -127,7 +123,7 @@ export default function HowItWorksPage() {
               { label: "Search and screen", detail: "0–48 hours" },
               { label: "Shortlist sent", detail: "By 48 hours" },
               { label: "Interviews", detail: "Feedback chased in 48h" },
-              { label: "Offer and joining", detail: "90-day cover starts" },
+              { label: "Offer and joining", detail: "Fee due only on joining" },
             ]}
           />
         </div>

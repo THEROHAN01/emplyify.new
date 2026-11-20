@@ -148,7 +148,7 @@ export function RoleLinks({ role, currentCity }: { role: RolePage; currentCity?:
         <Card>
           <h3 className="font-bold">Pricing</h3>
           <p className="text-muted mt-2">
-            8.33–16.67% of fixed CTC by seniority, pay on hire, 90-day replacement.
+            8.33–16.67% of fixed CTC by seniority, pay on hire, 10+ screened candidates.
           </p>
           <Link
             href="/pricing"

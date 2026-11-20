@@ -79,7 +79,7 @@ export const legalDocs: LegalDoc[] = [
     slug: "terms",
     title: "Terms of service",
     description:
-      "Terms for employers using Emplyify, including fees, the 90-day replacement guarantee and non-solicitation.",
+      "Terms for employers using Emplyify, including fees, introductions and non-solicitation.",
     updatedAt,
     sections: [
       {
@@ -98,12 +98,6 @@ export const legalDocs: LegalDoc[] = [
         heading: "Introductions",
         body: [
           "A candidate is introduced when we share their profile with you with their consent. A fee is payable if you, or an affiliate, hire an introduced candidate for any role within 12 months of the introduction.",
-        ],
-      },
-      {
-        heading: "90-day replacement",
-        body: [
-          "If a hire resigns or is dismissed for performance or conduct within 90 days of joining, we will run a replacement search for the same role at no additional fee, provided invoices are paid on time. The guarantee does not apply to redundancy, a material change in the role, or changes in the hire's compensation.",
         ],
       },
       {

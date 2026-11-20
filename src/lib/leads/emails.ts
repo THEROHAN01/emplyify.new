@@ -17,7 +17,7 @@ export function briefConfirmationEmail(p: {
   const lines = [
     `Hi ${p.name.split(" ")[0]},`,
     `Thanks for your ${p.roleTitle} brief. Your reference is ${p.ref}.`,
-    `What happens next:\n1. ${owner} will reply by ${formatDateIst(p.replyBy)} to confirm must-haves and budget.\n2. Once the brief is confirmed, your verified shortlist arrives within ${site.promises.shortlistHours} hours — current estimate ${formatDateIst(p.shortlistBy)}.\n3. You only pay if you hire, and every hire carries a ${site.promises.replacementDays}-day free replacement.`,
+    `What happens next:\n1. ${owner} will reply by ${formatDateIst(p.replyBy)} to confirm must-haves and budget.\n2. Once the brief is confirmed, your verified shortlist arrives within ${site.promises.shortlistHours} hours — current estimate ${formatDateIst(p.shortlistBy)}.\n3. You only pay if you hire.`,
     p.calLink ? `Prefer to brief us live? Book 20 minutes here: ${p.calLink}` : "",
     `Reply to this email any time.\n\n— The ${site.name} team`,
   ].filter(Boolean);
