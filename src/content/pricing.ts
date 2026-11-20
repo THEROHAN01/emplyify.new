@@ -13,7 +13,6 @@ export const perHireFees: Record<Seniority, { percent: number; months: number; l
 };
 
 export const GST_RATE = 0.18;
-export const REPLACEMENT_DAYS = 90;
 
 /** The four commercial models (Business Document, "Pricing and commercial terms"). */
 export const plans = [
@@ -26,7 +25,7 @@ export const plans = [
     includes: [
       "Initial shortlist in 48 hours",
       "Interview scheduling and offer support",
-      "90-day free replacement",
+      "10+ screened candidates per shortlist",
       "Pay only when the hire joins",
     ],
     cta: { label: "Submit a role", href: "/submit-a-role" },
@@ -42,7 +41,7 @@ export const plans = [
       "Dedicated recruiter team",
       "Drive plan with weekly targets",
       "Weekly drive report",
-      "90-day free replacement on permanent hires",
+      "10+ screened candidates per role",
     ],
     cta: { label: "Book a hiring call", href: "/book-a-call?plan=bulk" },
     featured: false,
@@ -72,7 +71,7 @@ export const plans = [
       "Confidential search",
       "Two to four finalists with assessments",
       "Two references per finalist",
-      "90-day free replacement",
+      "Offer and counter-offer support",
     ],
     cta: { label: "Book a hiring call", href: "/book-a-call?plan=leadership" },
     featured: false,
@@ -84,7 +83,6 @@ export const standardTerms = [
   "No fee until the hire joins; invoice on the joining date, payment due within 15 days.",
   "GST extra at 18%.",
   "Annual fixed CTC excludes variable pay, joining bonus, ESOPs and relocation.",
-  "90-day free replacement for resignation or performance exits; not for redundancy or role change.",
   "Mutual non-solicit for 12 months; 30 days' notice to terminate. Fees for candidates who have already joined stay payable.",
   "Contract staffing: monthly billing, a markup on CTC, and payroll and statutory compliance (PF, ESI, PT) set in a schedule.",
 ];
@@ -103,10 +101,6 @@ export const pricingFaqs: Faq[] = [
   {
     q: "Is GST included?",
     a: "No. GST at 18% is added to every invoice. The calculator on this page shows the total with GST.",
-  },
-  {
-    q: "How does the 90-day replacement work?",
-    a: "If the hire resigns or is let go for performance within 90 days of joining, we run a new search for the same role at no fee. It does not apply to redundancy or a change in the role's scope.",
   },
   {
     q: "Are there any other charges?",

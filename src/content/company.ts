@@ -18,9 +18,9 @@ export const problems = [
   },
   {
     problem: "Unclear fees, weak follow-through",
-    fix: "Published fees and a written replacement",
+    fix: "Published fees and weekly updates",
     detail:
-      "Fees agreed up front, nothing payable until the hire joins, a weekly status report and a 90-day free replacement on permanent hires.",
+      "Fees agreed up front, nothing payable until the hire joins, and a weekly status report on every role.",
   },
 ];
 
@@ -72,11 +72,11 @@ export const commitments = [
   { value: "48 hours", label: "To an initial shortlist once the brief is confirmed" },
   { value: "4 hours", label: "Business-hours reply to every new requirement" },
   { value: "48 hours", label: "To chase interview feedback after every round" },
-  { value: "90 days", label: "Free replacement if a permanent hire leaves early" },
+  { value: "10+", label: "Screened candidates in every shortlist" },
 ];
 
 export const commitmentsNote =
-  "The 48-hour shortlist depends on role complexity and candidate availability. Replacement covers resignation or performance exits within 90 days of joining, not redundancy or a change of role.";
+  "The 48-hour shortlist depends on role complexity and candidate availability.";
 
 export const industries = [
   "IT and software",
@@ -136,12 +136,6 @@ export const comparison = [
     emplyify: "10+ screened candidates with a fit summary",
     agency: "Often a batch of CVs",
     inhouse: "Applicants to screen yourself",
-  },
-  {
-    row: "Replacement",
-    emplyify: "90 days, free, in writing",
-    agency: "Often 30–60 days",
-    inhouse: "Re-run the search yourself",
   },
   {
     row: "Visibility",

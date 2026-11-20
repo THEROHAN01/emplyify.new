@@ -8,10 +8,6 @@ import { ctas } from "./site";
  */
 
 const sharedFaqs = {
-  guarantee: {
-    q: "What happens if a permanent hire leaves in the first 90 days?",
-    a: "We replace them free of charge. If the hire resigns or leaves for performance reasons within 90 days of joining, we run a fresh search at no extra fee. It does not cover redundancy or a change of role, and the terms are written into your agreement.",
-  },
   exclusivity: {
     q: "Do you need exclusivity on the role?",
     a: "No. We work alongside your in-house team and other partners. If two sources submit the same candidate, the first timestamped submission made with the candidate's consent counts.",
@@ -75,7 +71,7 @@ const permanentPricing = {
   bullets: [
     "No retainer",
     "No fee until the hire joins",
-    "90-day free replacement",
+    "10+ screened candidates per shortlist",
     "GST extra at 18%",
   ],
 };
@@ -99,14 +95,12 @@ export const services: Service[] = [
       "Interview scheduling and feedback chasing",
       "Offer support and joining follow-up",
       "A weekly status report",
-      "90-day free replacement",
     ],
     process: standardSteps,
     pricing: permanentPricing,
     faqs: [
       sharedFaqs.cvDumps,
       sharedFaqs.pay,
-      sharedFaqs.guarantee,
       sharedFaqs.exclusivity,
       sharedFaqs.notice,
       sharedFaqs.confidentiality,
@@ -197,7 +191,6 @@ export const services: Service[] = [
       "A recruiter screen on skills, motivation, notice period and CTC",
       "10+ screened candidates in 48 hours",
       "Interview scheduling, feedback chasing and offer support",
-      "90-day free replacement on permanent hires",
     ],
     process: standardSteps,
     pricing: {
@@ -215,7 +208,7 @@ export const services: Service[] = [
         a: "Recruiters screen against the must-have skills in your brief and ask for evidence from past work. Your technical rounds stay with your team; we make sure the people reaching them are worth the time.",
       },
       sharedFaqs.cvDumps,
-      sharedFaqs.guarantee,
+      sharedFaqs.pay,
       sharedFaqs.notice,
       sharedFaqs.ai,
     ],
@@ -239,7 +232,6 @@ export const services: Service[] = [
       "A recruiter screen on experience, motivation, notice period and CTC",
       "10+ screened candidates in 48 hours",
       "Interview scheduling, offer and joining follow-up",
-      "90-day free replacement on permanent hires",
     ],
     process: standardSteps,
     pricing: permanentPricing,
@@ -254,7 +246,7 @@ export const services: Service[] = [
       },
       sharedFaqs.cvDumps,
       sharedFaqs.pay,
-      sharedFaqs.guarantee,
+      sharedFaqs.notice,
       sharedFaqs.pan,
     ],
     primaryCta: ctas.submitRole,
@@ -277,7 +269,6 @@ export const services: Service[] = [
       "In-depth interviews and two references per finalist",
       "Two to four finalists with a written assessment",
       "Offer, counter-offer and notice-period support",
-      "90-day free replacement",
     ],
     process: [
       {
@@ -305,12 +296,7 @@ export const services: Service[] = [
       headline: "A share of annual CTC",
       detail:
         "Part of the fee is paid at agreed milestones and the rest when the leader joins. Quoted in writing before the search starts.",
-      bullets: [
-        "Quoted per search",
-        "Milestone-based payments",
-        "90-day free replacement",
-        "GST extra at 18%",
-      ],
+      bullets: ["Quoted per search", "Milestone-based payments", "GST extra at 18%"],
     },
     faqs: [
       {
@@ -321,7 +307,10 @@ export const services: Service[] = [
         q: "Do you take references?",
         a: "Yes, two structured references per finalist, with the candidate's consent and never from a current employer without permission.",
       },
-      sharedFaqs.guarantee,
+      {
+        q: "How is a leadership search paid for?",
+        a: "Part of the fee is paid at agreed milestones and the rest when the leader joins. We quote in writing before the search starts, and GST is extra at 18%.",
+      },
       sharedFaqs.confidentiality,
       sharedFaqs.exclusivity,
       sharedFaqs.ai,
@@ -346,7 +335,7 @@ export const services: Service[] = [
       "Screening to a common scorecard for every role",
       "Batch interview scheduling and offer tracking",
       "A shared tracker and a weekly drive report",
-      "90-day free replacement on permanent hires",
+      "10+ screened candidates per role",
     ],
     process: [
       {
@@ -395,8 +384,8 @@ export const services: Service[] = [
         a: "Sourcing starts the day the drive plan is agreed, with the first shortlists in the first week.",
       },
       sharedFaqs.pay,
-      sharedFaqs.guarantee,
       sharedFaqs.pan,
+      sharedFaqs.ai,
     ],
     primaryCta: ctas.bookCall,
   },

@@ -57,7 +57,7 @@ export default function SubmitRolePage() {
           <div className="border-line bg-surface text-muted rounded-2xl border p-6 text-sm">
             <p>
               <strong className="text-ink">Pay only when you hire.</strong> 8.33–16.67% of fixed
-              CTC, with a {site.promises.replacementDays}-day free replacement.
+              CTC, and 10+ screened candidates in every shortlist.
             </p>
             <p className="mt-3">
               Your brief is confidential. We never name your company to candidates without your OK.

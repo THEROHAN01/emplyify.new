@@ -19,7 +19,7 @@ import { formatPercent } from "@/lib/utils/format";
 export const metadata = buildMetadata({
   title: "Pricing",
   description:
-    "Published recruitment fees: 8.33–16.67% of annual fixed CTC for permanent hires, paid only when the hire joins. Bulk drives, contract staffing and leadership search quoted in writing. Fee calculator, GST and 90-day replacement.",
+    "Published recruitment fees: 8.33–16.67% of annual fixed CTC for permanent hires, paid only when the hire joins. Bulk drives, contract staffing and leadership search quoted in writing. Fee calculator and GST.",
   path: "/pricing",
 });
 
@@ -37,7 +37,7 @@ export default function PricingPage() {
         breadcrumbs={[{ name: "Pricing", path: "/pricing" }]}
         eyebrow="Pricing"
         title="Published pricing. Pay when you hire."
-        intro="Fees agreed up front. Nothing is payable on a permanent hire until the candidate joins, and every permanent hire carries a 90-day free replacement. GST is added at 18%."
+        intro="Fees agreed up front. Nothing is payable on a permanent hire until the candidate joins. GST is added at 18%."
       />
 
       <Section labelledBy="plans">

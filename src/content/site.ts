@@ -12,7 +12,7 @@ export const site = {
   /** Proof line (brand book "Core lines to reuse"). */
   proofLine: "Screened shortlists in 48 hours. A real reply in 4 business hours.",
   description:
-    "Pune-based, pan-India recruitment and staffing for IT and Non-IT roles: permanent recruitment, contract staffing, leadership search and bulk hiring. An initial shortlist within 48 hours of a confirmed brief, with a 90-day free replacement on permanent hires.",
+    "Pune-based, pan-India recruitment and staffing for IT and Non-IT roles: permanent recruitment, contract staffing, leadership search and bulk hiring. An initial shortlist within 48 hours of a confirmed brief, with 10+ screened candidates in every shortlist.",
   email: {
     hello: "hello@emplyify.com",
     candidates: "talent@emplyify.com",
@@ -31,7 +31,6 @@ export const site = {
     replyBusinessHours: 4,
     feedbackHours: 48,
     shortlistSize: "10+",
-    replacementDays: 90,
     candidateUpdateBusinessDays: 2,
     autoCloseDays: 21,
   },
